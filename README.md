@@ -1,6 +1,6 @@
-# nopt042-constraint-programming-tutorial
+# NOPT042 Constraint Programming
 
-NOPT042 Constraint Programming tutorial: notes and code
+Notes and code for the tutorial
 
 ## Installation
 

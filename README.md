@@ -21,12 +21,21 @@ source ~/.bashrc
 
 Then the command `picat` runs the Picat interpreter.
 
-If you want to execute the notebooks, install jupyter notebook with [picat kernel](https://pypi.org/project/picat-kernel/) (if you want to install them locally, add `--user`):
+If you want to execute the notebooks, install [Jupyter Notebook](https://jupyter.org/) with [ipicat extension](https://pypi.org/project/picat-kernel/) (if you want to install them locally, add `--user`):
 
 ```bash
 pip install jupyter
+pip install ipicat
+```
+
+Then run `jupyter notebook`. Once the extension is loaded you can use `%%picat` cell magic or execute picat files: `%picat -e hello-world.pi`.
+<!--
+Sometimes we will also use the [picat kernel](https://pypi.org/project/picat-kernel/) to execute picat code in cells interactively:
+
+```bash
 pip install metakernel
 pip install picat-kernel
 ```
 
-Then run `jupyter notebook`. A picat kernel should be available (New > picat).
+Then a picat kernel should be available (New > picat).
+-->

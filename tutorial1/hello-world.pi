@@ -1,2 +1,11 @@
+import util.
+
 main =>
     println("Hello, World!").
+
+main([Name]) =>
+    printf("Hello, %s! You are my favourite student.\n", Name).
+
+main(ARGS) =>
+    Names = ARGS.join(" and "),
+    printf("Hello, %s! You are my favourite students.\n", Names).

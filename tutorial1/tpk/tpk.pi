@@ -1,0 +1,15 @@
+% TPK Algorithm in Picat
+% from https://www.linuxjournal.com/content/introduction-tabled-logic-programming-picat
+
+f(T) = sqrt(abs(T)) + 5 * T**3.
+main =>
+    N = 11,
+    As = to_array([read_real() : I in 1..N]),
+    foreach (I in N..-1..1)
+        Y = f(As[I]),
+        if Y > 400 then
+            printf("%w TOO LARGE\n", I)
+        else
+            printf("%w %w\n", I, Y)
+        end
+    end.

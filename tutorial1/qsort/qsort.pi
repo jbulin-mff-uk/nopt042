@@ -1,0 +1,18 @@
+qsort([])    = [].
+qsort([H|T]) = qsort([E : E in T, E =< H]) ++ [H] ++ qsort([E : E in T, E > H]).
+
+main =>
+    L = [5, 2, 6, 4, 1, 3],    
+    printf("List %w after sorting is %w.\n", L, qsort(L)).
+
+main([Lstring]) =>
+    L = parse_term(Lstring),
+    println(qsort(L)).
+
+main([InputPath, OutputPath]) =>
+    Lines = read_file_lines(InputPath),
+    OutputFile = open(OutputPath, write),
+    foreach(I in 1..Lines.length)
+        L = parse_term(Lines[I]),
+        writeln(OutputFile, qsort(L))
+    end.

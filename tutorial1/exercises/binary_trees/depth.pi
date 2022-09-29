@@ -1,0 +1,6 @@
+depth(nil) = -1.
+depth(node(Val, LeftChild, RightChild)) = 1 + max(depth(LeftChild), depth(RightChild)).
+
+main([RootString]) =>
+    Root = parse_term(RootString),
+    println(depth(Root)).

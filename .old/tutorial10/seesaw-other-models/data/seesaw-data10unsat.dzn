@@ -1,0 +1,4 @@
+PERSON = anon_enum(10);
+weight = [36, 34, 19, 39, 36, 22, 13, 39, 29, 34]; 
+length = 18;
+distance = 2;

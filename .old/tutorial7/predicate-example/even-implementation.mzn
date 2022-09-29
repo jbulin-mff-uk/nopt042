@@ -1,0 +1,1 @@
+predicate even(var int: b) = a mod 2 == 0;

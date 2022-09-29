@@ -1,0 +1,4 @@
+% (x1 or x2) and (not x1 or not x2) and (not x3)
+num_variables = 3;
+num_clauses = 3;
+clauses = array1d(1..num_clauses, [{1, 2}, {-1, -2}, {-3}]);

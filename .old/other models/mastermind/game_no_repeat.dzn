@@ -1,0 +1,12 @@
+colors = {blue, red, green, yellow, black, white, grey, brown};
+
+repeat = false;
+
+board = [|
+blue, red, yellow, black, green |
+red, blue, brown, white, grey |
+red, blue, grey, yellow, brown |
+yellow, grey, red, white, blue |];
+
+black_pins = [0, 2, 1, 2];
+white_pins = [3, 2, 3, 1];

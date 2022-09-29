@@ -3,7 +3,7 @@
 
 f(T) = sqrt(abs(T)) + 5 * T**3.
 main =>
-    N = 11,
+    N = 4,
     As = to_array([read_real() : I in 1..N]),
     foreach (I in N..-1..1)
         Y = f(As[I]),

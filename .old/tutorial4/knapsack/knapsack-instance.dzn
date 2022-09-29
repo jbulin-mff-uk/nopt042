@@ -1,0 +1,4 @@
+ITEM = {tv, desktop, laptop, tablet, vase, bottle, jacket};
+capacity = 23;
+profits = [500,350,230,115,180,75,125];
+weights = [15,11,5,1,7,3,4];

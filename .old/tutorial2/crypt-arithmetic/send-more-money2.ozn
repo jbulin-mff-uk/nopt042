@@ -1,0 +1,10 @@
+output ["   "++format(S)++""++format(E)++""++format(N)++""++format(D)++"\n","+  "++format(M)++""++format(O)++""++format(R)++""++format(E)++"\n","= "++format(M)++""++format(O)++""++format(N)++""++format(E)++""++format(Y)++"\n"];
+function string : format(opt $T: x) = show(x);
+int: S;
+int: E;
+int: N;
+int: D;
+int: M;
+int: O;
+int: R;
+int: Y;

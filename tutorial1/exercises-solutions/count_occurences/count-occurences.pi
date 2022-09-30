@@ -1,0 +1,8 @@
+count_occurences([], E) = 0.
+count_occurences([E | T], E) = 1 + count_occurences(T, E).
+count_occurences([H | T], E) = count_occurences(T, E).
+
+main([Lstring, Estring]) =>
+    E = parse_term(Estring),
+    L = parse_term(Lstring),
+    println(count_occurences(L, E)).

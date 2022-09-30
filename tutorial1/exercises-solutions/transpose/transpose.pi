@@ -1,0 +1,11 @@
+transpose(Matrix) = Transposed_Matrix =>
+    N = Matrix.length,
+    K = Matrix[1].length,
+    Transposed_Matrix = new_array(K, N),
+    foreach(I in 1..K, J in 1..N)
+        Transposed_Matrix[I, J] = Matrix[J, I]
+    end.
+
+main([Mstring]) =>
+    Matrix = parse_term(Mstring),
+    println(transpose(Matrix)).

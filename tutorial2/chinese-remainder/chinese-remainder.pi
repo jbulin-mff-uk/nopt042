@@ -1,0 +1,37 @@
+import cp.
+
+
+chinese(X, Parameters) =>
+    % parameters
+    [Max, Primes, Moduli] = Parameters,
+    
+    % here we could test input data
+    if Primes.length != Moduli.length then
+        throw(illegal_arguments)
+    end,
+
+    % variables
+    X :: 1..Max,
+
+    % constraints
+    foreach(I in 1..Primes.length)        
+        X mod Primes[I] #= Moduli[I]
+    end.
+
+
+solve_and_output(Parameters) =>
+    chinese(X, Parameters),
+    solve_all(X) = Solutions,
+    foreach (Solution in Solutions)
+        println(Solution)
+    end.
+
+
+main =>
+    Parameters = [42000, [5,7,9,11,13], [3,2,4,10,1]],
+    solve_and_output(Parameters).
+
+
+main(Parameters_as_Strings) =>
+    Parameters = map(parse_term, Parameters_as_Strings),
+    solve_and_output(Parameters).

@@ -1,0 +1,21 @@
+import cp.
+
+send_more_money(Digits) =>
+    Digits = [S,E,N,D,M,O,R,Y],
+    Digits :: 0..9,
+    S #!= 0,
+    M #!= 0,
+
+    % digits are all different
+    all_different(Digits),
+    
+    % arithmetic
+                   1000 * S + 100 * E + 10 * N + D
+    +              1000 * M + 100 * O + 10 * R + E
+    #= 10000 * M + 1000 * O + 100 * N + 10 * E + Y.
+
+
+main =>
+    send_more_money(Digits),
+    solve(Digits),
+    println(Digits).

@@ -1,3 +1,6 @@
 #! /bin/bash
-jupyter nbconvert --to notebook --inplace --execute tutorial1/tutorial1.ipynb
-jupyter nbconvert --to pdf tutorial1/tutorial1.ipynb
+for i in {1..12}
+do
+    jupyter nbconvert --to notebook --inplace --execute tutorial$i/tutorial$i.ipynb
+    jupyter nbconvert --to webpdf tutorial$i/tutorial$i.ipynb
+done

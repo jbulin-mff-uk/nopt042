@@ -1,0 +1,23 @@
+import cp.
+
+color_map(Territories) =>
+    % variables
+    Territories = [WA, NT, SA, Q, NSW, V, T],
+    Territories :: 1..4,
+
+    % constraints
+    WA #!= NT,
+    WA #!= SA,
+    NT #!= SA,
+    NT #!= Q,
+    SA #!= Q,
+    SA #!= NSW,
+    SA #!= V,
+    Q  #!= NSW,
+    V  #!= NSW.
+
+
+main =>
+    color_map(Territories),
+    solve(Territories),
+    println(Territories).

@@ -1,0 +1,43 @@
+import cp.
+
+color_map(Territories) =>
+    % variables
+    Territories = [WA, NT, SA, Q, NSW, V, T],
+    Territories :: 1..8,
+
+    % constraints
+    Edges = [
+        {WA,NT},
+        {WA,SA},
+        {NT,SA},
+        {NT,Q},
+        {SA,Q},
+        {SA,NSW},
+        {SA,V},
+        {Q ,NSW},
+        {V ,NSW}
+    ],
+    foreach(E in Edges)        
+        E[1] #!= E[2]
+    end.
+
+% symmetry breaking constraints
+precolor(Territories) =>
+    WA #= 1,
+    NT #= 2,
+    SA #= 3.
+
+% better output than `println(Territories)` (we could also use a map, i.e. a dictionary)
+output(Territories) =>
+    Color_names = ["red", "green", "blue", "yellow"],
+    Territory_names = ["Western Australia", "Northern Territory", "South Australia", "Queensland", "New South Wales", "Victoria", "Tasmania"],
+    foreach(I in 1..Territories.length)
+        writef("%s is %s.\n", Territory_names[I], Color_names[Territories[I]])
+    end.
+
+
+main =>
+    color_map(Territories),
+    % precolor(Territories),
+    solve(Territories), 
+    output(Territories).

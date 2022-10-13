@@ -1,0 +1,1 @@
+N-queens, mip and sat solvers, solver options 

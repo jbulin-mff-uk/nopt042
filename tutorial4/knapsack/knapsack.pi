@@ -1,0 +1,22 @@
+import cp.
+
+knapsack(Capacity, Values, Weights, Choice, TotalValue) =>
+    N = Values.length,
+    Choice = new_array(N),
+    Choice :: 0..1,
+    sum([Weights[I] * Choice[I]: I in 1..N]) #<= Capacity,
+    TotalValue #= sum([Values[I] * Choice[I]: I in 1..N]).
+
+
+output(Items, Choice, TotalValue) =>
+    println(to_string([Items[I] : I in 1..Items.length, Choice[I] = 1])),
+    printf("Total value: %w\n", TotalValue).
+
+
+main =>
+    cl(data),
+    instance(Items, Capacity, Values, Weights),
+    knapsack(Capacity, Values, Weights, Choice, TotalValue),
+    solve($[max(TotalValue)],Choice),
+    output(Items, Choice, TotalValue).
+

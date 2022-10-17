@@ -1,0 +1,47 @@
+% n-queens, second model
+import sat.
+
+main([N]) =>
+    N := to_int(N),
+    nqueens(N, Board),
+    solve(Board),
+    output(Board).
+
+
+nqueens(N, Board) =>
+    Board = new_array(N, N),
+    Board :: 0..1,
+    
+    sum([Board[I, J] : I in 1..N, J in 1..N]) #= N,
+    
+    % rows
+    foreach(I in 1..N)
+        sum([Board[I, J] : J in 1..N]) #<= 1
+    end,
+    
+    % cols
+    foreach(J in 1..N)
+        sum([Board[I, J] : I in 1..N]) #<= 1
+    end,
+
+    % diags
+    foreach(K in 1-N..N-1)
+        sum([Board[I,J] : I in 1..N, J in 1..N, I-J = K ]) #<= 1
+    end,
+    foreach(K in 2..2*N)
+        sum([Board[I,J] : I in 1..N, J in 1..N, I+J = K ]) #<= 1
+    end.
+    
+
+output(Board) =>
+    N = Board.length,
+    foreach(I in 1..N)
+        foreach (J in 1..N)
+            if Board[I, J] = 1 then
+                print("Q")
+            else
+                print(".")
+            end
+        end,
+        print("\n")
+    end.

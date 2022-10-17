@@ -1,0 +1,30 @@
+% n-queens, first model
+import cp.
+
+main([N]) =>
+    N := to_int(N),
+    queens(N, Q),
+    solve(Q),
+    output(Q).
+
+
+queens(N, Q) =>
+    Q = new_array(N),
+    Q :: 1..N,
+    all_different(Q),
+    all_different([$Q[I] - I : I in 1..N]),
+    all_different([$Q[I] + I : I in 1..N]).
+
+
+output(Q) =>
+    N = Q.length,
+    foreach(I in 1..N)
+        foreach (J in 1..N)
+            if Q[I] = J then
+                print("Q")
+            else
+                print(".")
+            end
+        end,
+        print("\n")
+    end.

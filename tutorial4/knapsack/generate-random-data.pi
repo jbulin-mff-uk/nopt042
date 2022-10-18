@@ -1,0 +1,22 @@
+import io.
+
+main =>    
+    NumItems = 15,
+    Capacity = 100,
+    MinValue = 1,
+    MaxValue = 20, 
+    MinWeight = 1,
+    MaxWeight = 20, 
+
+    Items = {"item" ++ I.to_string: I in 1..NumItems},
+    Values = {random(MinValue, MaxValue): I in 1..NumItems},
+    Weights = {random(MinWeight, MaxWeight): I in 1..NumItems},
+
+    Writer = open("random-data.pi", write),
+    println(Writer, "instance(Items, Capacity, Values, Weights) =>"),    
+    println(Writer, "    Items = "++ Items.to_string ++ ","),
+    println(Writer, "    Capacity = "++ Capacity.to_string ++ ","),    
+    println(Writer, "    Values = "++ Values.to_string ++ ","),
+    println(Writer, "    Weights = "++ Weights.to_string ++ "."),
+
+    close(Writer).

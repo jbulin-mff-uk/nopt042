@@ -1,14 +1,16 @@
-% n-queens, second model
-import sat.
+% n-queens, dual model
+import mip.
 
 main([N]) =>
     N := to_int(N),
-    nqueens(N, Board),
+    queens(N, Board),
     solve(Board),
-    output(Board).
+    if N <= 32 then
+        output(Q)
+    end.
 
 
-nqueens(N, Board) =>
+queens(N, Board) =>
     Board = new_array(N, N),
     Board :: 0..1,
     

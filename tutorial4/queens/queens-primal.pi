@@ -1,11 +1,13 @@
-% n-queens, first model
-import cp.
+% n-queens, primal model
+import sat.
 
 main([N]) =>
     N := to_int(N),
     queens(N, Q),
     solve(Q),
-    output(Q).
+    if N <= 32 then
+        output(Q)
+    end.
 
 
 queens(N, Q) =>

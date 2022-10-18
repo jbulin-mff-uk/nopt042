@@ -1,0 +1,21 @@
+/***********************************************************
+  adapted from langford.pi
+  from Constraint Solving and Planning with Picat, Springer 
+  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
+***********************************************************/
+import cp.
+
+main([N]) =>
+  langford(N.to_int, Seq),
+  println(Seq).
+
+langford(K, Seq) =>
+  K2 = 2*K,            
+  Seq = new_list(K2),
+  Seq :: 1..K,
+  foreach(I in 1..K)
+     element(J1,Seq,I),
+     element(J2,Seq,I),
+     J2 #= J1+I+1
+  end,
+  time2(solve(Seq)).

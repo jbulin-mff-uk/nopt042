@@ -1,0 +1,47 @@
+import cp.
+
+main([N, K]) =>
+    N := N.to_int,
+    K := K.to_int,
+    
+    % function
+    F = new_array(N),
+    F :: 1..K,
+    
+    % injective
+    all_different(F),
+
+    % dual model if it is a bijection (K=N and injective)
+    FInv = new_array(K),
+    FInv :: 1..N,
+
+    % channeling if it is a bijection (K=N and injective)
+    assignment(F, FInv),
+
+
+
+    % % dual model in general
+    % FInv = new_array(K, N),
+    % FInv :: 0..1,
+  
+    % % surjective in general
+    % foreach(J in 1..N)
+    %     sum([FInv[I, J]: I in 1..K]) #>= 1
+    % end,
+
+    % % channeling in general
+    % foreach(I in 1..N)
+    %     foreach(J in 1..N)
+    %         (FInv[J, I] #= 1) #<=> (F[I] #= J)
+    %     end
+    % end,
+
+    solve(F ++ FInv),
+    println(F),
+    println(FInv).
+
+
+
+
+
+

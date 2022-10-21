@@ -3,8 +3,9 @@ import cp.
 main([N]) =>
     N := to_int(N),
     square(N, Square),
-    solve(Square),
-    if N <= 32 then
+    Timeout = 60000,
+    time2(time_out(solve($[inout,updown],Square),Timeout,Status)),
+    if Status = success, N <= 32 then
         output(Square)
     end.
 
@@ -16,6 +17,7 @@ square(N, Square) =>
     Sum = N * (N * N + 1) // 2, 
     
     all_different(Square.vars()),
+    
     % rows
     foreach(I in 1..N)
         sum([Square[I, J] : J in 1..N]) #= Sum

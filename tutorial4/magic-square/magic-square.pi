@@ -1,0 +1,42 @@
+import cp.
+
+main([N]) =>
+    N := to_int(N),
+    square(N, Square),
+    solve(Square),
+    if N <= 32 then
+        output(Square)
+    end.
+
+
+square(N, Square) =>
+    Square = new_array(N, N),
+    Square :: 1..N*N,
+
+    Sum = N * (N * N + 1) // 2, 
+    
+    all_different(Square.vars()),
+    % rows
+    foreach(I in 1..N)
+        sum([Square[I, J] : J in 1..N]) #= Sum
+    end,
+    
+    % cols
+    foreach(J in 1..N)
+        sum([Square[I, J] : I in 1..N]) #= Sum
+    end,
+    
+    % diags
+    sum([Square[I,I] : I in 1..N]) #= Sum,
+    sum([Square[I, N + 1 - I] : I in 1..N]) #= Sum.
+    
+    
+
+output(Square) =>
+    N = Square.length,
+    foreach(I in 1..N)
+        foreach (J in 1..N)
+            printf("%4d", Square[I, J])
+        end,
+        print("\n")
+    end.

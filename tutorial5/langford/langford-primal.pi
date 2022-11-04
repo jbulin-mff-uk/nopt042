@@ -1,0 +1,20 @@
+%todo finish
+import cp.
+
+main([N]) =>
+    N := N.to_int, 
+    langford_primal(N, Sequence),
+    time2(solve(Sequence)).
+
+langford_primal(K, Sequence) =>
+    K2 = 2*K,
+    Sequence = new_array(K2),
+    Sequence :: 1..K,
+    foreach(D in 1..K)
+        element(I1, Sequence, D),
+        element(I2, Sequence, D),
+        I2 #= I1 + D + 1
+    end.
+
+
+

@@ -1,0 +1,11 @@
+import cp.
+
+main =>
+    L = new_array(10),
+    L :: 0..9,
+    all_different(L),
+    % X #= L[I], % this does not work, use element instead
+    element(I, L, X),    
+    X #= 5,
+    solve($[max(I)],L),
+    println(L).

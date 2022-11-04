@@ -1,0 +1,16 @@
+%todo finish
+import cp.
+
+main([N]) =>
+    N := N.to_int, 
+    langford_dual(N, Position),
+    time2(solve(Position)),
+    println(Position).
+
+langford_dual(K, Position) =>
+    K2 = 2*K,
+    Position = new_array(K2),
+    Position :: 1..K2,
+    foreach(D in 1..K)
+        Position[D+K] #= Position[D] + D + 1
+    end.

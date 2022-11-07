@@ -1,0 +1,7 @@
+instance(NumPeople, Items, Duration, People) =>
+    NumPeople = 4,
+    Items = ["piano", "chair", "bed", "table", "couch", "cat"],
+    Duration = [45, 10, 25, 15, 30, 15],
+    People = [4, 1, 3, 2, 3, 1].
+
+

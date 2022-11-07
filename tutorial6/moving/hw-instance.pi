@@ -1,0 +1,9 @@
+% moving with trolleys and precedence (for the homework)
+instance(NumPeople, NumTrolleys, Items, Duration, People, Trolleys, Precedence) =>
+    NumPeople = 4,
+    NumTrolleys = 2,
+    Items = ["piano", "chair", "bed", "table", "couch", "cat", "fridge"],
+    Duration = [50, 10, 25, 15, 30, 15, 60],
+    People = [4, 1, 3, 2, 3, 1, 2],
+    Trolleys = [2, 0, 2, 1, 2, 0, 1],
+    Precedence = [["couch", "cat"], ["fridge", "cat"], ["bed", "piano"]]. % finish moving the couch before starting moving the cat

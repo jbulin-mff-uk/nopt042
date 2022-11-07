@@ -1,0 +1,9 @@
+sample_instance(SwimmerNames, StyleNames, Times) =>
+    SwimmerNames = {"A", "B", "C", "D"},
+    StyleNames = {"Free", "Breast", "Fly", "Back"},
+    Times = {
+        {54, 54, 51, 53},
+        {51, 57, 52, 52},
+        {50, 53, 54, 56},
+        {56, 54, 55, 53}
+    }.

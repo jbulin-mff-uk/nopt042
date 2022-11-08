@@ -1,0 +1,67 @@
+/***********************************************************
+  nurse_rostering.pi
+  from Constraint Solving and Planning with Picat, Springer 
+  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
+***********************************************************/
+import sat.
+
+main => 
+  problem(1,NumNurses,NumDays,MinDayShift,MinNightShift),
+  nurse_rostering(NumNurses,NumDays,
+                  MinDayShift,MinNightShift,X,_Stat),
+  foreach(Nurse in X) println(Nurse) end.
+
+nurse_rostering(NumNurses,NumDays,
+                MinDayShift,MinNightShift,X,Stat) =>
+  % The DFA for the regular constraint. 
+  Transition = [ 
+      % d n o
+       [2,3,1], % state 1
+       [4,4,1], % state 2
+       [4,5,1], % state 3
+       [6,6,1], % state 4
+       [6,0,1], % state 5
+       [0,0,1]  % state 6
+  ],
+  NStates      = Transition.length, % number of states
+  InputMax     = 3,                 % 3 states
+  InitialState = 1,                 % start at state 1
+  FinalStates  = 1..6,              % all states are final
+  DayShift   = 1,
+  NightShift = 2,
+  OffShift   = 3,
+  % decision variables
+  X = new_array(NumNurses,NumDays),
+  X :: DayShift..OffShift,
+  % summary of the shifts: [day,night,off]
+  Stat = new_array(NumDays,3),
+  Stat :: 0..NumNurses,
+  % constraints
+  foreach (I in 1..NumNurses) 
+     regular([X[I,J] : J in 1..NumDays],
+             NStates,
+             InputMax,
+             Transition,
+             InitialState,
+             FinalStates)
+  end,
+  % statistics for each day
+  foreach (Day in 1..NumDays)
+     foreach (Type in 1..3)
+        Stat[Day,Type] #= 
+           sum([X[Nurse,Day] #= Type : Nurse in 1..NumNurses])
+     end,
+     sum([Stat[Day,Type] : Type in 1..3]) #= NumNurses,
+     % For each day the must be at least 3 nurses with 
+     % day shift, and 2 nurses with night shift
+     Stat[Day,DayShift] #>= MinDayShift, 
+     Stat[Day,NightShift] #>= MinNightShift
+  end,
+  Vars = X.vars() ++ Stat.vars(),
+  solve(Vars).
+
+problem(1,NumNurses,NumDays,MinDayShift,MinNightShift) =>
+  NumNurses     = 7,
+  NumDays       = 14,
+  MinDayShift   = 3, % minimum number in day shift
+  MinNightShift = 2. % minimum number in night shift

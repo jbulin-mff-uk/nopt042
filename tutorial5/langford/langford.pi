@@ -11,7 +11,7 @@ main([N]) =>
 
 langford(K, Seq) =>
   K2 = 2*K,            
-  Seq = new_list(K2),
+  Seq = new_array(K2),
   Seq :: 1..K,
   foreach(I in 1..K)
      element(J1,Seq,I),

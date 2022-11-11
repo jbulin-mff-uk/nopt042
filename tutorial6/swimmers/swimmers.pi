@@ -2,24 +2,32 @@ import cp.
 
 main =>
     cl(sample_instance),
+    solve_primal,
+    solve_dual,
+    solve_channeling.
+
+solve_primal =>
     sample_instance(SwimmerNames, StyleNames, Times),
-    
     primal_model(StyleOfSwimmer, Times, TotalTime),
-    solve([$max(TotalTime), StyleOfSwimmer]),
+    solve([$min(TotalTime)], StyleOfSwimmer),
     println("\nPrimal model:"),
     foreach(I in 1..SwimmerNames.length)
         printf("Swimmer %w is swims %w\n", SwimmerNames[I], StyleNames[StyleOfSwimmer[I]])
-    end,
+    end.
 
+solve_dual =>
+    sample_instance(SwimmerNames, StyleNames, Times),
     dual_model(SwimmerOfStyle, Times, TotalTime),
-    solve([$max(TotalTime), SwimmerOfStyle]),
+    solve([$min(TotalTime)], SwimmerOfStyle),
     println("\nDual model:"),
     foreach(J in 1..StyleNames.length)
         printf("Style %w is swum  by %w\n", StyleNames[J], SwimmerNames[SwimmerOfStyle[J]])
-    end,
+    end.
 
+solve_channeling =>
+    sample_instance(SwimmerNames, StyleNames, Times),
     channeling_model(StyleOfSwimmer, SwimmerOfStyle, Times, TotalTime),
-    solve([$max(TotalTime), StyleOfSwimmer ++ SwimmerOfStyle]),
+    solve([$min(TotalTime)], StyleOfSwimmer ++ SwimmerOfStyle),
     println("\nChanneling model:"),
     foreach(I in 1..SwimmerNames.length)
         printf("Swimmer %w is swims %w\n", SwimmerNames[I], StyleNames[StyleOfSwimmer[I]])
@@ -40,7 +48,8 @@ primal_model(StyleOfSwimmer, Times, TotalTime) =>
 
     TimeOfSwimmer = new_array(N),
     foreach(I in 1..N)
-        matrix_element(Times, I, StyleOfSwimmer[I], TimeOfSwimmer[I])
+        matrix_element(Times, I, StyleOfSwimmer[I], TimeOfSwimmer[I]) 
+        % matrix_element(Matrix, I, J, Entry)
     end,
     TotalTime #= sum(TimeOfSwimmer).
 

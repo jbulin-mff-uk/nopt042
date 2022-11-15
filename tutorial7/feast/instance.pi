@@ -1,7 +1,5 @@
-instance(Length, Dishes, Taste, Temp, Heavy, Value) =>
+instance(Length, Dishes, Taste, Value) =>
     Length = 6,
     Dishes = [mapotofu, kungpaochicken, coconutjelly, laiwongbao, charsiubao, sesameprawn, hotsoursoup, chilidumplings, glassnoodles, friedrice],
     Taste  = [umami, spicy, sweet, sweet, salty, salty, sour, spicy, bland, bland],
-    Temp   = [hot, hot, warm, cold, warm, warm, hot, hot, cold, warm],
-    Heavy  = [1, 1, 0, 0, 0, 1, 1, 1, 0, 0],
     Value  = [8, 4, 5, 3, 5, 7, 4, 3, 2, 1].

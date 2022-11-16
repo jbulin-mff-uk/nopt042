@@ -1,0 +1,60 @@
+/***********************************************************
+  Adapted from
+  knight_tour.pi
+  from Constraint Solving and Planning with Picat, Springer 
+  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
+***********************************************************/
+import cp.
+
+main([N]) =>
+  N := N.to_int,
+  knight(N,X),
+  println(x=X),
+  println("X:"),
+  print_matrix(X),
+  extract_tour(X,Tour),
+  println("Tour:"),
+  print_matrix(Tour).
+
+% Knight's tour for even N*N.
+knight(N, X) =>
+  X = new_array(N,N),
+  X :: 1..N*N,
+  XVars = X.vars(),
+  % restrict the domains of each square
+  foreach (I in 1..N, J in 1..N)
+     D = [-1,-2,1,2],
+     Dom = [(I+A-1)*N + J+B : A in D, B in D, 
+             abs(A) + abs(B) == 3, 
+             member(I+A,1..N), member(J+B,1..N)],
+     Dom.length > 0,
+     X[I,J] :: Dom
+  end,
+  circuit(XVars),
+  solve([ff,split],XVars). 
+
+extract_tour(X,Tour) =>
+  N = X.length,
+  Tour = new_array(N,N),
+  K = 1,
+  Tour[1,1] := K,
+  Next = X[1,1],
+  while (K < N*N) 
+    K := K + 1,
+    I = 1+((Next-1) div N),
+    J = 1+((Next-1) mod N),
+    Tour[I,J] := K,
+    Next := X[I,J]
+  end.
+  
+print_matrix(M) =>
+  N = M.length,
+  V = (N*N).to_string().length,
+  Format = "% " ++ (V+1).to_string() ++ "d",
+  foreach(I in 1..N)
+     foreach(J in 1..N)
+        printf(Format,M[I,J])
+     end,
+     nl
+  end,
+  nl.

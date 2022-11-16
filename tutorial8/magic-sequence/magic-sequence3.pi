@@ -1,0 +1,27 @@
+/***********************************************************
+  Adapted from
+  magic_sequence.pi
+  from Constraint Solving and Planning with Picat, Springer 
+  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
+***********************************************************/
+import cp.
+
+main([N]) =>
+  N := N.to_int,
+  magic_sequence(N,Sequence),
+  println(Sequence).
+
+magic_sequence(N, Sequence) =>
+  Sequence = new_list(N),
+  Sequence :: 0..N-1,
+
+  % extra/redudant (implicit) constraints to speed up the model
+  N #= sum(Sequence),
+  Integers = [I : I in 0..N-1],
+  scalar_product(Integers, Sequence, N),
+
+  % % create list: [0-Sequence[1], 1-Sequence[2], ...]
+  Pairs = [$I-Sequence[I+1] : I in 0..N-1],
+  global_cardinality(Sequence,Pairs),
+
+  solve([ff], Sequence).

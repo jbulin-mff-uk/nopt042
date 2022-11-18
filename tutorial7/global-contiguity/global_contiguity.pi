@@ -1,19 +1,18 @@
 /***********************************************************
+  Adapted from
   global_contiguity.pi
   from Constraint Solving and Planning with Picat, Springer 
   by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
 ***********************************************************/
 import cp.
 
-main ?=> 
-  N = 6,
-  X = new_list(N),
-  X :: 0..1,
+main([Xstr]) => 
+  X = map(to_int,Xstr),  
   global_contiguity(X),
   solve(X),
-  println(X),
-  fail.
-main => true.
+  println("ok").
+  
+
 
 global_contiguity(X) =>
   N = X.length,

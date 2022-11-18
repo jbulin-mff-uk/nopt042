@@ -1,0 +1,6 @@
+instance(NumNurses,NumDays,RegDay,ReqNight,MinNight) =>
+    NumNurses     = 7,
+    NumDays       = 14,
+    ReqNight      = 3, % minimum number in day shift
+    ReqNight      = 2, % minimum number in night shift
+    MinNight      = 0. % minimum night shifts for each nurse

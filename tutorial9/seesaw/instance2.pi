@@ -1,0 +1,7 @@
+
+% unsatisfiable
+instance(NumPeople, Length, Distance, Weights) =>
+    NumPeople = 10,
+    Length = 18,
+    Distance = 2,
+    Weights = [36, 34, 19, 39, 36, 22, 13, 39, 29, 34].

@@ -21,30 +21,30 @@ Program: The element constraint. The Assignment Problem
 Homework: stable-marriage
 
 ## 6th tutorial
-Program: The table constraint. Scheduling.
+Program: Scheduling.
 Homework: TBA
 
 
 ## 7th tutorial
-Program: More global constraints
+Program: Rostering
 Homework: TBA
 
 ## 8th tutorial
-Program: Modelling sets
+Program: Routing
 Homework: TBA
 
 ## 9th tutorial
-Program: More advanced models
+Program: Implicit constraints
 Homework: TBA
 
 ## 10th tutorial
-Program: Dynamic programming and tabling
+Program: Modeling with sets
 Homework: TBA
 
 ## 11th tutorial
-Program: Planning
+Program: Dynamic programming and tabling
 Homework: TBA
 
 ## 12th tutorial
-Program: Examples of more advanced models
+Program: Planning. Examples of more advanced models
 Homework: TBA + 4 additional homework assignments

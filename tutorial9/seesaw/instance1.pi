@@ -1,0 +1,6 @@
+% sample instance
+instance(NumPeople, Length, Distance, Weights) =>
+    NumPeople = 3,
+    Length = 10,
+    Distance = 2,
+    Weights = [36, 32, 16].

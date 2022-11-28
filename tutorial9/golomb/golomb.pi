@@ -1,0 +1,19 @@
+% a basic model - improve!
+import cp.
+
+main([N]) =>
+    N := N.to_int,
+    golomb(N, Length, Marks),    
+    time2(solve($[min(Length)], Marks)),
+    println(length=Length),
+    println(Marks).
+
+golomb(N, Length, Marks) =>
+    MaxLength = 2**(N-1)-1,   
+    Marks = new_list(N),
+    Marks :: 0..MaxLength,
+    Length #= max(Marks),
+
+    increasing(Marks),
+    Distances = [DistIJ : I in 1..N-1, J in I+1..N, DistIJ #= Marks[J] - Marks[I]],
+    all_different(Distances).

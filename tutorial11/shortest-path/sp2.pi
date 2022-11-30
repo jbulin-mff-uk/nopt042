@@ -1,0 +1,26 @@
+/***********************************************************
+  sp2.pi
+  from Constraint Solving and Planning with Picat, Springer 
+  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
+***********************************************************/
+main =>
+   sp2(a,c,Path,W),
+   println(path = Path),
+   println(w = W).
+
+table(+,+,-,min)
+sp2(X,Y,Path,WL) ?=>
+  Path = [(X,Y)],
+  WL = (Wxy,1),
+  edge(X,Y,Wxy).
+sp2(X,Y,Path,WL) =>
+  Path = [(X,Z)|Path1],
+  edge(X,Z,Wxz),
+  sp2(Z,Y,Path1,WL1),
+  WL1 = (Wzy,Len1),
+  WL = (Wxz+Wzy,Len1+1).
+
+index (+,-,-)
+edge(a,b,5).  
+edge(b,c,3).  
+edge(c,a,9).

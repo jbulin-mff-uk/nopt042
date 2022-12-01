@@ -1,0 +1,16 @@
+/***********************************************************
+  table_mode.pi
+  from Constraint Solving and Planning with Picat, Springer 
+  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
+***********************************************************/
+main ?=>
+    p(a,Y),
+    println("Y" = Y).
+
+table(+,max)
+index (-,-)
+p(a,2).
+p(a,1).
+p(a,3).
+p(b,3).
+p(b,4).

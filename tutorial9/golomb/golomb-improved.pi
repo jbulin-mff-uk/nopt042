@@ -1,0 +1,62 @@
+import cp.
+
+main([N]) =>
+    N := N.to_int,
+    golomb(N, Length, Marks),    
+    time2(solve($[min(Length)], Marks)),
+    println(length=Length),
+    println(Marks).
+
+golomb(N, Length, Marks) =>
+    MaxLength = 2**(N-1)-1,   
+    Marks = new_list(N),
+    Marks :: 0..MaxLength,
+    Length #= max(Marks),
+
+    increasing(Marks),
+
+    Distances = new_list(N-1),
+    foreach(I in 1..N-1)
+        Distances[I] = [DistIJ : J in I+1..N, DistIJ #= Marks[J] - Marks[I]],             
+    end,
+    all_different(flatten(Distances)),
+
+    % symmetry breaking
+    Distances[1,1] #< Distances[N-1,1],
+
+    % implicit constraints based on 
+    %     dist[i,j] = dist[i,i+1] + dist[i+1,i+2] + ... + dist[j-1,j]
+    % estimate distances by 1, sum from i to j
+    % foreach(I in 1..N-1, J in I+1..N)
+    %     Distances[I,J-I] #>= (J-I)*(J-I+1) div 2,
+    %     Distances[I,J-I] #<= Length - (N-J+I-1)*(N-J+I) div 2
+    % end,
+
+    % we used the previous iterations to compute the length of Golomb rulers up to N=11, now we use this knowledge:
+    MinLengths = [0, 1, 3, 6, 11, 17, 25, 34, 44, 55],
+    
+    foreach(I in 1..N-1, J in I+1..N, J-I+1 <= MinLengths.length)
+        Distances[I,J-I] #>= MinLengths[J-I+1],
+        Distances[I,J-I] #<= Length - (N-J+I-1)*(N-J+I) div 2
+    end,
+
+    % this helped a lot :-)
+    Marks[1] = 0.
+
+    % if N = MinLengths.length + 1 then 
+    %     Length #<= 2 * MinLengths[N-1],
+    %     Length #>= MinLengths[N-1] + 1
+    % end.
+
+    % if N <= MinLengths.length + 1 then 
+    %     Length #<= 2 * MinLengths[N-1]
+    % end
+
+
+    
+
+
+    
+  
+
+    % N=11: 25s

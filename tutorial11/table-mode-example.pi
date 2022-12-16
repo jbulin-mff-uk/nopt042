@@ -8,7 +8,7 @@ main ?=>
     println("Y" = Y).
 
 table(+,max)
-index (-,-)
+index (-,+)
 p(a,2).
 p(a,1).
 p(a,3).

@@ -1,0 +1,35 @@
+/***********************************************************
+  Code adapted from
+  knapsack.pi
+  from Constraint Solving and Planning with Picat, Springer 
+  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
+***********************************************************/
+
+main([Filename]) =>
+    cl(Filename),
+    instance(ItemNames, Capacity, Values, Weights),    
+    Items = [(ItemNames[I], Values[I], Weights[I]) : I in 1..ItemNames.length],
+    knapsack(Items, Capacity, ChosenItems, TotalValue),
+    output(ChosenItems, TotalValue).
+
+
+table(+,+,-,max)
+
+knapsack(_, Capacity, ChosenItems, Value), Capacity =< 0 => 
+  ChosenItems = [], Value = 0.
+
+knapsack([ _ | RemainingItems], Capacity, ChosenItems, Value) ?=>
+  % Don't take the item
+  knapsack(RemainingItems, Capacity, ChosenItems, Value).
+
+knapsack([Item@(ItemName, ItemValue, ItemWeight) | RemainingItems], Capacity, ChosenItems, Value), Capacity >= ItemWeight =>
+  % Take the item
+  ChosenItems = [Item | PrevChosenItems],
+  knapsack(RemainingItems, Capacity - ItemWeight, PrevChosenItems, PrevValue),
+  Value = PrevValue + ItemValue.
+
+output(ChosenItems, TotalValue) =>
+    println(total=TotalValue),
+    foreach(Item in ChosenItems)
+      println(Item)
+    end.

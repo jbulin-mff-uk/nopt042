@@ -1,0 +1,20 @@
+/***********************************************************
+  Adapted from
+  edit.pi
+  from Constraint Solving and Planning with Picat, Springer 
+  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
+***********************************************************/
+main([Source, Target]) =>
+    edit(Source, Target,Distance),
+    writeln(Distance).
+
+table(+,+,min)
+edit([],[],D) => D=0.
+edit([X|P],[X|T],D) =>   % match 
+  edit(P,T,D).
+edit(P,[_|T],D) ?=>      % insert
+  edit(P,T,D1),
+  D=D1+1.
+edit([_|P],T,D) =>       % delete
+  edit(P,T,D1),
+  D=D1+1.

@@ -1,0 +1,30 @@
+/***********************************************************
+  Adapted from
+  sp2.pi
+  from Constraint Solving and Planning with Picat, Springer 
+  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
+***********************************************************/
+
+main([Filename]) =>
+  cl(Filename),
+  source(S),
+  target(T),
+  ssp(S,T,Path,W),
+  println(path = Path),
+  println(w = W).
+
+table(+,+,-,min)
+
+ssp(X,Y,Path,WL) ?=>
+  Path = [(X,Y)],
+  WL = (Wxy,1),
+  edge(X,Y,Wxy).
+
+ssp(X,Y,Path,WL) =>
+  Path = [(X,Z)|Path1],
+  edge(X,Z,Wxz),
+  ssp(Z,Y,Path1,WL1),
+  WL1 = (Wzy,Len1),
+  WL = (Wxz+Wzy,Len1+1).
+
+% The order in `WL = (Weight, Length)` matters, otherwise we would choose minimum-weight path among minimum-edges paths.

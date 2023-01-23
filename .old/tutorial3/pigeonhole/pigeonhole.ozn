@@ -1,3 +1,0 @@
-output ["hole = array1d(1..4, ",show(hole),");\n"];
-set of int: PIGEONS = 1..4;
-array [PIGEONS] of int: hole;

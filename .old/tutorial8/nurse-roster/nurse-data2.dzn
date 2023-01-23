@@ -1,5 +1,0 @@
-NURSE = {Alice, Bob, Charles, David, Emily, Frank, George};
-DAY = {Mon, Tue, Wed, Thu, Fri, Sat, Sun};
-req_day = 4;
-req_night = 2;
-min_night = 2;

@@ -1,1 +1,0 @@
-do symmetry breaking for nqueens, show sudoku, minesweeper

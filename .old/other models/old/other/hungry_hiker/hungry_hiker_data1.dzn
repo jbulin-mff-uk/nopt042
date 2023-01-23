@@ -1,5 +1,0 @@
-LIMIT = 6500;
-ITEMS = {apple, beer, bread, carrot, pea, steak, water};
-WEIGHT = [88, 564, 892, 415, 8, 410, 500];
-KCAL = [40, 385, 615, 290, 1, 245, 5]; 
- 

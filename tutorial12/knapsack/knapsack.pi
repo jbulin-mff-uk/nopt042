@@ -1,0 +1,48 @@
+import planner.
+
+main([Filename]) =>
+    cl(Filename),
+    instance(ItemNames, TotalCapacity, Values, Weights),    
+    AllItems = [(ItemNames[I], Values[I], Weights[I]) : I in 1..ItemNames.length],
+    
+    % state: S@(RemainingItems, RemainingCapacity)
+    InitialState = (AllItems, TotalCapacity),
+
+    % PlanCost is the value of items we did not take
+    best_plan(InitialState, Plan, PlanCost),
+    foreach (Action in Plan)
+       println(Action)
+    end.
+
+% take the current item
+action(CurrentState@(Items, Capacity), NextState, Action, Cost) ?=>
+    Items = [Item | RemainingItems],
+    Item = (ItemName, ItemValue, ItemWeight),
+    Action = (take, ItemName),
+
+    % taking an item costs nothing
+    Cost = 0,
+
+    % is this action valid?
+    Capacity >= ItemWeight,
+
+    % take the item, lower capacity
+    NextState = (RemainingItems, Capacity - ItemWeight).
+
+
+% leave the current item
+action(CurrentState@(Items, Capacity), NextState, Action, Cost) =>
+    Items = [Item | RemainingItems],
+    Item = (ItemName, ItemValue, ItemWeight),
+    Action = (leave, ItemName),
+
+    % leaving an item costs its value
+    Cost = ItemValue,
+
+    % leave the item, capacity does not change
+    NextState = (RemainingItems, Capacity).
+
+
+% finish if no remaining items
+final(S@(Items, Capacity)) => Items = [].
+

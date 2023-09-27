@@ -3,7 +3,7 @@ qsort([H|T]) = qsort([E : E in T, E =< H]) ++ [H] ++ qsort([E : E in T, E > H]).
 
 main =>
     L = [5, 2, 6, 4, 1, 3],    
-    printf("List %w after sorting is %w.\n", L, qsort(L)).
+    printf("For example, the list %w after sorting is %w.\n", L, qsort(L)).
 
 main([Lstring]) =>
     L = parse_term(Lstring),

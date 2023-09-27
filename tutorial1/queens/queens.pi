@@ -9,6 +9,10 @@ queens(N, Q) =>
     all_different([Q[I] + I : I in 1..N]),
     solve([ff], Q).
 
+main =>
+    queens(8, Q),
+    print(Q).
+
 main([N]) =>
     queens(N.to_int, Q),
     print(Q).

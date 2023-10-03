@@ -7,4 +7,5 @@ rm picat328_linux64.tar.gz
 echo 'export PATH="$HOME/Picat:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 
-pip install --user jupyter ipicat
+pip install --user jupyter ipicat RISE
+

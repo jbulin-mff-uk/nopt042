@@ -1,5 +1,0 @@
-instance(Length, Dishes, Taste, Value) =>
-    Length = 6,
-    Dishes = [mapotofu, kungpaochicken, coconutjelly, laiwongbao, charsiubao, sesameprawn, hotsoursoup, chilidumplings, glassnoodles, friedrice],
-    Taste  = [umami, spicy, sweet, sweet, salty, salty, sour, spicy, bland, bland],
-    Value  = [8, 4, 5, 3, 5, 7, 4, 3, 2, 1].

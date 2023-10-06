@@ -1,0 +1,88 @@
+/***********************************************************
+  Adapted from Constraint Solving and Planning with Picat, Springer 
+  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
+***********************************************************/
+import cp.
+
+main([Filename]) =>
+  cl(Filename), 
+  instance(NumNurses, NumDays, ReqDay, ReqNight, MinNight),
+  nurse_rostering(NumNurses, NumDays, ReqDay, ReqNight, MinNight, Roster, Stat),
+  Vars = Roster.vars() ++ Stat.vars(),
+  solve(Vars),
+  output(Roster).
+
+
+% rotate valid schedules
+rotate_left(L) = rotate_left(L,1).
+rotate_left(L,N) = slice(L,N+1,L.length) ++ slice(L,1,N).
+
+
+nurse_rostering(NumNurses, NumDays, ReqDay, ReqNight, MinNight, Roster, Stat) =>
+
+  % Only works for 7-day rosters!
+  NumDays = 7,
+  
+  DayShift   = 1,
+  NightShift = 2,
+  OffShift   = 3,
+  D = 1,
+  N = 2,
+  O = 3,
+
+  % Valid 7 day schedules:
+      % - up to rotation:
+      Valid_up_to_rotation = [
+    [D,D,D,D,D,O,O],
+    [N,O,N,O,D,D,O],
+    [N,N,O,O,D,D,O]
+  ],
+  % - create all rotational variants
+  Valid = [],
+  foreach (V in Valid_up_to_rotation, R in 0..V.length-1)
+    Rot = rotate_left(V,R).to_array(),
+    Valid := Valid ++ [Rot]
+  end,
+
+  % decision variables:
+  % - the roster
+  Roster = new_array(NumNurses, NumDays),
+  Roster :: DayShift..OffShift,
+
+  % - summary of the shifts: [day,night,off]
+  Stat = new_array(NumDays,3),
+  Stat :: 0..NumNurses,
+
+  % constraints
+
+  % valid schedule
+  foreach (Nurse in 1..NumNurses)
+    table_in([Roster[Nurse,Day] : Day in 1..NumDays].to_array(), Valid)
+  end,
+
+  % statistics for each day
+  foreach (Day in 1..NumDays)
+  foreach (Type in 1..3)
+    Stat[Day,Type] #= sum([Roster[Nurse,Day] #= Type : Nurse in 1..NumNurses])
+  end,
+  sum([Stat[Day,Type] : Type in 1..3]) #= NumNurses,
+  % For each day the must be at least 3 nurses with 
+  % day shift, and 2 nurses with night shift
+  Stat[Day,DayShift] #>= ReqDay, 
+  Stat[Day,NightShift] #>= ReqNight
+  end,
+
+  % each nurse gets MinNight shifts
+  foreach (Nurse in 1..NumNurses)
+    sum([Roster[Nurse, Day] #= NightShift : Day in 1..NumDays]) #>= MinNight 
+  end.
+
+
+output(Roster) =>
+  Shifts = new_map(3,[1=d,2=n,3=o]),
+  foreach(Nurse in Roster) 
+    foreach(I in 1..Nurse.length)
+      print(get(Shifts,Nurse[I]))
+    end,
+    print("\n")
+  end.

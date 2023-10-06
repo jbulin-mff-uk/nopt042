@@ -1,22 +1,20 @@
 /***********************************************************
-  Adapted from
-  nurse_rostering.pi
-  from Constraint Solving and Planning with Picat, Springer 
+  Adapted from Constraint Solving and Planning with Picat, Springer 
   by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
 ***********************************************************/
-import sat.
+import cp.
 
 main([Filename]) =>
   cl(Filename), 
-  instance(NumNurses,NumDays,RegDay,ReqNight,MinNight),
-  nurse_rostering(NumNurses,NumDays,RegDay,ReqNight,MinNight,Roster,Stat),
+  instance(NumNurses, NumDays, ReqDay, ReqNight, MinNight),
+  nurse_rostering(NumNurses, NumDays, ReqDay, ReqNight, MinNight, Roster, Stat),
   Vars = Roster.vars() ++ Stat.vars(),
   solve(Vars),
   output(Roster).
 
 
-%todo fix
-nurse_rostering(NumNurses,NumDays, ReqDay,ReqNight,MinNight,Roster,Stat) =>
+nurse_rostering(NumNurses, NumDays, ReqDay, ReqNight, MinNight, Roster, Stat) =>
+  
   % The DFA for the regular constraint. 
   Transition = [ 
   % d n o
@@ -34,25 +32,28 @@ nurse_rostering(NumNurses,NumDays, ReqDay,ReqNight,MinNight,Roster,Stat) =>
   DayShift   = 1,
   NightShift = 2,
   OffShift   = 3,
+
   % decision variables
-  X = new_array(NumNurses,NumDays),
-  X :: DayShift..OffShift,
+  Roster = new_array(NumNurses, NumDays),
+  Roster :: DayShift..OffShift,
+
   % summary of the shifts: [day,night,off]
   Stat = new_array(NumDays,3),
   Stat :: 0..NumNurses,
+
   % constraints
   foreach (I in 1..NumNurses) 
-  regular([X[I,J] : J in 1..NumDays],
-  NStates,
-  InputMax,
-  Transition,
-  InitialState,
-  FinalStates)
+    regular([Roster[I,J] : J in 1..NumDays],
+    NStates,
+    InputMax,
+    Transition,
+    InitialState,
+    FinalStates)
   end,
   % statistics for each day
   foreach (Day in 1..NumDays)
     foreach (Type in 1..3)
-      Stat[Day,Type] #= sum([X[Nurse,Day] #= Type : Nurse in 1..NumNurses])
+      Stat[Day,Type] #= sum([Roster[Nurse,Day] #= Type : Nurse in 1..NumNurses])
     end,
     sum([Stat[Day,Type] : Type in 1..3]) #= NumNurses,
     % For each day the must be at least 3 nurses with 
@@ -62,6 +63,9 @@ nurse_rostering(NumNurses,NumDays, ReqDay,ReqNight,MinNight,Roster,Stat) =>
   end,
 
   % each nurse gets MinNight shifts
+  foreach (Nurse in 1..NumNurses)
+    sum([Roster[Nurse, Day] #= NightShift : Day in 1..NumDays]) #>= MinNight 
+  end.
 
 
 output(Roster) =>

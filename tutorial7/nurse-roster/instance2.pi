@@ -1,6 +1,6 @@
 instance(NumNurses, NumDays, ReqDay, ReqNight, MinNight) =>
-    NumNurses     = 14,
+    NumNurses     = 8,
     NumDays       = 7,
-    ReqDay        = 3, % minimum number in day shift
+    ReqDay        = 2, % minimum number in day shift
     ReqNight      = 2, % minimum number in night shift
-    MinNight      = 2. % minimum night shifts for each nurse
+    MinNight      = 1. % minimum night shifts for each nurse

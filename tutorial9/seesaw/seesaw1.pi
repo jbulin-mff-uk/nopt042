@@ -13,9 +13,6 @@ seesaw(N, L, D, W, Positions) =>
     foreach(I in 1..N, J in I+1..N)
         abs(Positions[I] - Positions[J]) #>= D
     end,
-    scalar_product(Positions, W, 0),
-    
-    % symmetry breaking
-    Positions[1] #<= 0.
+    scalar_product(Positions, W, 0).
 
         

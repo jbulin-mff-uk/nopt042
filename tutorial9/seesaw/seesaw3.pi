@@ -4,7 +4,7 @@ main([Filename]) =>
     cl(Filename),
     instance(N, L, D, W),
     seesaw(N, L, D, W, Positions),
-    solve([ff, updown], Positions), % search strategy: try to sit in the middle
+    solve(Positions),
     println(Positions).
 
 seesaw(N, L, D, W, Positions) =>
@@ -15,6 +15,5 @@ seesaw(N, L, D, W, Positions) =>
     
     % symmetry breaking
     Positions[1] #<= 0.
-    
 
         

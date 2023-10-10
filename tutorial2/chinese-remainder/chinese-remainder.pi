@@ -11,7 +11,7 @@ chinese(X, Parameters) =>
     end,
 
     % variables
-    X :: 1..Max,
+    X :: 0..Max,
 
     % constraints
     foreach(I in 1..Primes.length)        

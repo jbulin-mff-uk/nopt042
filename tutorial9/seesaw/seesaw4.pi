@@ -4,18 +4,17 @@ main([Filename]) =>
     cl(Filename),
     instance(N, L, D, W),
     seesaw(N, L, D, W, Positions),
-    solve(Positions),
+    solve([ff, updown], Positions), % search strategy: try to sit in the middle
     println(Positions).
 
 seesaw(N, L, D, W, Positions) =>
     Positions = new_list(N),
     Positions :: -L div 2..L div 2, % we assume for simplicity that L is even
-    foreach(I in 1..N, J in I+1..N)
-        abs(Positions[I] - Positions[J]) #>= D
-    end,
+    serialized(Positions, [D : I in 1..N]), %global constraint, equivalent to cummulative(_, _, [1,...,1], 1])
     scalar_product(Positions, W, 0),
     
     % symmetry breaking
     Positions[1] #<= 0.
+    
 
         

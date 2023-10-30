@@ -6,6 +6,7 @@ main([N]) =>
     langford_primal(N, Sequence),
     time2(solve(Sequence)).
 
+
 langford_primal(K, Sequence) =>
     K2 = 2*K,
     Sequence = new_array(K2),

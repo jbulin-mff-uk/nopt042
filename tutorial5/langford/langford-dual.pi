@@ -11,6 +11,7 @@ langford_dual(K, Position) =>
     K2 = 2*K,
     Position = new_array(K2),
     Position :: 1..K2,
+    all_different(Position),
     foreach(D in 1..K)
         Position[D+K] #= Position[D] + D + 1
     end.

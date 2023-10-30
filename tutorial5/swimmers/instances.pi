@@ -1,12 +1,14 @@
 main =>
+    println("Sample instance:"),
     cl(sample_instance),
     sample_instance(SwimmerNames, StyleNames, Times),
     println(SwimmerNames),
     println(StyleNames),
     println(Times),
     
+    println("\nRandom instance:"),
     cl(random_instance),
-    random_instance(5, 7, 45, 65, RandomSwimmerNames, RandomStyleNames, RandomTimes),
+    random_instance(8, 8, 45, 65, RandomSwimmerNames, RandomStyleNames, RandomTimes),
     
     println(RandomSwimmerNames),
     println(RandomStyleNames),

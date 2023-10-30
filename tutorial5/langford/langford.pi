@@ -18,4 +18,8 @@ langford(K, Seq) =>
      element(J2,Seq,I),
      J2 #= J1+I+1
   end,
-  time2(solve(Seq)).
+  % time2(solve(Seq)).
+  % % symmetry breaking
+  % Seq[1] #<= Seq[2],
+  % search strategy
+  time2(solve([inout,up],Seq)).

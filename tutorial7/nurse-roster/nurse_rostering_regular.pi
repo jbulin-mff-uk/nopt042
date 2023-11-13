@@ -9,7 +9,7 @@ main([Filename]) =>
   instance(NumNurses, NumDays, ReqDay, ReqNight, MinNight),
   nurse_rostering(NumNurses, NumDays, ReqDay, ReqNight, MinNight, Roster, Stat),
   Vars = Roster.vars() ++ Stat.vars(),
-  solve(Vars),
+  time2(solve(Vars)),
   output(Roster).
 
 

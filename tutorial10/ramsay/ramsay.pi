@@ -1,0 +1,35 @@
+% Ramsay's partition
+import cp.
+
+main([N]) =>
+    go(N.to_int, 3).
+
+main([N, K]) =>
+    go(N.to_int, K.to_int).
+
+go(N, K) =>
+    ramsay_partition(N, K, Partition),       
+    time2(solve([ff, up], Partition)),   
+    output(N, K, Partition).
+
+ramsay_partition(N, K, Partition) =>
+    Partition = new_list(N),
+    Partition :: 1..K,
+    foreach(X in 1..N, Y in 1..N, X < Y, X+Y <= N)
+        Partition[X] #= Partition[Y] #=> Partition[X+Y] #!= Partition[X]
+    end,
+
+    % no part is empty
+    foreach(I in 1..K)
+        at_least(1, Partition, I)
+    end,
+
+    % symmetry breaking
+    foreach(I in 1..K-1)
+        Partition[I] #<= I
+    end.
+
+output(N, K, Partition) =>
+    foreach(I in 1..K)
+        println([X : X in 1..N, Partition[X] = I])
+    end.

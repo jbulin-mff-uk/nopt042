@@ -15,6 +15,10 @@ main([Filename]) =>
 
 table(+,+,-,max)
 
+
+knapsack([], Capacity, ChosenItems, Value) => 
+  ChosenItems = [], Value = 0.
+
 knapsack(_, Capacity, ChosenItems, Value), Capacity =< 0 => 
   ChosenItems = [], Value = 0.
 

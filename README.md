@@ -8,8 +8,8 @@ You can install [Picat](http://picat-lang.org/) like this (check if there's a ne
 
 ```bash
 cd ~
-wget http://picat-lang.org/download/picat328_linux64.tar.gz
-tar -xf picat328_linux64.tar.gz
+wget http://picat-lang.org/download/picat37_linux64.tar.gz
+tar -xf picat37_linux64.tar.gz
 ```
 
 Then add the executable to `$PATH` (assuming we use bash):
@@ -19,7 +19,7 @@ echo 'export PATH="$HOME/Picat:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-Then the command `picat` runs the Picat interpreter.
+Then the command `picat` runs the Picat interpreter. (For Windows, see [Get Started With Picat](http://picat-lang.org/download/get_started.pdf)).
 
 If you want to execute the notebooks, install [Jupyter Notebook](https://jupyter.org/) with [ipicat extension](https://pypi.org/project/picat-kernel/) (if you want to install them locally, add `--user`):
 
@@ -28,14 +28,9 @@ pip install jupyter
 pip install ipicat
 ```
 
-Then run `jupyter notebook`. Once the extension is loaded you can use `%%picat` cell magic or execute picat files: `%picat -e hello-world.pi`.
-<!--
-Sometimes we will also use the [picat kernel](https://pypi.org/project/picat-kernel/) to execute picat code in cells interactively:
+Then run `jupyter notebook`. Load the extension: `%load_ext ipicat`. Once the extension is loaded you can use `%%picat` cell magic or execute picat files: `%picat -e hello-world.pi`.
 
-```bash
-pip install metakernel
-pip install picat-kernel
+To view the slideshow, install the RISE extension: 
 ```
-
-Then a picat kernel should be available (New > picat).
--->
+pip install RISE
+```

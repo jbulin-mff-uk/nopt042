@@ -1,4 +1,4 @@
 #!/bin/bash
-export PATH="$HOME/Picat:$PATH" >> $HOME/.profile
+export PATH="$HOME/.picat:$PATH" >> $HOME/.profile
 source $HOME/.profile
 exec "$@"

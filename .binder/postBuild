@@ -4,4 +4,4 @@ wget http://picat-lang.org/download/picat37_linux64.tar.gz
 tar -xf picat37_linux64.tar.gz
 rm picat37_linux64.tar.gz
 mv Picat .picat
-pip install --user jupyter ipicat RISE
+pip install --user jupyterlab ipicat RISE

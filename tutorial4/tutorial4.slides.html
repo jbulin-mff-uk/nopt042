@@ -7517,9 +7517,9 @@ main {
 Q.......
 ..Q.....
 
-real	0m0.015s
-user	0m0.007s
-sys	0m0.007s
+real	0m0.029s
+user	0m0.012s
+sys	0m0.011s
 </pre>
 </div>
 </div>
@@ -7604,12 +7604,160 @@ output(Q) =&gt;
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>*** error(existence_error(mip_solver),solve)
+<pre>'Done'
+Welcome to the CBC MILP Solver 
+Version: 2.10.7 
+Build Date: Feb 14 2022 
+
+command line - cbc __tmp.lp solve solu __tmp.sol (default strategy 1)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Continuous objective value is 0 - 0.14 seconds
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Cgl0003I 0 fixed, 0 tightened bounds, 2 strengthened rows, 0 substitutions
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Cgl0004I processed model has 379 rows, 4096 columns (4096 integer (4096 of which binary)) and 20478 elements
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Cbc0045I No integer variables out of 4096 objects (4096 integer) have costs
+Cbc0045I branch on satisfied N create fake objective Y random cost Y
+Cbc0038I Initial state - 125 integers unsatisfied sum - 26.3403
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Cbc0038I Pass   1: suminf.   10.43351 (69) obj. 0 iterations 767
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Cbc0038I Pass   2: suminf.    6.76111 (160) obj. 0 iterations 471
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Cbc0038I Pass   3: suminf.    5.28571 (23) obj. 0 iterations 743
+Cbc0038I Pass   4: suminf.    5.24859 (154) obj. 0 iterations 160
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Cbc0038I Pass   5: suminf.    2.00000 (4) obj. 0 iterations 379
+Cbc0038I Pass   6: suminf.    2.00000 (4) obj. 0 iterations 139
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Cbc0038I Pass   7: suminf.    2.00000 (4) obj. 0 iterations 132
+Cbc0038I Pass   8: suminf.    2.00000 (4) obj. 0 iterations 73
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Cbc0038I Pass   9: suminf.   47.29014 (196) obj. 0 iterations 938
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Cbc0038I Pass  10: suminf.   15.00000 (37) obj. 0 iterations 1146
+Cbc0038I Pass  11: suminf.   13.00000 (26) obj. 0 iterations 78
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Cbc0038I Pass  12: suminf.   13.00000 (26) obj. 0 iterations 270
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Cbc0038I Pass  13: suminf.   52.01151 (186) obj. 0 iterations 982
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Cbc0038I Pass  14: suminf.    9.72000 (51) obj. 0 iterations 1494
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Cbc0038I Pass  15: suminf.    0.00000 (0) obj. 0 iterations 1390
+Cbc0038I Solution found of 0
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Cbc0038I Before mini branch and bound, 3418 integers at bound fixed and 0 continuous
+Cbc0038I Mini branch and bound did not improve solution (1.09 seconds)
+Cbc0038I After 1.09 seconds - Feasibility pump exiting with objective of 0 - took 0.82 seconds
+Cbc0012I Integer solution of 0 found by feasibility pump after 0 iterations and 0 nodes (1.09 seconds)
+Cbc0001I Search completed - best objective 0, took 0 iterations and 0 nodes (1.10 seconds)
+Cbc0035I Maximum depth 0, 0 variables fixed on reduced cost
+Cuts at root node changed objective from 0 to 0
+Probing was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
+Gomory was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
+Knapsack was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
+Clique was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
+MixedIntegerRounding2 was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
+FlowCover was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
+TwoMirCuts was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
+ZeroHalf was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
+
+Result - Optimal solution found
+
+Objective value:                0.00000000
+Enumerated nodes:               0
+Total iterations:               0
+Time (CPU seconds):             1.11
+Time (Wallclock seconds):       1.05
+
+Total time (CPU seconds):       1.17   (Wallclock seconds):       1.07
 
 
-real	0m0.125s
-user	0m0.053s
-sys	0m0.011s
+real	0m1.503s
+user	0m1.382s
+sys	0m0.348s
 </pre>
 </div>
 </div>
@@ -7723,9 +7871,9 @@ output(Board) =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-real	0m3.094s
-user	0m3.063s
-sys	0m0.031s
+real	0m3.032s
+user	0m2.926s
+sys	0m0.072s
 </pre>
 </div>
 </div>
@@ -7854,9 +8002,9 @@ output(Q) =&gt;
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="cc50b1f2-3bcd-44ac-bf5c-8da89d340da2" tabindex="0">
+<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="510980fb-4ec3-47b7-b3ce-c4b057378c7a" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('cc50b1f2-3bcd-44ac-bf5c-8da89d340da2');
+var element = document.getElementById('510980fb-4ec3-47b7-b3ce-c4b057378c7a');
 "use strict";
 
 CodeMirror.defineMode("text/picat", function(config) {
@@ -8279,7 +8427,7 @@ main =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 35.066 seconds. Backtracks: 11461548
+CPU time 28.895 seconds. Backtracks: 11461548
 
 
 </pre>
@@ -8352,6 +8500,726 @@ main =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
+CPU time 0.991 seconds. Backtracks: 362537
+
+[64,backward,down,time_out]
+
+CPU time 0.995 seconds. Backtracks: 0
+
+[64,backward,reverse_split,time_out]
+
+CPU time 0.986 seconds. Backtracks: 0
+
+[64,backward,split,time_out]
+
+CPU time 0.985 seconds. Backtracks: 201448
+
+[64,backward,up,time_out]
+
+CPU time 0.99 seconds. Backtracks: 471005
+
+[64,backward,updown,time_out]
+
+CPU time 0.997 seconds. Backtracks: 334006
+
+[64,constr,down,time_out]
+
+CPU time 1.0 seconds. Backtracks: 0
+
+[64,constr,reverse_split,time_out]
+
+CPU time 0.995 seconds. Backtracks: 0
+
+[64,constr,split,time_out]
+
+CPU time 0.996 seconds. Backtracks: 202142
+
+[64,constr,up,time_out]
+
+CPU time 1.001 seconds. Backtracks: 509362
+
+[64,constr,updown,time_out]
+
+CPU time 1.0 seconds. Backtracks: 344472
+
+[64,degree,down,time_out]
+
+CPU time 0.997 seconds. Backtracks: 0
+
+[64,degree,reverse_split,time_out]
+
+CPU time 0.996 seconds. Backtracks: 0
+
+[64,degree,split,time_out]
+
+CPU time 1.0 seconds. Backtracks: 195567
+
+[64,degree,up,time_out]
+
+CPU time 1.001 seconds. Backtracks: 481882
+
+[64,degree,updown,time_out]
+
+CPU time 0.047 seconds. Backtracks: 11120
+
+[64,ff,down,success]
+
+CPU time 0.003 seconds. Backtracks: 0
+
+[64,ff,reverse_split,success]
+
+CPU time 0.003 seconds. Backtracks: 0
+
+[64,ff,split,success]
+
+CPU time 0.003 seconds. Backtracks: 382
+
+[64,ff,up,success]
+
+CPU time 0.001 seconds. Backtracks: 115
+
+[64,ff,updown,success]
+
+CPU time 0.003 seconds. Backtracks: 695
+
+[64,ffc,down,success]
+
+CPU time 0.003 seconds. Backtracks: 0
+
+[64,ffc,reverse_split,success]
+
+CPU time 0.004 seconds. Backtracks: 0
+
+[64,ffc,split,success]
+
+CPU time 0.002 seconds. Backtracks: 382
+
+[64,ffc,up,success]
+
+CPU time 0.001 seconds. Backtracks: 115
+
+[64,ffc,updown,success]
+
+CPU time 0.001 seconds. Backtracks: 136
+
+[64,ffd,down,success]
+
+CPU time 0.001 seconds. Backtracks: 0
+
+[64,ffd,reverse_split,success]
+
+CPU time 0.001 seconds. Backtracks: 0
+
+[64,ffd,split,success]
+
+CPU time 0.002 seconds. Backtracks: 75
+
+[64,ffd,up,success]
+
+CPU time 0.013 seconds. Backtracks: 9120
+
+[64,ffd,updown,success]
+
+CPU time 1.002 seconds. Backtracks: 316901
+
+[64,forward,down,time_out]
+
+CPU time 2.0 seconds. Backtracks: 0
+
+[64,forward,reverse_split,time_out]
+
+CPU time 1.0 seconds. Backtracks: 0
+
+[64,forward,split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 218424
+
+[64,forward,up,time_out]
+
+CPU time 1.0 seconds. Backtracks: 476782
+
+[64,forward,updown,time_out]
+
+CPU time 1.0 seconds. Backtracks: 488228
+
+[64,inout,down,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[64,inout,reverse_split,time_out]
+
+CPU time 1.0 seconds. Backtracks: 0
+
+[64,inout,split,time_out]
+
+CPU time 1.0 seconds. Backtracks: 342102
+
+[64,inout,up,time_out]
+
+CPU time 1.001 seconds. Backtracks: 554384
+
+[64,inout,updown,time_out]
+
+CPU time 1.001 seconds. Backtracks: 344010
+
+[64,leftmost,down,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[64,leftmost,reverse_split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[64,leftmost,split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 205374
+
+[64,leftmost,up,time_out]
+
+CPU time 0.997 seconds. Backtracks: 479205
+
+[64,leftmost,updown,time_out]
+
+CPU time 1.001 seconds. Backtracks: 487501
+
+[64,max,down,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[64,max,reverse_split,time_out]
+
+CPU time 0.997 seconds. Backtracks: 0
+
+[64,max,split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 104138
+
+[64,max,up,time_out]
+
+CPU time 1.001 seconds. Backtracks: 470959
+
+[64,max,updown,time_out]
+
+CPU time 1.001 seconds. Backtracks: 183439
+
+[64,min,down,time_out]
+
+CPU time 0.998 seconds. Backtracks: 0
+
+[64,min,reverse_split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[64,min,split,time_out]
+
+CPU time 1.0 seconds. Backtracks: 335628
+
+[64,min,up,time_out]
+
+CPU time 1.001 seconds. Backtracks: 317297
+
+[64,min,updown,time_out]
+
+CPU time 1.001 seconds. Backtracks: 319901
+
+[64,up,down,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[64,up,reverse_split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[64,up,split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 211801
+
+[64,up,up,time_out]
+
+CPU time 1.0 seconds. Backtracks: 488807
+
+[64,up,updown,time_out]
+
+CPU time 1.001 seconds. Backtracks: 183877
+
+[128,backward,down,time_out]
+
+CPU time 1.002 seconds. Backtracks: 0
+
+[128,backward,reverse_split,time_out]
+
+CPU time 0.998 seconds. Backtracks: 0
+
+[128,backward,split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 106279
+
+[128,backward,up,time_out]
+
+CPU time 1.001 seconds. Backtracks: 230460
+
+[128,backward,updown,time_out]
+
+CPU time 1.001 seconds. Backtracks: 169348
+
+[128,constr,down,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[128,constr,reverse_split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[128,constr,split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 99191
+
+[128,constr,up,time_out]
+
+CPU time 1.002 seconds. Backtracks: 207463
+
+[128,constr,updown,time_out]
+
+CPU time 1.001 seconds. Backtracks: 183887
+
+[128,degree,down,time_out]
+
+CPU time 1.002 seconds. Backtracks: 0
+
+[128,degree,reverse_split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[128,degree,split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 102629
+
+[128,degree,up,time_out]
+
+CPU time 1.001 seconds. Backtracks: 235051
+
+[128,degree,updown,time_out]
+
+CPU time 1.001 seconds. Backtracks: 152387
+
+[128,ff,down,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[128,ff,reverse_split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[128,ff,split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 71360
+
+[128,ff,up,time_out]
+
+CPU time 1.001 seconds. Backtracks: 372760
+
+[128,ff,updown,time_out]
+
+CPU time 1.002 seconds. Backtracks: 137785
+
+[128,ffc,down,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[128,ffc,reverse_split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 0
+
+[128,ffc,split,time_out]
+
+CPU time 0.998 seconds. Backtracks: 68989
+
+[128,ffc,up,time_out]
+
+CPU time 1.002 seconds. Backtracks: 364422
+
+[128,ffc,updown,time_out]
+
+CPU time 0.997 seconds. Backtracks: 119716
+
+[128,ffd,down,time_out]
+
+CPU time 1.002 seconds. Backtracks: 0
+
+[128,ffd,reverse_split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 0
+
+[128,ffd,split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 66825
+
+[128,ffd,up,time_out]
+
+CPU time 0.997 seconds. Backtracks: 363476
+
+[128,ffd,updown,time_out]
+
+CPU time 0.997 seconds. Backtracks: 185698
+
+[128,forward,down,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[128,forward,reverse_split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[128,forward,split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 111002
+
+[128,forward,up,time_out]
+
+CPU time 1.001 seconds. Backtracks: 229514
+
+[128,forward,updown,time_out]
+
+CPU time 1.001 seconds. Backtracks: 467522
+
+[128,inout,down,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[128,inout,reverse_split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[128,inout,split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 346631
+
+[128,inout,up,time_out]
+
+CPU time 1.002 seconds. Backtracks: 262151
+
+[128,inout,updown,time_out]
+
+CPU time 1.001 seconds. Backtracks: 187678
+
+[128,leftmost,down,time_out]
+
+CPU time 0.993 seconds. Backtracks: 0
+
+[128,leftmost,reverse_split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 0
+
+[128,leftmost,split,time_out]
+
+CPU time 2.003 seconds. Backtracks: 197768
+
+[128,leftmost,up,time_out]
+
+CPU time 1.001 seconds. Backtracks: 227559
+
+[128,leftmost,updown,time_out]
+
+CPU time 1.002 seconds. Backtracks: 186564
+
+[128,max,down,time_out]
+
+CPU time 1.003 seconds. Backtracks: 0
+
+[128,max,reverse_split,time_out]
+
+CPU time 1.0 seconds. Backtracks: 0
+
+[128,max,split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 148625
+
+[128,max,up,time_out]
+
+CPU time 1.001 seconds. Backtracks: 230554
+
+[128,max,updown,time_out]
+
+CPU time 1.0 seconds. Backtracks: 233650
+
+[128,min,down,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[128,min,reverse_split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[128,min,split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 130540
+
+[128,min,up,time_out]
+
+CPU time 1.002 seconds. Backtracks: 203853
+
+[128,min,updown,time_out]
+
+CPU time 1.002 seconds. Backtracks: 185158
+
+[128,up,down,time_out]
+
+CPU time 1.002 seconds. Backtracks: 0
+
+[128,up,reverse_split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 0
+
+[128,up,split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 103031
+
+[128,up,up,time_out]
+
+CPU time 1.002 seconds. Backtracks: 223889
+
+[128,up,updown,time_out]
+
+CPU time 1.002 seconds. Backtracks: 83227
+
+[256,backward,down,time_out]
+
+CPU time 1.002 seconds. Backtracks: 0
+
+[256,backward,reverse_split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 0
+
+[256,backward,split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 49007
+
+[256,backward,up,time_out]
+
+CPU time 1.002 seconds. Backtracks: 107589
+
+[256,backward,updown,time_out]
+
+CPU time 1.001 seconds. Backtracks: 78460
+
+[256,constr,down,time_out]
+
+CPU time 0.994 seconds. Backtracks: 0
+
+[256,constr,reverse_split,time_out]
+
+CPU time 0.993 seconds. Backtracks: 0
+
+[256,constr,split,time_out]
+
+CPU time 0.998 seconds. Backtracks: 45262
+
+[256,constr,up,time_out]
+
+CPU time 0.998 seconds. Backtracks: 92334
+
+[256,constr,updown,time_out]
+
+CPU time 0.991 seconds. Backtracks: 75926
+
+[256,degree,down,time_out]
+
+CPU time 0.986 seconds. Backtracks: 0
+
+[256,degree,reverse_split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 0
+
+[256,degree,split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 39708
+
+[256,degree,up,time_out]
+
+CPU time 0.997 seconds. Backtracks: 103303
+
+[256,degree,updown,time_out]
+
+CPU time 0.997 seconds. Backtracks: 76189
+
+[256,ff,down,time_out]
+
+CPU time 1.002 seconds. Backtracks: 0
+
+[256,ff,reverse_split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 0
+
+[256,ff,split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 35738
+
+[256,ff,up,time_out]
+
+CPU time 2.003 seconds. Backtracks: 295659
+
+[256,ff,updown,time_out]
+
+CPU time 1.002 seconds. Backtracks: 72616
+
+[256,ffc,down,time_out]
+
+CPU time 1.002 seconds. Backtracks: 0
+
+[256,ffc,reverse_split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[256,ffc,split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 31443
+
+[256,ffc,up,time_out]
+
+CPU time 1.001 seconds. Backtracks: 151537
+
+[256,ffc,updown,time_out]
+
+CPU time 0.997 seconds. Backtracks: 26690
+
+[256,ffd,down,time_out]
+
+CPU time 1.002 seconds. Backtracks: 0
+
+[256,ffd,reverse_split,time_out]
+
+CPU time 0.999 seconds. Backtracks: 0
+
+[256,ffd,split,time_out]
+
+CPU time 0.999 seconds. Backtracks: 13339
+
+[256,ffd,up,time_out]
+
+CPU time 1.002 seconds. Backtracks: 131219
+
+[256,ffd,updown,time_out]
+
+CPU time 1.002 seconds. Backtracks: 78097
+
+[256,forward,down,time_out]
+
+CPU time 1.0 seconds. Backtracks: 0
+
+[256,forward,reverse_split,time_out]
+
+CPU time 1.003 seconds. Backtracks: 0
+
+[256,forward,split,time_out]
+
+CPU time 1.003 seconds. Backtracks: 46187
+
+[256,forward,up,time_out]
+
+CPU time 1.001 seconds. Backtracks: 99246
+
+[256,forward,updown,time_out]
+
+CPU time 1.0 seconds. Backtracks: 275075
+
+[256,inout,down,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[256,inout,reverse_split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 0
+
+[256,inout,split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 192485
+
+[256,inout,up,time_out]
+
+CPU time 1.002 seconds. Backtracks: 152664
+
+[256,inout,updown,time_out]
+
+CPU time 1.003 seconds. Backtracks: 78454
+
+[256,leftmost,down,time_out]
+
+CPU time 0.997 seconds. Backtracks: 0
+
+[256,leftmost,reverse_split,time_out]
+
+CPU time 1.003 seconds. Backtracks: 0
+
+[256,leftmost,split,time_out]
+
+CPU time 1.001 seconds. Backtracks: 40685
+
+[256,leftmost,up,time_out]
+
+CPU time 0.998 seconds. Backtracks: 91632
+
+[256,leftmost,updown,time_out]
+
+CPU time 1.002 seconds. Backtracks: 74950
+
+[256,max,down,time_out]
+
+CPU time 1.001 seconds. Backtracks: 0
+
+[256,max,reverse_split,time_out]
+
+CPU time 1.003 seconds. Backtracks: 0
+
+[256,max,split,time_out]
+
+CPU time 1.003 seconds. Backtracks: 84398
+
+[256,max,up,time_out]
+
+CPU time 1.002 seconds. Backtracks: 185864
+
+[256,max,updown,time_out]
+
+CPU time 1.002 seconds. Backtracks: 109200
+
+[256,min,down,time_out]
+
+CPU time 0.994 seconds. Backtracks: 0
+
+[256,min,reverse_split,time_out]
+
+CPU time 0.998 seconds. Backtracks: 0
+
+[256,min,split,time_out]
+
+CPU time 0.998 seconds. Backtracks: 45822
+
+[256,min,up,time_out]
+
+CPU time 0.995 seconds. Backtracks: 76334
+
+[256,min,updown,time_out]
+
+CPU time 1.003 seconds. Backtracks: 85467
+
+[256,up,down,time_out]
+
+CPU time 1.003 seconds. Backtracks: 0
+
+[256,up,reverse_split,time_out]
+
+CPU time 1.003 seconds. Backtracks: 0
+
+[256,up,split,time_out]
+
+CPU time 1.002 seconds. Backtracks: 50759
+
+[256,up,up,time_out]
+
+CPU time 1.003 seconds. Backtracks: 109471
+
+[256,up,updown,time_out]
+
 </pre>
 </div>
 </div>

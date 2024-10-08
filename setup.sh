@@ -11,4 +11,4 @@ source ~/.bashrc
 conda install -c conda-forge jupyterlab
 pip install ipicat RISE jupyterlab_rise
 jupyter labextension install jupyterlab-rise jupyterlab-rise-metadata-form
-conda update --all
+

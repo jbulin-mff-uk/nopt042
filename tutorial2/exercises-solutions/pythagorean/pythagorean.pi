@@ -1,0 +1,22 @@
+import cp.
+
+pythagorean(Triple, Max) =>
+    Triple = [A, B, C],
+    Triple :: 1..Max,
+    A*A + B*B #= C*C,
+    A #<= B.
+
+main([MaxStr]) =>
+    Max = to_int(MaxStr),
+    pythagorean(Triple, Max),
+    AllTriples = solve_all(Triple),
+    foreach(ATriple in AllTriples)
+        println(ATriple)
+    end.
+
+main(["-c", MaxStr]) =>
+    Max = to_int(MaxStr),
+    pythagorean(Triple, Max),
+    AllTriples = solve_all(Triple),
+    Count = length(AllTriples),
+    println(Count).

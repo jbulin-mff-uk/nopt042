@@ -1,0 +1,27 @@
+% SEND + MORE = MONEY with carry bits
+import cp.
+
+send_more_bits(Digits, Bits) =>    
+    Digits = [S,E,N,D,M,O,R,Y],
+    Digits :: 0..9,
+    S #!= 0,
+    M #!= 0,
+    all_different(Digits),
+
+    Bits = [C1,C2,C3,C4],
+    Bits :: 0..1,
+
+    % arithmetic constraints
+    D + E #= 10 * C1 + Y,
+    N + R + C1 #= 10 * C2 + E,
+    E + 0 + C2 #= 10 * C3 + N,
+    S + M + C3 #= 10 * M + O,
+    C4 #= M.
+
+main =>
+    send_more_bits(Digits, Bits),
+    Variables = Digits ++ Bits,
+    solve(Variables),
+
+    println(Digits),
+    println("Carry bits: " ++ to_string(Bits)).

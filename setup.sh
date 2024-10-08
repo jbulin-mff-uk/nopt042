@@ -8,6 +8,7 @@ mv Picat .picat
 echo 'export PATH="$HOME/.picat:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 
-pip install --user jupyterlab ipicat rise
-conda install nodejs
+conda install -c conda-forge jupyterlab
+pip install ipicat RISE jupyterlab_rise
 jupyter labextension install jupyterlab-rise jupyterlab-rise-metadata-form
+conda update --all

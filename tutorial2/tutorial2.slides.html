@@ -7445,6 +7445,25 @@ main {
 </div>
 </div>
 </div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=56d88636-354b-4585-a179-52313f02b52c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="What-was-in-Lecture-2?">What was in Lecture 2?<a class="anchor-link" href="#What-was-in-Lecture-2?">¶</a></h2><p>Local search algorithms</p>
+<ul>
+<li>generate and test</li>
+<li>hill climbing, min-conflicts + random walk, tabu search</li>
+<li>GSAT (local search for SAT), heuristics</li>
+<li>connectionist approach (GENET)</li>
+<li>simulated annealing</li>
+<li>intensification vs. diversification (exploit vs. explore)</li>
+</ul>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=689af1a0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7541,14 +7560,14 @@ Independently:</li>
 </div>
 </div>
 </div>
-</div></section><section>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d5959959">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Recall-the-basics-of-constraint-programming:">Recall the basics of constraint programming:<a class="anchor-link" href="#Recall-the-basics-of-constraint-programming:">¶</a></h3><ul>
+<h2 id="Recall-the-basics-of-constraint-programming:">Recall the basics of constraint programming:<a class="anchor-link" href="#Recall-the-basics-of-constraint-programming:">¶</a></h2><ul>
 <li><strong>decision variables</strong> vs. <strong>parameters</strong></li>
 <li><strong>domains</strong></li>
 <li><strong>constraints</strong></li>
@@ -7653,7 +7672,7 @@ remained. Finally, rows of 13; 1 remained.</p>
 </div>
 </div>
 </div>
-</div></div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=16ad0d6d">
+</div></div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=16ad0d6d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7673,9 +7692,9 @@ remained. Finally, rows of 13; 1 remained.</p>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="61a6a350-8499-41de-a99e-2e73b916de60" tabindex="0">
+<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="5311d2ec-5d0a-43d1-8027-e8ce6280b030" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('61a6a350-8499-41de-a99e-2e73b916de60');
+var element = document.getElementById('5311d2ec-5d0a-43d1-8027-e8ce6280b030');
 "use strict";
 
 CodeMirror.defineMode("text/picat", function(config) {
@@ -8039,7 +8058,7 @@ Jupyter.notebook.get_cells().map(function(cell){
 </div>
 </div>
 </div>
-</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=32627a8a">
+</div></div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=32627a8a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8068,7 +8087,7 @@ chinese(X) =&gt;
 </div>
 </div>
 </div>
-</div></div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=95a70650">
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=95a70650">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8079,11 +8098,7 @@ chinese(X) =&gt;
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">picat</span>
 main =&gt;   
     chinese(X),
-    
-    % solve
     solve(X),
-    
-    % output
     println(X).
 </pre></div>
 </div>

@@ -1,4 +1,3 @@
-% TPK Algorithm in Picat
 % from https://www.linuxjournal.com/content/introduction-tabled-logic-programming-picat
 
 f(T) = sqrt(abs(T)) + 5 * T**3.

@@ -7444,7 +7444,38 @@ main {
 </div>
 </div>
 </div>
-</div></section><section>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=05b40cf1-03a0-4776-9050-8ee43ddbf2e3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="What-was-in-Lecture-3">What was in Lecture 3<a class="anchor-link" href="#What-was-in-Lecture-3">¶</a></h3><p>Look-back search algorithms (tree search)</p>
+<ul>
+<li>backtracking (what order of variables and values?)</li>
+<li>backjumping (to the source of conflict)</li>
+<li>graph-directed backjumping (driven by constraint network, several jumps in sequence)</li>
+<li>Gaschnig backjumping (considers violated constraints, only one jump, to highest-level)</li>
+<li>conflict-driven: combines both, carry the source of conflict through backjumps</li>
+<li>dynamic backtracking: change order of variables (don't rework easy parts outside of conflict)</li>
+<li>backmarking (avoid repeated constraint checks: remember results of tests)</li>
+</ul>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f8cf71ca-f311-41fd-a90c-2273e0887dc4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Tips-&amp;-Tricks">Tips &amp; Tricks<a class="anchor-link" href="#Tips-&amp;-Tricks">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="fragment">
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c5801990">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7460,7 +7491,7 @@ main {
 </div>
 </div>
 </div>
-</div></section><section>
+</div></div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=49a539d1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7477,14 +7508,14 @@ main {
 </div>
 </div>
 </div>
-</div></section><section>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=afa1ffe2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Improving-the-model">Improving the model<a class="anchor-link" href="#Improving-the-model">¶</a></h3><p>It is a good practice to first create a baseline model, and then try to improve. Ways to create more efficient model include:</p>
+<h2 id="Improving-the-model">Improving the model<a class="anchor-link" href="#Improving-the-model">¶</a></h2><p>It is a good practice to first create a baseline model, and then try to improve. Ways to create more efficient model include:</p>
 <ul>
 <li><strong>global constraints</strong>: e.g. <code>all_different</code></li>
 <li><strong>symmetry breaking</strong>: if there is a symmetry in the search space, e.g. in variables or in values, we can fix one element of the orbit and thus limit the part of the space that needs to be explored</li>
@@ -7541,7 +7572,7 @@ main {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>map-coloring/map-coloring-baseline.pi
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>map-coloring/map-coloring-baseline
 </pre></div>
 </div>
 </div>
@@ -7609,6 +7640,20 @@ main =&gt;
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=5fe3f856-8da1-46bb-8d2c-ca5cc23a0eb1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=936a9f26">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -7620,7 +7665,7 @@ main =&gt;
 </div>
 </div>
 </div>
-</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8194d685">
+</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8194d685">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7628,7 +7673,7 @@ main =&gt;
 <div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>map-coloring/map-coloring-improved.pi
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>map-coloring/map-coloring-improved
 </pre></div>
 </div>
 </div>
@@ -7653,7 +7698,7 @@ Tasmania is red.
 </div>
 </div>
 </div>
-</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=18677cda">
+</div></div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=18677cda">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7806,7 +7851,7 @@ export PATH=$PATH:~/coinbrew/dist/bin
 </div>
 </div>
 </div>
-</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a461b667">
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a461b667">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7814,7 +7859,7 @@ export PATH=$PATH:~/coinbrew/dist/bin
 <div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> <span class="o">!</span>picat<span class="w"> </span>balanced-diet/balanced-diet.pi
+<div class="highlight hl-ipython3"><pre><span></span> <span class="o">!</span>picat<span class="w"> </span>balanced-diet/balanced-diet
 </pre></div>
 </div>
 </div>
@@ -7828,18 +7873,18 @@ export PATH=$PATH:~/coinbrew/dist/bin
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>'Done'
-Welcome to the CBC MILP Solver 
-Version: 2.10.7 
-Build Date: Feb 14 2022 
-
-command line - cbc __tmp.lp solve solu __tmp.sol (default strategy 1)
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Continuous objective value is 90 - 0.01 seconds
+<pre>Welcome to the CBC MILP Solver 
+Version: 2.10.7 
+Build Date: Feb 14 2022 
+
+command line - cbc __tmp.lp solve solu __tmp.sol (default strategy 1)
+Continuous objective value is 90 - 0.00 seconds
 Cgl0004I processed model has 4 rows, 4 columns (4 integer (0 of which binary)) and 14 elements
 Cutoff increment increased from 1e-05 to 9.9999
 Cbc0012I Integer solution of 90 found by DiveCoefficient after 0 iterations and 0 nodes (0.01 seconds)
@@ -7861,9 +7906,9 @@ Objective value:                90.00000000
 Enumerated nodes:               0
 Total iterations:               0
 Time (CPU seconds):             0.01
-Time (Wallclock seconds):       0.01
+Time (Wallclock seconds):       0.00
 
-Total time (CPU seconds):       0.02   (Wallclock seconds):       0.01
+Total time (CPU seconds):       0.01   (Wallclock seconds):       0.01
 
 {0,3,1,0}
 </pre>
@@ -7871,7 +7916,7 @@ Total time (CPU seconds):       0.02   (Wallclock seconds):       0.01
 </div>
 </div>
 </div>
-</div></div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3c33a62e">
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3c33a62e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7892,10 +7937,9 @@ Total time (CPU seconds):       0.02   (Wallclock seconds):       0.01
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/***********************************************************
-  from Constraint Solving and Planning with Picat, Springer 
-  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
-***********************************************************/
+<pre>% adapted from Constraint Solving and Planning with Picat, Springer 
+% by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
+
 import mip.
 
 main =&gt;
@@ -7935,6 +7979,115 @@ data(Prices,Limits,Nutrition) =&gt;
 </div>
 </div>
 </div>
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5df5bde8-a4c6-4e3c-a64c-b2744cd6a785">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>__tmp.lp
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Minimize
+ obj: X0
+Subject To
+ -X0 &gt;= -1800
+ X0 &gt;= 0
+ -X1 &gt;= -10
+ X1 &gt;= 0
+ -2 X1 - 2 X2 - 4 X3 - 4 X4 + X6 = 0
+ -X2 &gt;= -10
+ X2 &gt;= 0
+ -2 X2 - 3 X1 + X7 = 0
+ -20 X2 - 30 X3 - 50 X1 - 80 X4 + X0 = 0
+ -X3 &gt;= -10
+ X3 &gt;= 0
+ -150 X3 - 200 X2 - 400 X1 - 500 X4 + X8 = 0
+ -X3 - 2 X1 - 4 X2 - 5 X4 + X5 = 0
+ -X4 &gt;= -10
+ X4 &gt;= 0
+ -X5 &gt;= -120
+ X5 &gt;= 8
+ -X6 &gt;= -120
+ X6 &gt;= 10
+ -X7 &gt;= -50
+ X7 &gt;= 6
+ -X8 &gt;= -12500
+ X8 &gt;= 500
+Bounds
+ 0 &lt;= X0 &lt;= 1800
+ 0 &lt;= X1 &lt;= 10
+ 0 &lt;= X2 &lt;= 10
+ 0 &lt;= X3 &lt;= 10
+ 0 &lt;= X4 &lt;= 10
+ 8 &lt;= X5 &lt;= 120
+ 10 &lt;= X6 &lt;= 120
+ 6 &lt;= X7 &lt;= 50
+ 500 &lt;= X8 &lt;= 12500
+Integers
+ X0
+ X1
+ X2
+ X3
+ X4
+ X5
+ X6
+ X7
+ X8
+End
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9b4821f1-ac85-4726-90d0-a92418c1e43a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>__tmp.sol
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Optimal - objective value 90.00000000
+      0 X0                    90                       1
+      1 X1                     0                       0
+      2 X2                     3                       0
+      3 X3                     1                       0
+      4 X4                     0                       0
+      5 X6                    10                       0
+      6 X7                     6                       0
+      7 X8                   750                       0
+      8 X5                    13                       0
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1b0efef2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -7965,44 +8118,13 @@ data(Prices,Limits,Nutrition) =&gt;
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="Exercise:-Sudoku">Exercise: Sudoku<a class="anchor-link" href="#Exercise:-Sudoku">¶</a></h3><p>A traditional constraint satisfaction example: solve an $n\times n$ sudoku puzzle. Try the following simple instance (from <a href="http://picat-lang.org/picatbook2015/constraint_solving_and_planning_with_picat.pdf">the book</a>):</p>
-<pre><code>Instance = {
+<pre><code>Board = {
     {4, _,  _, _},
     {_, 1,  _, _},
     {_, _,  _, 1},
     {_, _,  _, 2}
 }.
 </code></pre>
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2f579df0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exercise:-Minesweeper">Exercise: Minesweeper<a class="anchor-link" href="#Exercise:-Minesweeper">¶</a></h3><p>Identify the positions of all mines in a given board. Try the following instance (from <a href="http://picat-lang.org/picatbook2015/constraint_solving_and_planning_with_picat.pdf">the book</a>:</p>
-<pre><code>Instance = {
-    {_,_,2,_,3,_},
-    {2,_,_,_,_,_},
-    {_,_,2,4,_,3},
-    {1,_,3,4,_,_},
-    {_,_,_,_,_,3},
-    {_,3,_,3,_,_}
-}.
-</code></pre>
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=da4e33df">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exercise:-Magic-square">Exercise: Magic square<a class="anchor-link" href="#Exercise:-Magic-square">¶</a></h3><p>Arrange numbers $1,2,\dots,n^2$ in a square such that every row, every column, and the two main diagonals all sum to the same quantity. How many magic squares are there for a given $n$? Allow also for a partially filled instance.</p>
 </div>
 </div>
 </div>
@@ -8020,10 +8142,10 @@ data(Prices,Limits,Nutrition) =&gt;
 <li>Add the flag <code>-n</code> to output the minimum number of colors (the chromatic number) of a given graph.
 For example:</li>
 </ol>
-<pre><code>picat graph-coloring.pi "[{1,2},{2,3},{3,4},{4,1}]"
-picat graph-coloring.pi "[{1,2},{2,3},{3,1}]" 4
-picat graph-coloring.pi "{{0,1,1},{1,0,1},{1,1,0}}" 4
-picat graph-coloring.pi -n "[{1,2},{2,3},{3,4},{4,1}]"
+<pre><code>picat graph-coloring "[{1,2},{2,3},{3,4},{4,1}]"
+picat graph-coloring "[{1,2},{2,3},{3,1}]" 4
+picat graph-coloring "{{0,1,1},{1,0,1},{1,1,0}}" 4
+picat graph-coloring -n "[{1,2},{2,3},{3,4},{4,1}]"
 </code></pre>
 </div>
 </div>

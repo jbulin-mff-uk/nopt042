@@ -1,45 +1,52 @@
-% n-queens, primal model
-import sat.
-
-main([N]) =>
-    N := to_int(N),
-    queens(N, Q, Board),
-    solve(Q ++ Board),
-    if N <= 32 then   
-        output(Q)
-    end.
-
+% n-queens, primal and dual models with channeling
+import cp.
 
 queens(N, Q, Board) =>    
     % primal
-    Q = new_array(N),
-    Q :: 1..N,
-    all_different(Q),
-    all_different([$Q[I] - I : I in 1..N]),
-    all_different([$Q[I] + I : I in 1..N]),
-
-    % dual
-    Board = new_array(N, N),
-    Board :: 0..1,    
-    sum([Board[I, J] : I in 1..N, J in 1..N]) #= N,
-    foreach(I in 1..N)
-        sum([Board[I, J] : J in 1..N]) #<= 1
-    end,
-    foreach(J in 1..N)
-        sum([Board[I, J] : I in 1..N]) #<= 1
-    end,
-    foreach(K in 1-N..N-1)
-        sum([Board[I, J] : I in 1..N, J in 1..N, I - J = K ]) #<= 1
-    end,
-    foreach(K in 2..2*N)
-        sum([Board[I, J] : I in 1..N, J in 1..N, I + J = K ]) #<= 1
-    end,
+    queens_primal(N, Q),
+    queens_dual(N, Board),
     
     % channeling
     foreach(I in 1..N, J in 1..N)
         (Board[I,J] #= 1) #<=> (Q[I] #= J)
     end.
 
+main([N]) =>
+    N := to_int(N),
+    queens(N, Q, Board),
+    time2(solve(Q ++ Board)),
+    if N <= 32 then   
+        output(Q)
+    end.
+
+queens_primal(N, Q) =>
+    Q = new_array(N),
+    Q :: 1..N,
+    all_different(Q),
+    all_different([$Q[I] - I : I in 1..N]),
+    all_different([$Q[I] + I : I in 1..N]).
+
+queens_dual(N, Board) =>
+    Board = new_array(N, N),
+    Board :: 0..1,
+
+    sum([Board[I, J] : I in 1..N, J in 1..N]) #= N,
+        
+    % rows
+    foreach(I in 1..N)
+        sum([Board[I, J] : J in 1..N]) #<= 1
+    end,
+    % cols
+    foreach(J in 1..N)
+        sum([Board[I, J] : I in 1..N]) #<= 1
+    end,
+    % diags
+    foreach(K in 1-N..N-1)
+        sum([Board[I,J] : I in 1..N, J in 1..N, I-J = K ]) #<= 1
+    end,
+    foreach(K in 2..2*N)
+        sum([Board[I,J] : I in 1..N, J in 1..N, I+J = K ]) #<= 1
+    end.
 
 output(Q) =>
     N = Q.length,

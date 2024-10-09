@@ -1,31 +1,20 @@
 % n-queens, dual model
-import mip.
+import cp.
 
-main([N]) =>
-    N := to_int(N),
-    queens(N, Board),
-    solve(Board),
-    if N <= 32 then
-        output(Q)
-    end.
-
-
-queens(N, Board) =>
+queens_dual(N, Board) =>
     Board = new_array(N, N),
     Board :: 0..1,
-    
+
     sum([Board[I, J] : I in 1..N, J in 1..N]) #= N,
-    
+
     % rows
     foreach(I in 1..N)
         sum([Board[I, J] : J in 1..N]) #<= 1
     end,
-    
     % cols
     foreach(J in 1..N)
         sum([Board[I, J] : I in 1..N]) #<= 1
     end,
-
     % diags
     foreach(K in 1-N..N-1)
         sum([Board[I,J] : I in 1..N, J in 1..N, I-J = K ]) #<= 1
@@ -33,7 +22,14 @@ queens(N, Board) =>
     foreach(K in 2..2*N)
         sum([Board[I,J] : I in 1..N, J in 1..N, I+J = K ]) #<= 1
     end.
-    
+
+main([N]) =>
+    N := to_int(N),
+    queens_dual(N, Board),
+    time2(solve(Board)),
+    if N <= 32 then
+        output(Board)
+    end.
 
 output(Board) =>
     N = Board.length,

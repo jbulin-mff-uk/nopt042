@@ -1,22 +1,20 @@
 % n-queens, primal model
-import sat.
+import cp.
 
-main([N]) =>
-    N := to_int(N),
-    queens(N, Q),
-    solve(Q),
-    if N <= 32 then
-        output(Q)
-    end.
-
-
-queens(N, Q) =>
+queens_primal(N, Q) =>
     Q = new_array(N),
     Q :: 1..N,
     all_different(Q),
     all_different([$Q[I] - I : I in 1..N]),
     all_different([$Q[I] + I : I in 1..N]).
 
+main([N]) =>
+    N := to_int(N),
+    queens_primal(N, Q),
+    time2(solve(Q)),
+    if N <= 32 then
+        output(Q)
+    end.
 
 output(Q) =>
     N = Q.length,

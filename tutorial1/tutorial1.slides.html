@@ -7497,7 +7497,7 @@ main {
 </div>
 </div>
 </div>
-</div></div></section><section>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2a5c2a80-0d18-4051-bbfc-1f7a0c68b39b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7517,7 +7517,7 @@ main {
 </div>
 </div>
 </div>
-</div></section></section><section><section>
+</div></div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c00820ef-0550-44c4-8240-704fac33e19d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7651,9 +7651,9 @@ pip<span class="w"> </span>install<span class="w"> </span>ipicat
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="ce6e76fe-298d-4337-a5a4-af642862b095" tabindex="0">
+<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="f3abb71c-745b-4b9b-8fb9-0767f6d984a4" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('ce6e76fe-298d-4337-a5a4-af642862b095');
+var element = document.getElementById('f3abb71c-745b-4b9b-8fb9-0767f6d984a4');
 "use strict";
 
 CodeMirror.defineMode("text/picat", function(config) {
@@ -8146,6 +8146,17 @@ main =&gt;
 </div>
 </div>
 </div>
+</div></div><div class="fragment">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b9bc0cf6-f6a1-46a2-82a0-a9d5694230f1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Note: we can omit the extension <code>.pi</code> when calling the picat interpreter.</p>
+</div>
+</div>
+</div>
 </div></div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9f7acf4a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -8167,8 +8178,8 @@ main =&gt;
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># This doesn't work at the moment</span>
 <span class="c1"># %picat -e hello-world.pi Alice</span>
-<span class="o">!</span>picat<span class="w"> </span>hello-world.pi<span class="w"> </span>Alice
-<span class="o">!</span>picat<span class="w"> </span>hello-world.pi<span class="w"> </span>Alice<span class="w"> </span>Bob<span class="w"> </span>Carol<span class="w"> </span>Dave
+<span class="o">!</span>picat<span class="w"> </span>hello-world<span class="w"> </span>Alice
+<span class="o">!</span>picat<span class="w"> </span>hello-world<span class="w"> </span>Alice<span class="w"> </span>Bob<span class="w"> </span>Carol<span class="w"> </span>Dave
 </pre></div>
 </div>
 </div>
@@ -8371,7 +8382,7 @@ main =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 32.122 seconds.
+CPU time 31.465 seconds.
 
 267914296
 
@@ -8512,7 +8523,7 @@ main =&gt; L = qsort([5, 2, 6, 4, 1, 3]), println(L).
 <div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>qsort/qsort.pi
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>qsort/qsort
 </pre></div>
 </div>
 </div>
@@ -8550,7 +8561,7 @@ main =&gt; L = qsort([5, 2, 6, 4, 1, 3]), println(L).
 <div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>qsort/qsort.pi<span class="w"> </span><span class="o">[</span><span class="m">5</span>,2,6,4,1,3<span class="o">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>qsort/qsort<span class="w"> </span><span class="o">[</span><span class="m">5</span>,2,6,4,1,3<span class="o">]</span>
 </pre></div>
 </div>
 </div>
@@ -8616,7 +8627,7 @@ main =&gt; L = qsort([5, 2, 6, 4, 1, 3]), println(L).
 <div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>qsort/qsort.pi<span class="w"> </span>qsort/assorted.lists<span class="w"> </span>qsort/sorted.lists
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>qsort/qsort<span class="w"> </span>qsort/assorted.lists<span class="w"> </span>qsort/sorted.lists
 <span class="o">!</span>cat<span class="w"> </span>qsort/sorted.lists
 </pre></div>
 </div>
@@ -8746,8 +8757,7 @@ for each item in sequence S
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>% TPK Algorithm in Picat
-% from https://www.linuxjournal.com/content/introduction-tabled-logic-programming-picat
+<pre>% from https://www.linuxjournal.com/content/introduction-tabled-logic-programming-picat
 
 f(T) = sqrt(abs(T)) + 5 * T**3.
 
@@ -8777,7 +8787,7 @@ main =&gt;
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>tpk/some_reals.txt
 <span class="o">!</span><span class="nb">printf</span><span class="w"> </span><span class="s2">"\n"</span>
-<span class="o">!</span>picat<span class="w"> </span>tpk/tpk.pi<span class="w"> </span>&lt;<span class="w"> </span>tpk/some_reals.txt
+<span class="o">!</span>picat<span class="w"> </span>tpk/tpk<span class="w"> </span>&lt;<span class="w"> </span>tpk/some_reals.txt
 </pre></div>
 </div>
 </div>
@@ -8992,7 +9002,7 @@ end
 <div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>queens/queens.pi<span class="w"> </span><span class="m">4</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>queens/queens<span class="w"> </span><span class="m">4</span>
 </pre></div>
 </div>
 </div>
@@ -9087,7 +9097,7 @@ picat count-occurences.pi [1,2,2,1] 3
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="Exercise:-transpose">Exercise: transpose<a class="anchor-link" href="#Exercise:-transpose">¶</a></h3><p>Write a program that transposes a given matrix (a 2D array), e.g.:</p>
-<pre><code>picat transpose.pi "{{1,2,3},{4,5,6}}"
+<pre><code>picat transpose "{{1,2,3},{4,5,6}}"
 </code></pre>
 <p>outputs <code>{{1,4},{2,5},{3,6}}</code>. (Note that we need to put the input in quotation marks.) Inside your code define a function <code>transpose(Matrix) = Transposed_Matrix</code>.</p>
 </div>
@@ -9100,10 +9110,10 @@ picat count-occurences.pi [1,2,2,1] 3
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exercise:-binary-trees">Exercise: binary trees<a class="anchor-link" href="#Exercise:-binary-trees">¶</a></h3><p>Write a function that receives a binary tree encoded using the structure <code>$node(Value,LeftChild,RightChild)</code> and outputs the depth of the tree. For example:</p>
-<pre><code>picat depth.pi "node(42,nil,nil)"
-picat depth.pi "node(1,node(2,nil,nil),node(3,nil,nil))"
-picat depth.pi "node(1,node(2,node(3,node(4,nil,nil),node(5,nil,nil)),nil),node(6,node(7,nil,nil),node(8,nil,nil)))"
+<h3 id="Exercise:-depth-of-binary-trees">Exercise: depth of binary trees<a class="anchor-link" href="#Exercise:-depth-of-binary-trees">¶</a></h3><p>Write a function that receives a binary tree encoded using the structure <code>$node(Value,LeftChild,RightChild)</code> and outputs the depth of the tree. For example:</p>
+<pre><code>picat depth "node(42,nil,nil)"
+picat depth "node(1,node(2,nil,nil),node(3,nil,nil))"
+picat depth "node(1,node(2,node(3,node(4,nil,nil),node(5,nil,nil)),nil),node(6,node(7,nil,nil),node(8,nil,nil)))"
 </code></pre>
 <p>should output:</p>
 <pre><code>0

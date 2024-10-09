@@ -1,0 +1,38 @@
+import cp.
+
+channeling(N, Sequence, Position) =>
+    foreach(D in 1..N)
+        element(Position[D], Sequence, D),
+        element(Position[D + N], Sequence, D)
+    end.
+
+main([N]) =>
+    N := N.to_int, 
+    langford_primal(N, Sequence),
+    langford_dual(N, Position),
+    channeling(N, Sequence, Position),
+        
+    time2(solve(Sequence ++ Position)),
+    println(Sequence),
+    print("Positions: "), println(Position).
+
+langford_primal(N, Sequence) =>
+    Sequence = new_array(2*N),
+    Sequence :: 1..N,
+    foreach(D in 1..N)
+        element(I1, Sequence, D),
+        element(I2, Sequence, D),
+        I2 #= I1 + D + 1
+    end.
+
+langford_dual(N, Position) =>    
+    Position = new_array(2*N),
+    Position :: 1..2*N,
+    all_different(Position),
+    foreach(D in 1..N)
+        Position[D+N] #= Position[D] + D + 1
+    end.
+
+
+
+

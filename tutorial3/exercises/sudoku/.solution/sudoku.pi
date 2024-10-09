@@ -1,0 +1,33 @@
+% adapted from Constraint Solving and Planning with Picat, Springer 
+% by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
+
+import cp.
+
+main([InstancePath]) =>  
+  cl(InstancePath),
+  instance(Board),
+  sudoku(Board),
+  solve(Board),
+  println(Board).
+
+sudoku(Board) =>
+  N = Board.length,      % dimension of Board
+  N1 = ceiling(sqrt(N)), % block size
+  Board :: 1..N,
+
+  % row constraints
+  foreach (I in 1..N) 
+    all_different([Board[I,J] : J in 1..N])
+  end,
+
+  % column constraints
+  foreach (J in 1..N) 
+    all_different([Board[I,J] : I in 1..N])
+  end,
+
+  % block constraints
+  foreach (I in 1..N1..N, J in 1..N1..N)
+    all_different([Board[I+K,J+L] : 
+                   K in 0..N1-1, L in 0..N1-1])
+  end.
+

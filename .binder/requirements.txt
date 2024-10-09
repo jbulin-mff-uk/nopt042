@@ -1,3 +1,0 @@
-ipicat
-jupyterlab_rise
-rise

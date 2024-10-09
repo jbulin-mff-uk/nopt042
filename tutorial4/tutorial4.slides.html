@@ -7445,6 +7445,17 @@ main {
 </div>
 </div>
 </div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=52af0aef-a82d-4bd0-ad52-8bfd7deacac0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="What-was-in-the-lecture?-Nothing,-the-lecture-was-canceled.">What was in the lecture? Nothing, the lecture was canceled.<a class="anchor-link" href="#What-was-in-the-lecture?-Nothing,-the-lecture-was-canceled.">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="fragment">
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4e38da66">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7460,7 +7471,35 @@ main {
 </div>
 </div>
 </div>
-</div></section></section><section><section>
+</div></div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=41a63fb4-43a1-48cc-995d-dc6d56dc1e7d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Today:-search-strategies">Today: search strategies<a class="anchor-link" href="#Today:-search-strategies">¶</a></h3><p>Recall backtracking and friends from the lecture.</p>
+<ul>
+<li>How to explore the search tree?</li>
+<li>E.g., how to select the variable for the next level,</li>
+<li>and the order of values (children nodes)?</li>
+</ul>
+<p>The <em>First Fail</em> principle: try to prove failure of the subtree as fast as possible, focus on hard variables first.</p>
+</div>
+</div>
+</div>
+</div><div class="fragment">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a835e315-9c79-4272-8e50-6707d7decbe4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The predicate <code>time2</code> also outputs the number of backtracks during the search - a good measure of complexity.</p>
+</div>
+</div>
+</div>
+</div></div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0a4c6a3d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7495,7 +7534,7 @@ main {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>queens/queens-primal.pi<span class="w"> </span><span class="m">8</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>queens/queens-primal<span class="w"> </span><span class="m">8</span>
 </pre></div>
 </div>
 </div>
@@ -7508,18 +7547,17 @@ main {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>.....Q..
-...Q....
-.Q......
-.......Q
-....Q...
-......Q.
-Q.......
-..Q.....
+<pre>
+CPU time 0.0 seconds. Backtracks: 24
 
-real	0m0.029s
-user	0m0.012s
-sys	0m0.011s
+Q.......
+....Q...
+.......Q
+.....Q..
+..Q.....
+......Q.
+.Q......
+...Q....
 </pre>
 </div>
 </div>
@@ -7547,24 +7585,22 @@ sys	0m0.011s
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>% n-queens, primal model
-import sat.
+import cp.
 
-main([N]) =&gt;
-    N := to_int(N),
-    queens(N, Q),
-    solve(Q),
-    if N &lt;= 32 then
-        output(Q)
-    end.
-
-
-queens(N, Q) =&gt;
+queens_primal(N, Q) =&gt;
     Q = new_array(N),
     Q :: 1..N,
     all_different(Q),
     all_different([$Q[I] - I : I in 1..N]),
     all_different([$Q[I] + I : I in 1..N]).
 
+main([N]) =&gt;
+    N := to_int(N),
+    queens_primal(N, Q),
+    time2(solve(Q)),
+    if N &lt;= 32 then
+        output(Q)
+    end.
 
 output(Q) =&gt;
     N = Q.length,
@@ -7591,7 +7627,7 @@ output(Q) =&gt;
 <div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>queens/queens-dual.pi<span class="w"> </span><span class="m">64</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>queens/queens-dual<span class="w"> </span><span class="m">8</span>
 </pre></div>
 </div>
 </div>
@@ -7604,160 +7640,17 @@ output(Q) =&gt;
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>'Done'
-Welcome to the CBC MILP Solver 
-Version: 2.10.7 
-Build Date: Feb 14 2022 
+<pre>
+CPU time 0.036 seconds. Backtracks: 8540
 
-command line - cbc __tmp.lp solve solu __tmp.sol (default strategy 1)
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Continuous objective value is 0 - 0.14 seconds
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Cgl0003I 0 fixed, 0 tightened bounds, 2 strengthened rows, 0 substitutions
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Cgl0004I processed model has 379 rows, 4096 columns (4096 integer (4096 of which binary)) and 20478 elements
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Cbc0045I No integer variables out of 4096 objects (4096 integer) have costs
-Cbc0045I branch on satisfied N create fake objective Y random cost Y
-Cbc0038I Initial state - 125 integers unsatisfied sum - 26.3403
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Cbc0038I Pass   1: suminf.   10.43351 (69) obj. 0 iterations 767
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Cbc0038I Pass   2: suminf.    6.76111 (160) obj. 0 iterations 471
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Cbc0038I Pass   3: suminf.    5.28571 (23) obj. 0 iterations 743
-Cbc0038I Pass   4: suminf.    5.24859 (154) obj. 0 iterations 160
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Cbc0038I Pass   5: suminf.    2.00000 (4) obj. 0 iterations 379
-Cbc0038I Pass   6: suminf.    2.00000 (4) obj. 0 iterations 139
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Cbc0038I Pass   7: suminf.    2.00000 (4) obj. 0 iterations 132
-Cbc0038I Pass   8: suminf.    2.00000 (4) obj. 0 iterations 73
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Cbc0038I Pass   9: suminf.   47.29014 (196) obj. 0 iterations 938
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Cbc0038I Pass  10: suminf.   15.00000 (37) obj. 0 iterations 1146
-Cbc0038I Pass  11: suminf.   13.00000 (26) obj. 0 iterations 78
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Cbc0038I Pass  12: suminf.   13.00000 (26) obj. 0 iterations 270
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Cbc0038I Pass  13: suminf.   52.01151 (186) obj. 0 iterations 982
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Cbc0038I Pass  14: suminf.    9.72000 (51) obj. 0 iterations 1494
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Cbc0038I Pass  15: suminf.    0.00000 (0) obj. 0 iterations 1390
-Cbc0038I Solution found of 0
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Cbc0038I Before mini branch and bound, 3418 integers at bound fixed and 0 continuous
-Cbc0038I Mini branch and bound did not improve solution (1.09 seconds)
-Cbc0038I After 1.09 seconds - Feasibility pump exiting with objective of 0 - took 0.82 seconds
-Cbc0012I Integer solution of 0 found by feasibility pump after 0 iterations and 0 nodes (1.09 seconds)
-Cbc0001I Search completed - best objective 0, took 0 iterations and 0 nodes (1.10 seconds)
-Cbc0035I Maximum depth 0, 0 variables fixed on reduced cost
-Cuts at root node changed objective from 0 to 0
-Probing was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
-Gomory was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
-Knapsack was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
-Clique was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
-MixedIntegerRounding2 was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
-FlowCover was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
-TwoMirCuts was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
-ZeroHalf was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
-
-Result - Optimal solution found
-
-Objective value:                0.00000000
-Enumerated nodes:               0
-Total iterations:               0
-Time (CPU seconds):             1.11
-Time (Wallclock seconds):       1.05
-
-Total time (CPU seconds):       1.17   (Wallclock seconds):       1.07
-
-
-real	0m1.503s
-user	0m1.382s
-sys	0m0.348s
+.......Q
+...Q....
+Q.......
+..Q.....
+.....Q..
+.Q......
+......Q.
+....Q...
 </pre>
 </div>
 </div>
@@ -7785,33 +7678,22 @@ sys	0m0.348s
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>% n-queens, dual model
-import mip.
+import cp.
 
-main([N]) =&gt;
-    N := to_int(N),
-    queens(N, Board),
-    solve(Board),
-    if N &lt;= 32 then
-        output(Q)
-    end.
-
-
-queens(N, Board) =&gt;
+queens_dual(N, Board) =&gt;
     Board = new_array(N, N),
     Board :: 0..1,
-    
+
     sum([Board[I, J] : I in 1..N, J in 1..N]) #= N,
-    
+
     % rows
     foreach(I in 1..N)
         sum([Board[I, J] : J in 1..N]) #&lt;= 1
     end,
-    
     % cols
     foreach(J in 1..N)
         sum([Board[I, J] : I in 1..N]) #&lt;= 1
     end,
-
     % diags
     foreach(K in 1-N..N-1)
         sum([Board[I,J] : I in 1..N, J in 1..N, I-J = K ]) #&lt;= 1
@@ -7819,7 +7701,14 @@ queens(N, Board) =&gt;
     foreach(K in 2..2*N)
         sum([Board[I,J] : I in 1..N, J in 1..N, I+J = K ]) #&lt;= 1
     end.
-    
+
+main([N]) =&gt;
+    N := to_int(N),
+    queens_dual(N, Board),
+    time2(solve(Board)),
+    if N &lt;= 32 then
+        output(Board)
+    end.
 
 output(Board) =&gt;
     N = Board.length,
@@ -7857,7 +7746,7 @@ output(Board) =&gt;
 <div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>queens/queens-channeling.pi<span class="w"> </span><span class="m">128</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>queens/queens-channeling<span class="w"> </span><span class="m">8</span>
 </pre></div>
 </div>
 </div>
@@ -7871,9 +7760,16 @@ output(Board) =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-real	0m3.032s
-user	0m2.926s
-sys	0m0.072s
+CPU time 0.0 seconds. Backtracks: 24
+
+Q.......
+....Q...
+.......Q
+.....Q..
+..Q.....
+......Q.
+.Q......
+...Q....
 </pre>
 </div>
 </div>
@@ -7900,48 +7796,55 @@ sys	0m0.072s
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>% n-queens, primal model
-import sat.
-
-main([N]) =&gt;
-    N := to_int(N),
-    queens(N, Q, Board),
-    solve(Q ++ Board),
-    if N &lt;= 32 then   
-        output(Q)
-    end.
-
+<pre>% n-queens, primal and dual models with channeling
+import cp.
 
 queens(N, Q, Board) =&gt;    
     % primal
-    Q = new_array(N),
-    Q :: 1..N,
-    all_different(Q),
-    all_different([$Q[I] - I : I in 1..N]),
-    all_different([$Q[I] + I : I in 1..N]),
-
-    % dual
-    Board = new_array(N, N),
-    Board :: 0..1,    
-    sum([Board[I, J] : I in 1..N, J in 1..N]) #= N,
-    foreach(I in 1..N)
-        sum([Board[I, J] : J in 1..N]) #&lt;= 1
-    end,
-    foreach(J in 1..N)
-        sum([Board[I, J] : I in 1..N]) #&lt;= 1
-    end,
-    foreach(K in 1-N..N-1)
-        sum([Board[I, J] : I in 1..N, J in 1..N, I - J = K ]) #&lt;= 1
-    end,
-    foreach(K in 2..2*N)
-        sum([Board[I, J] : I in 1..N, J in 1..N, I + J = K ]) #&lt;= 1
-    end,
+    queens_primal(N, Q),
+    queens_dual(N, Board),
     
     % channeling
     foreach(I in 1..N, J in 1..N)
         (Board[I,J] #= 1) #&lt;=&gt; (Q[I] #= J)
     end.
 
+main([N]) =&gt;
+    N := to_int(N),
+    queens(N, Q, Board),
+    time2(solve(Q ++ Board)),
+    if N &lt;= 32 then   
+        output(Q)
+    end.
+
+queens_primal(N, Q) =&gt;
+    Q = new_array(N),
+    Q :: 1..N,
+    all_different(Q),
+    all_different([$Q[I] - I : I in 1..N]),
+    all_different([$Q[I] + I : I in 1..N]).
+
+queens_dual(N, Board) =&gt;
+    Board = new_array(N, N),
+    Board :: 0..1,
+
+    sum([Board[I, J] : I in 1..N, J in 1..N]) #= N,
+        
+    % rows
+    foreach(I in 1..N)
+        sum([Board[I, J] : J in 1..N]) #&lt;= 1
+    end,
+    % cols
+    foreach(J in 1..N)
+        sum([Board[I, J] : I in 1..N]) #&lt;= 1
+    end,
+    % diags
+    foreach(K in 1-N..N-1)
+        sum([Board[I,J] : I in 1..N, J in 1..N, I-J = K ]) #&lt;= 1
+    end,
+    foreach(K in 2..2*N)
+        sum([Board[I,J] : I in 1..N, J in 1..N, I+J = K ]) #&lt;= 1
+    end.
 
 output(Q) =&gt;
     N = Q.length,
@@ -7960,7 +7863,7 @@ output(Q) =&gt;
 </div>
 </div>
 </div>
-</div></section><section>
+</div><div class="fragment">
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8477f039">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7971,7 +7874,7 @@ output(Q) =&gt;
 </div>
 </div>
 </div>
-</div></section><section>
+</div></div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eb3eced9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8002,9 +7905,9 @@ output(Q) =&gt;
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="510980fb-4ec3-47b7-b3ce-c4b057378c7a" tabindex="0">
+<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="f841170c-ac3b-43df-8e30-c95f9cdf6963" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('510980fb-4ec3-47b7-b3ce-c4b057378c7a');
+var element = document.getElementById('f841170c-ac3b-43df-8e30-c95f9cdf6963');
 "use strict";
 
 CodeMirror.defineMode("text/picat", function(config) {
@@ -8377,8 +8280,7 @@ Jupyter.notebook.get_cells().map(function(cell){
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">picat</span> -n queens
-import cp. %try sat, try also mip with the other model
-
+import cp. % try sat, also try mip with the dual model
 queens(N, Q) =&gt;
     Q = new_array(N),
     Q :: 1..N,
@@ -8390,18 +8292,7 @@ queens(N, Q) =&gt;
 </div>
 </div>
 </div>
-</div></div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2b98ce37">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The predicate <code>time2</code> also outputs the number of backtracks during the search - a good measure of complexity.</p>
-</div>
-</div>
-</div>
-</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=56ecdd57">
+</div></div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=56ecdd57">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8411,7 +8302,7 @@ queens(N, Q) =&gt;
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">picat</span>
 main =&gt;
-    N = 32,
+    N = 24,
     queens(N, Q),
     time2(solve(Q)).
 </pre></div>
@@ -8427,7 +8318,7 @@ main =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 28.895 seconds. Backtracks: 11461548
+CPU time 0.128 seconds. Backtracks: 63778
 
 
 </pre>
@@ -8446,7 +8337,7 @@ CPU time 28.895 seconds. Backtracks: 11461548
 </div>
 </div>
 </div>
-</div><div class="fragment">
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f1adecbe">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8457,7 +8348,7 @@ CPU time 28.895 seconds. Backtracks: 11461548
 </div>
 </div>
 </div>
-</div></div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f5adf2d7">
+</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f5adf2d7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8467,25 +8358,21 @@ CPU time 28.895 seconds. Backtracks: 11461548
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">picat</span>
 
-% Variable selection
-selection(VarSels) =&gt;
-    VarSels = [backward,constr,degree,ff,ffc,ffd,forward,inout,leftmost,max,min,up].
-    
-% Value selection
-choice(ValSels) =&gt;
-    ValSels = [down,reverse_split,split,up,updown].
+selection(VarSels) =&gt; VarSels = [backward,constr,degree,ff,ffc,ffd,forward,inout,leftmost,max,min,up].
+choice(ValSels) =&gt; ValSels = [down,reverse_split,split,up,updown].
 
 main =&gt;
     selection(VarSels),
     choice(ValSels),
-    Timeout = 1000, % Timeout in milliseconds
-    %Timeout = 10000, % Timeout in milliseconds
-    Ns = [64, 128, 256],
+    Timeout = 2000,
+    Ns = [80, 100, 120],
     
     foreach (N in Ns, VarSel in VarSels, ValSel in ValSels)
         queens(N,Q),
-        time2(time_out(solve([VarSel,ValSel], Q),Timeout,Status)),
-        println([N,VarSel,ValSel,Status])
+        time_out(solve([VarSel,ValSel], Q),Timeout,Status),
+        if Status = success then
+            println([N,VarSel,ValSel])
+        end
     end.
 </pre></div>
 </div>
@@ -8499,726 +8386,42 @@ main =&gt;
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
-CPU time 0.991 seconds. Backtracks: 362537
-
-[64,backward,down,time_out]
-
-CPU time 0.995 seconds. Backtracks: 0
-
-[64,backward,reverse_split,time_out]
-
-CPU time 0.986 seconds. Backtracks: 0
-
-[64,backward,split,time_out]
-
-CPU time 0.985 seconds. Backtracks: 201448
-
-[64,backward,up,time_out]
-
-CPU time 0.99 seconds. Backtracks: 471005
-
-[64,backward,updown,time_out]
-
-CPU time 0.997 seconds. Backtracks: 334006
-
-[64,constr,down,time_out]
-
-CPU time 1.0 seconds. Backtracks: 0
-
-[64,constr,reverse_split,time_out]
-
-CPU time 0.995 seconds. Backtracks: 0
-
-[64,constr,split,time_out]
-
-CPU time 0.996 seconds. Backtracks: 202142
-
-[64,constr,up,time_out]
-
-CPU time 1.001 seconds. Backtracks: 509362
-
-[64,constr,updown,time_out]
-
-CPU time 1.0 seconds. Backtracks: 344472
-
-[64,degree,down,time_out]
-
-CPU time 0.997 seconds. Backtracks: 0
-
-[64,degree,reverse_split,time_out]
-
-CPU time 0.996 seconds. Backtracks: 0
-
-[64,degree,split,time_out]
-
-CPU time 1.0 seconds. Backtracks: 195567
-
-[64,degree,up,time_out]
-
-CPU time 1.001 seconds. Backtracks: 481882
-
-[64,degree,updown,time_out]
-
-CPU time 0.047 seconds. Backtracks: 11120
-
-[64,ff,down,success]
-
-CPU time 0.003 seconds. Backtracks: 0
-
-[64,ff,reverse_split,success]
-
-CPU time 0.003 seconds. Backtracks: 0
-
-[64,ff,split,success]
-
-CPU time 0.003 seconds. Backtracks: 382
-
-[64,ff,up,success]
-
-CPU time 0.001 seconds. Backtracks: 115
-
-[64,ff,updown,success]
-
-CPU time 0.003 seconds. Backtracks: 695
-
-[64,ffc,down,success]
-
-CPU time 0.003 seconds. Backtracks: 0
-
-[64,ffc,reverse_split,success]
-
-CPU time 0.004 seconds. Backtracks: 0
-
-[64,ffc,split,success]
-
-CPU time 0.002 seconds. Backtracks: 382
-
-[64,ffc,up,success]
-
-CPU time 0.001 seconds. Backtracks: 115
-
-[64,ffc,updown,success]
-
-CPU time 0.001 seconds. Backtracks: 136
-
-[64,ffd,down,success]
-
-CPU time 0.001 seconds. Backtracks: 0
-
-[64,ffd,reverse_split,success]
-
-CPU time 0.001 seconds. Backtracks: 0
-
-[64,ffd,split,success]
-
-CPU time 0.002 seconds. Backtracks: 75
-
-[64,ffd,up,success]
-
-CPU time 0.013 seconds. Backtracks: 9120
-
-[64,ffd,updown,success]
-
-CPU time 1.002 seconds. Backtracks: 316901
-
-[64,forward,down,time_out]
-
-CPU time 2.0 seconds. Backtracks: 0
-
-[64,forward,reverse_split,time_out]
-
-CPU time 1.0 seconds. Backtracks: 0
-
-[64,forward,split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 218424
-
-[64,forward,up,time_out]
-
-CPU time 1.0 seconds. Backtracks: 476782
-
-[64,forward,updown,time_out]
-
-CPU time 1.0 seconds. Backtracks: 488228
-
-[64,inout,down,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[64,inout,reverse_split,time_out]
-
-CPU time 1.0 seconds. Backtracks: 0
-
-[64,inout,split,time_out]
-
-CPU time 1.0 seconds. Backtracks: 342102
-
-[64,inout,up,time_out]
-
-CPU time 1.001 seconds. Backtracks: 554384
-
-[64,inout,updown,time_out]
-
-CPU time 1.001 seconds. Backtracks: 344010
-
-[64,leftmost,down,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[64,leftmost,reverse_split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[64,leftmost,split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 205374
-
-[64,leftmost,up,time_out]
-
-CPU time 0.997 seconds. Backtracks: 479205
-
-[64,leftmost,updown,time_out]
-
-CPU time 1.001 seconds. Backtracks: 487501
-
-[64,max,down,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[64,max,reverse_split,time_out]
-
-CPU time 0.997 seconds. Backtracks: 0
-
-[64,max,split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 104138
-
-[64,max,up,time_out]
-
-CPU time 1.001 seconds. Backtracks: 470959
-
-[64,max,updown,time_out]
-
-CPU time 1.001 seconds. Backtracks: 183439
-
-[64,min,down,time_out]
-
-CPU time 0.998 seconds. Backtracks: 0
-
-[64,min,reverse_split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[64,min,split,time_out]
-
-CPU time 1.0 seconds. Backtracks: 335628
-
-[64,min,up,time_out]
-
-CPU time 1.001 seconds. Backtracks: 317297
-
-[64,min,updown,time_out]
-
-CPU time 1.001 seconds. Backtracks: 319901
-
-[64,up,down,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[64,up,reverse_split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[64,up,split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 211801
-
-[64,up,up,time_out]
-
-CPU time 1.0 seconds. Backtracks: 488807
-
-[64,up,updown,time_out]
-
-CPU time 1.001 seconds. Backtracks: 183877
-
-[128,backward,down,time_out]
-
-CPU time 1.002 seconds. Backtracks: 0
-
-[128,backward,reverse_split,time_out]
-
-CPU time 0.998 seconds. Backtracks: 0
-
-[128,backward,split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 106279
-
-[128,backward,up,time_out]
-
-CPU time 1.001 seconds. Backtracks: 230460
-
-[128,backward,updown,time_out]
-
-CPU time 1.001 seconds. Backtracks: 169348
-
-[128,constr,down,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[128,constr,reverse_split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[128,constr,split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 99191
-
-[128,constr,up,time_out]
-
-CPU time 1.002 seconds. Backtracks: 207463
-
-[128,constr,updown,time_out]
-
-CPU time 1.001 seconds. Backtracks: 183887
-
-[128,degree,down,time_out]
-
-CPU time 1.002 seconds. Backtracks: 0
-
-[128,degree,reverse_split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[128,degree,split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 102629
-
-[128,degree,up,time_out]
-
-CPU time 1.001 seconds. Backtracks: 235051
-
-[128,degree,updown,time_out]
-
-CPU time 1.001 seconds. Backtracks: 152387
-
-[128,ff,down,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[128,ff,reverse_split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[128,ff,split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 71360
-
-[128,ff,up,time_out]
-
-CPU time 1.001 seconds. Backtracks: 372760
-
-[128,ff,updown,time_out]
-
-CPU time 1.002 seconds. Backtracks: 137785
-
-[128,ffc,down,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[128,ffc,reverse_split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 0
-
-[128,ffc,split,time_out]
-
-CPU time 0.998 seconds. Backtracks: 68989
-
-[128,ffc,up,time_out]
-
-CPU time 1.002 seconds. Backtracks: 364422
-
-[128,ffc,updown,time_out]
-
-CPU time 0.997 seconds. Backtracks: 119716
-
-[128,ffd,down,time_out]
-
-CPU time 1.002 seconds. Backtracks: 0
-
-[128,ffd,reverse_split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 0
-
-[128,ffd,split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 66825
-
-[128,ffd,up,time_out]
-
-CPU time 0.997 seconds. Backtracks: 363476
-
-[128,ffd,updown,time_out]
-
-CPU time 0.997 seconds. Backtracks: 185698
-
-[128,forward,down,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[128,forward,reverse_split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[128,forward,split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 111002
-
-[128,forward,up,time_out]
-
-CPU time 1.001 seconds. Backtracks: 229514
-
-[128,forward,updown,time_out]
-
-CPU time 1.001 seconds. Backtracks: 467522
-
-[128,inout,down,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[128,inout,reverse_split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[128,inout,split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 346631
-
-[128,inout,up,time_out]
-
-CPU time 1.002 seconds. Backtracks: 262151
-
-[128,inout,updown,time_out]
-
-CPU time 1.001 seconds. Backtracks: 187678
-
-[128,leftmost,down,time_out]
-
-CPU time 0.993 seconds. Backtracks: 0
-
-[128,leftmost,reverse_split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 0
-
-[128,leftmost,split,time_out]
-
-CPU time 2.003 seconds. Backtracks: 197768
-
-[128,leftmost,up,time_out]
-
-CPU time 1.001 seconds. Backtracks: 227559
-
-[128,leftmost,updown,time_out]
-
-CPU time 1.002 seconds. Backtracks: 186564
-
-[128,max,down,time_out]
-
-CPU time 1.003 seconds. Backtracks: 0
-
-[128,max,reverse_split,time_out]
-
-CPU time 1.0 seconds. Backtracks: 0
-
-[128,max,split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 148625
-
-[128,max,up,time_out]
-
-CPU time 1.001 seconds. Backtracks: 230554
-
-[128,max,updown,time_out]
-
-CPU time 1.0 seconds. Backtracks: 233650
-
-[128,min,down,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[128,min,reverse_split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[128,min,split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 130540
-
-[128,min,up,time_out]
-
-CPU time 1.002 seconds. Backtracks: 203853
-
-[128,min,updown,time_out]
-
-CPU time 1.002 seconds. Backtracks: 185158
-
-[128,up,down,time_out]
-
-CPU time 1.002 seconds. Backtracks: 0
-
-[128,up,reverse_split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 0
-
-[128,up,split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 103031
-
-[128,up,up,time_out]
-
-CPU time 1.002 seconds. Backtracks: 223889
-
-[128,up,updown,time_out]
-
-CPU time 1.002 seconds. Backtracks: 83227
-
-[256,backward,down,time_out]
-
-CPU time 1.002 seconds. Backtracks: 0
-
-[256,backward,reverse_split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 0
-
-[256,backward,split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 49007
-
-[256,backward,up,time_out]
-
-CPU time 1.002 seconds. Backtracks: 107589
-
-[256,backward,updown,time_out]
-
-CPU time 1.001 seconds. Backtracks: 78460
-
-[256,constr,down,time_out]
-
-CPU time 0.994 seconds. Backtracks: 0
-
-[256,constr,reverse_split,time_out]
-
-CPU time 0.993 seconds. Backtracks: 0
-
-[256,constr,split,time_out]
-
-CPU time 0.998 seconds. Backtracks: 45262
-
-[256,constr,up,time_out]
-
-CPU time 0.998 seconds. Backtracks: 92334
-
-[256,constr,updown,time_out]
-
-CPU time 0.991 seconds. Backtracks: 75926
-
-[256,degree,down,time_out]
-
-CPU time 0.986 seconds. Backtracks: 0
-
-[256,degree,reverse_split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 0
-
-[256,degree,split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 39708
-
-[256,degree,up,time_out]
-
-CPU time 0.997 seconds. Backtracks: 103303
-
-[256,degree,updown,time_out]
-
-CPU time 0.997 seconds. Backtracks: 76189
-
-[256,ff,down,time_out]
-
-CPU time 1.002 seconds. Backtracks: 0
-
-[256,ff,reverse_split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 0
-
-[256,ff,split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 35738
-
-[256,ff,up,time_out]
-
-CPU time 2.003 seconds. Backtracks: 295659
-
-[256,ff,updown,time_out]
-
-CPU time 1.002 seconds. Backtracks: 72616
-
-[256,ffc,down,time_out]
-
-CPU time 1.002 seconds. Backtracks: 0
-
-[256,ffc,reverse_split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[256,ffc,split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 31443
-
-[256,ffc,up,time_out]
-
-CPU time 1.001 seconds. Backtracks: 151537
-
-[256,ffc,updown,time_out]
-
-CPU time 0.997 seconds. Backtracks: 26690
-
-[256,ffd,down,time_out]
-
-CPU time 1.002 seconds. Backtracks: 0
-
-[256,ffd,reverse_split,time_out]
-
-CPU time 0.999 seconds. Backtracks: 0
-
-[256,ffd,split,time_out]
-
-CPU time 0.999 seconds. Backtracks: 13339
-
-[256,ffd,up,time_out]
-
-CPU time 1.002 seconds. Backtracks: 131219
-
-[256,ffd,updown,time_out]
-
-CPU time 1.002 seconds. Backtracks: 78097
-
-[256,forward,down,time_out]
-
-CPU time 1.0 seconds. Backtracks: 0
-
-[256,forward,reverse_split,time_out]
-
-CPU time 1.003 seconds. Backtracks: 0
-
-[256,forward,split,time_out]
-
-CPU time 1.003 seconds. Backtracks: 46187
-
-[256,forward,up,time_out]
-
-CPU time 1.001 seconds. Backtracks: 99246
-
-[256,forward,updown,time_out]
-
-CPU time 1.0 seconds. Backtracks: 275075
-
-[256,inout,down,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[256,inout,reverse_split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 0
-
-[256,inout,split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 192485
-
-[256,inout,up,time_out]
-
-CPU time 1.002 seconds. Backtracks: 152664
-
-[256,inout,updown,time_out]
-
-CPU time 1.003 seconds. Backtracks: 78454
-
-[256,leftmost,down,time_out]
-
-CPU time 0.997 seconds. Backtracks: 0
-
-[256,leftmost,reverse_split,time_out]
-
-CPU time 1.003 seconds. Backtracks: 0
-
-[256,leftmost,split,time_out]
-
-CPU time 1.001 seconds. Backtracks: 40685
-
-[256,leftmost,up,time_out]
-
-CPU time 0.998 seconds. Backtracks: 91632
-
-[256,leftmost,updown,time_out]
-
-CPU time 1.002 seconds. Backtracks: 74950
-
-[256,max,down,time_out]
-
-CPU time 1.001 seconds. Backtracks: 0
-
-[256,max,reverse_split,time_out]
-
-CPU time 1.003 seconds. Backtracks: 0
-
-[256,max,split,time_out]
-
-CPU time 1.003 seconds. Backtracks: 84398
-
-[256,max,up,time_out]
-
-CPU time 1.002 seconds. Backtracks: 185864
-
-[256,max,updown,time_out]
-
-CPU time 1.002 seconds. Backtracks: 109200
-
-[256,min,down,time_out]
-
-CPU time 0.994 seconds. Backtracks: 0
-
-[256,min,reverse_split,time_out]
-
-CPU time 0.998 seconds. Backtracks: 0
-
-[256,min,split,time_out]
-
-CPU time 0.998 seconds. Backtracks: 45822
-
-[256,min,up,time_out]
-
-CPU time 0.995 seconds. Backtracks: 76334
-
-[256,min,updown,time_out]
-
-CPU time 1.003 seconds. Backtracks: 85467
-
-[256,up,down,time_out]
-
-CPU time 1.003 seconds. Backtracks: 0
-
-[256,up,reverse_split,time_out]
-
-CPU time 1.003 seconds. Backtracks: 0
-
-[256,up,split,time_out]
-
-CPU time 1.002 seconds. Backtracks: 50759
-
-[256,up,up,time_out]
-
-CPU time 1.003 seconds. Backtracks: 109471
-
-[256,up,updown,time_out]
+<pre>[80,ff,down]
+[80,ff,reverse_split]
+[80,ff,split]
+[80,ff,up]
+[80,ff,updown]
+[80,ffc,down]
+[80,ffc,reverse_split]
+[80,ffc,split]
+[80,ffc,up]
+[80,ffc,updown]
+[80,ffd,down]
+[80,ffd,reverse_split]
+[80,ffd,split]
+[80,ffd,up]
+[100,ff,down]
+[100,ff,reverse_split]
+[100,ff,split]
+[100,ff,up]
+[100,ff,updown]
+[100,ffc,down]
+[100,ffc,reverse_split]
+[100,ffc,split]
+[100,ffc,up]
+[100,ffc,updown]
+[100,ffd,down]
+[100,ffd,reverse_split]
+[100,ffd,split]
+[100,ffd,up]
+[100,ffd,updown]
+[120,ff,updown]
+[120,ffc,updown]
+[120,ffd,down]
+[120,ffd,reverse_split]
+[120,ffd,split]
+[120,ffd,up]
+[120,ffd,updown]
 
 </pre>
 </div>
@@ -9260,7 +8463,7 @@ CPU time 1.003 seconds. Backtracks: 109471
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="Exercise:-Minesweeper">Exercise: Minesweeper<a class="anchor-link" href="#Exercise:-Minesweeper">¶</a></h3><p>Identify the positions of all mines in a given board. Try the following instance (from <a href="http://picat-lang.org/picatbook2015/constraint_solving_and_planning_with_picat.pdf">the book</a>):</p>
-<pre><code>Instance = {
+<pre><code>Board = {
     {_,_,2,_,3,_},
     {2,_,_,_,_,_},
     {_,_,2,4,_,3},
@@ -9268,28 +8471,6 @@ CPU time 1.003 seconds. Backtracks: 109471
     {_,_,_,_,_,3},
     {_,3,_,3,_,_}
 }.
-</code></pre>
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=66497e46">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exercise:-Graph-coloring">Exercise: Graph-coloring<a class="anchor-link" href="#Exercise:-Graph-coloring">¶</a></h3><ol>
-<li>Write a program that solves the (directed) graph 3-coloring problem with a given number of colors and a given graph. The graph is given by a list of edges, each edge is a 2-element list. We assume that vertices of the graph are $1,\dots,n$ where $n$ is the maximum number appearing in the list.</li>
-<li>Generalize your program to graph $k$-coloring where $k$ is a positive integer given on the input.</li>
-<li>Modify your program to accept the incidence matrix (a 2D array) instead of the list of edges.</li>
-<li>Add the flag <code>-n</code> to output the minimum number of colors (the chromatic number) of a given graph.
-For example:</li>
-</ol>
-<pre><code>picat graph-coloring.pi [[1,2],[2,3],[3,4],[4,1]]
-picat graph-coloring.pi [[1,2],[2,3],[3,1]] 4
-picat graph-coloring.pi "{{0,1,1},{1,0,1},{1,1,0}}" 4
-picat graph-coloring.pi -n [[1,2],[2,3],[3,4],[4,1]]
 </code></pre>
 </div>
 </div>
@@ -9364,7 +8545,18 @@ picat graph-coloring.pi -n [[1,2],[2,3],[3,4],[4,1]]
 </div>
 </div>
 </div>
-</div></section></section>
+</div><div class="fragment">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d8b4a5d5-f568-48e6-8e87-3e9978040dd5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>What search strategies could be suitable for Knapsack?</p>
+</div>
+</div>
+</div>
+</div></div></section></section>
 </div>
 </div>
 </main>

@@ -1,0 +1,41 @@
+% adapted from Constraint Solving and Planning with Picat, Springer 
+% by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
+
+import mip.
+
+main => 
+  N = 31,
+  C = 14,
+  go(N, C).
+
+main([Nstring, Cstring]) =>
+  go(Nstring.to_int, Cstring.to_int). 
+
+go(N, C) =>
+  coins(N, C, X, Sum),
+  time2(solve($[min(Sum),ff],X)),
+  output(X),
+  println(sum=Sum).  
+
+coins(N, C, X, Sum) =>
+  X = new_array(N, N),
+  X :: 0..1,
+  
+  foreach (I in 1..N)
+    C #= sum([X[I,J] : J in 1..N]), % rows
+    C #= sum([X[J,I] : J in 1..N])  % columns
+  end,
+
+  % quadratic horizontal distance
+  Sum #= sum([(X[I,J] * (I-J) * (I-J)) : I in 1..N, J in 1..N]),
+    
+  % Symmetry breaking
+  X[1,N] #<= X[N,1].
+
+output(X) =>
+  foreach(I in 1..X.length)
+    foreach(J in 1..X[1].length)
+      print(X[I, J])
+    end,
+    print("\n")
+  end.

@@ -1,2 +1,2 @@
 #! /bin/bash
-picat send-more-bits.pi
+picat send-more-bits

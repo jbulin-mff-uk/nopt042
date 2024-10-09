@@ -1,0 +1,15 @@
+import cp.
+
+main([N]) =>
+    N := N.to_int, 
+    langford_dual(N, Position),
+    time2(solve(Position)),
+    print("Positions: "), println(Position).
+
+langford_dual(N, Position) =>    
+    Position = new_array(2*N),
+    Position :: 1..2*N,
+    all_different(Position),
+    foreach(D in 1..N)
+        Position[D+N] #= Position[D] + D + 1
+    end.

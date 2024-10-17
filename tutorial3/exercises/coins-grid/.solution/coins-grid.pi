@@ -1,41 +1,52 @@
-% adapted from Constraint Solving and Planning with Picat, Springer 
-% by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
+import cp.
+% import mip.
+% import sat.
 
-import mip.
+main => main(["31", "14"]).
 
-main => 
-  N = 31,
-  C = 14,
-  go(N, C).
+main([SizeStr, CountStr]) =>
+    Size = SizeStr.to_int,
+    Count = CountStr.to_int,
 
-main([Nstring, Cstring]) =>
-  go(Nstring.to_int, Cstring.to_int). 
+    coins_grid(Size, Count, Board, Obj),
+    solve($[min(Obj),ffd,updown], Board),
+    output(Board, Obj).
 
-go(N, C) =>
-  coins(N, C, X, Sum),
-  time2(solve($[min(Sum),ff],X)),
-  output(X),
-  println(sum=Sum).  
+coins_grid(Size, Count, Board, Obj) =>    
+    % variables
+    Board = new_array(Size, Size),
+    Board :: 0..1,
 
-coins(N, C, X, Sum) =>
-  X = new_array(N, N),
-  X :: 0..1,
-  
-  foreach (I in 1..N)
-    C #= sum([X[I,J] : J in 1..N]), % rows
-    C #= sum([X[J,I] : J in 1..N])  % columns
-  end,
-
-  % quadratic horizontal distance
-  Sum #= sum([(X[I,J] * (I-J) * (I-J)) : I in 1..N, J in 1..N]),
-    
-  % Symmetry breaking
-  X[1,N] #<= X[N,1].
-
-output(X) =>
-  foreach(I in 1..X.length)
-    foreach(J in 1..X[1].length)
-      print(X[I, J])
+    % constraints
+    foreach(Row in 1..Size)
+        exactly(Count, [Board[Row, Col] : Col in 1..Size], 1), % rows
     end,
-    print("\n")
-  end.
+    foreach(Col in 1..Size)
+        exactly(Count, [Board[Row, Col] : Row in 1..Size], 1), % columns
+    end,
+
+    % symmetry breaking: rotate 180 degrees
+    Board[1, Size] #<= Board[Size, 1],    
+    
+    % objective, better propagation
+    RowCosts = new_array(Size),
+    foreach(Row in 1..Size)
+        RowCosts[Row] #= sum([(Board[Row, Col] * (Row - Col) * (Row - Col)) : Col in 1..Size])
+    end,
+    Obj #= sum(RowCosts).
+
+    % % objective: quadratic horizontal distance
+    % Obj #= sum([(Board[Row, Col] * (Row - Col) * (Row - Col)) : Row in 1..Size, Col in 1..Size]).
+
+output(Board, Obj) =>
+    foreach(Row in 1..Board.length)
+        foreach(Col in 1..(Board[1]).length)
+            if Board[Row, Col] == 1 then
+                print("o")
+            else
+                print(".")
+            end
+        end,
+        print("\n")
+    end,
+    printf("Objective = %d\n", Obj).

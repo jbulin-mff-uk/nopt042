@@ -7641,7 +7641,7 @@ output(Q) =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.037 seconds. Backtracks: 8540
+CPU time 0.036 seconds. Backtracks: 8540
 
 .......Q
 ...Q....
@@ -7905,9 +7905,9 @@ output(Q) =&gt;
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="7b764f8b-3c25-4e6e-a584-28fccf4c93d9" tabindex="0">
+<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="0e7e56a5-572e-4b43-88cd-443d21929202" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('7b764f8b-3c25-4e6e-a584-28fccf4c93d9');
+var element = document.getElementById('0e7e56a5-572e-4b43-88cd-443d21929202');
 "use strict";
 
 CodeMirror.defineMode("text/picat", function(config) {
@@ -8318,7 +8318,7 @@ main =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.122 seconds. Backtracks: 63778
+CPU time 0.128 seconds. Backtracks: 63778
 
 
 </pre>
@@ -8358,21 +8358,30 @@ CPU time 0.122 seconds. Backtracks: 63778
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">picat</span>
 
+% variable selection strategies
 selection(VarSels) =&gt; VarSels = [backward,constr,degree,ff,ffc,ffd,forward,inout,leftmost,max,min,up].
-choice(ValSels) =&gt; ValSels = [down,reverse_split,split,up,updown].
+
+% value choice strategies
+choice(ValChoices) =&gt; ValChoices = [down,reverse_split,split,up,updown].
 
 main =&gt;
     selection(VarSels),
-    choice(ValSels),
-    Timeout = 2000,
-    Ns = [80, 100, 120],
+    choice(ValChoices),    
     
-    foreach (N in Ns, VarSel in VarSels, ValSel in ValSels)
-        queens(N,Q),
-        time_out(solve([VarSel,ValSel], Q),Timeout,Status),
-        if Status = success then
-            println([N,VarSel,ValSel])
-        end
+    Strategies = [[VarSel, ValChoice] : VarSel in VarSels, ValChoice in ValChoices],    
+    Timeout = 10000,
+    Ns = [100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200],
+    
+    println("Successful strategies:"),
+    foreach (N in Ns)        
+        foreach(Strategy in Strategies)
+            queens(N,Q),
+            time_out(solve(Strategy, Q),Timeout,Status),
+            if Status != success then
+                Strategies := delete(Strategies, Strategy)
+            end            
+        end,
+        printf("N=%d: %w\n", N, Strategies)
     end.
 </pre></div>
 </div>
@@ -8386,42 +8395,18 @@ main =&gt;
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>[80,ff,down]
-[80,ff,reverse_split]
-[80,ff,split]
-[80,ff,up]
-[80,ff,updown]
-[80,ffc,down]
-[80,ffc,reverse_split]
-[80,ffc,split]
-[80,ffc,up]
-[80,ffc,updown]
-[80,ffd,down]
-[80,ffd,reverse_split]
-[80,ffd,split]
-[80,ffd,up]
-[100,ff,down]
-[100,ff,reverse_split]
-[100,ff,split]
-[100,ff,up]
-[100,ff,updown]
-[100,ffc,down]
-[100,ffc,reverse_split]
-[100,ffc,split]
-[100,ffc,up]
-[100,ffc,updown]
-[100,ffd,down]
-[100,ffd,reverse_split]
-[100,ffd,split]
-[100,ffd,up]
-[100,ffd,updown]
-[120,ff,updown]
-[120,ffc,updown]
-[120,ffd,down]
-[120,ffd,reverse_split]
-[120,ffd,split]
-[120,ffd,up]
-[120,ffd,updown]
+<pre>Successful strategies:
+N=100: [[ff,down],[ff,reverse_split],[ff,split],[ff,up],[ff,updown],[ffc,down],[ffc,reverse_split],[ffc,split],[ffc,up],[ffc,updown],[ffd,down],[ffd,reverse_split],[ffd,split],[ffd,up],[ffd,updown]]
+N=110: [[ff,updown],[ffc,updown]]
+N=120: [[ff,updown],[ffc,updown]]
+N=130: [[ff,updown],[ffc,updown]]
+N=140: []
+N=150: []
+N=160: []
+N=170: []
+N=180: []
+N=190: []
+N=200: []
 
 </pre>
 </div>

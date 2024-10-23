@@ -7,3 +7,4 @@ mv Picat .picat
 conda install python=3.12
 conda install -c conda-forge jupyterlab jupyterlab_rise nbconvert playwright sqlite
 pip install ipicat
+echo "c.ContentsManager.allow_hidden = True" >> ~/.jupyter/jupyter_notebook_config.py

@@ -1,7 +1,7 @@
-% n-queens, primal model
+% n-queens, the "columns" model
 import cp.
 
-queens_primal(N, Q) =>
+queens_columns(N, Q) =>
     Q = new_array(N),
     Q :: 1..N,
     all_different(Q),
@@ -10,7 +10,7 @@ queens_primal(N, Q) =>
 
 main([N]) =>
     N := to_int(N),
-    queens_primal(N, Q),
+    queens_columns(N, Q),
     time2(solve(Q)),
     if N <= 32 then
         output(Q)

@@ -1,7 +1,7 @@
-% n-queens, dual model
+% n-queens, the "board" model
 import cp.
 
-queens_dual(N, Board) =>
+queens_board(N, Board) =>
     Board = new_array(N, N),
     Board :: 0..1,
 
@@ -25,7 +25,7 @@ queens_dual(N, Board) =>
 
 main([N]) =>
     N := to_int(N),
-    queens_dual(N, Board),
+    queens_board(N, Board),
     time2(solve(Board)),
     if N <= 32 then
         output(Board)

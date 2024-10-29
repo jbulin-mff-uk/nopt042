@@ -7873,43 +7873,42 @@ export PATH=$PATH:~/coinbrew/dist/bin
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>'Done'
-Welcome to the CBC MILP Solver 
-Version: 2.10.7 
-Build Date: Feb 14 2022 
-
-command line - cbc __tmp.lp solve solu __tmp.sol (default strategy 1)
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Continuous objective value is 90 - 0.00 seconds
-Cgl0004I processed model has 4 rows, 4 columns (4 integer (0 of which binary)) and 14 elements
-Cutoff increment increased from 1e-05 to 9.9999
-Cbc0012I Integer solution of 90 found by DiveCoefficient after 0 iterations and 0 nodes (0.00 seconds)
-Cbc0001I Search completed - best objective 90, took 0 iterations and 0 nodes (0.00 seconds)
-Cbc0035I Maximum depth 0, 0 variables fixed on reduced cost
-Cuts at root node changed objective from 90 to 90
-Probing was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
-Gomory was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
-Knapsack was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
-Clique was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
-MixedIntegerRounding2 was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
-FlowCover was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
-TwoMirCuts was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
-ZeroHalf was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
-
-Result - Optimal solution found
-
-Objective value:                90.00000000
-Enumerated nodes:               0
-Total iterations:               0
-Time (CPU seconds):             0.00
-Time (Wallclock seconds):       0.00
-
-Total time (CPU seconds):       0.01   (Wallclock seconds):       0.00
-
+GLPSOL--GLPK LP/MIP Solver 5.0
+Parameter(s) specified in the command line:
+ --cpxlp -o __tmp.sol __tmp.lp
+Reading problem data from '__tmp.lp'...
+23 rows, 9 columns, 41 non-zeros
+9 integer variables, none of which are binary
+47 lines were read
+GLPK Integer Optimizer 5.0
+23 rows, 9 columns, 41 non-zeros
+9 integer variables, none of which are binary
+Preprocessing...
+5 rows, 9 columns, 23 non-zeros
+9 integer variables, none of which are binary
+Scaling...
+ A: min|aij| =  1.000e+00  max|aij| =  5.000e+02  ratio =  5.000e+02
+GM: min|aij| =  5.946e-01  max|aij| =  1.682e+00  ratio =  2.828e+00
+EQ: min|aij| =  3.536e-01  max|aij| =  1.000e+00  ratio =  2.828e+00
+2N: min|aij| =  2.500e-01  max|aij| =  1.562e+00  ratio =  6.250e+00
+Constructing initial basis...
+Size of triangular part is 5
+Solving LP relaxation...
+GLPK Simplex Optimizer 5.0
+5 rows, 9 columns, 23 non-zeros
+      0: obj =   0.000000000e+00 inf =   1.512e+02 (4)
+      4: obj =   1.266666667e+02 inf =   0.000e+00 (0)
+*     5: obj =   9.000000000e+01 inf =   0.000e+00 (0)
+OPTIMAL LP SOLUTION FOUND
+Integer optimization begins...
+Long-step dual simplex will be used
++     5: mip =     not found yet &gt;=              -inf        (1; 0)
++     5: &gt;&gt;&gt;&gt;&gt;   9.000000000e+01 &gt;=   9.000000000e+01   0.0% (1; 0)
++     5: mip =   9.000000000e+01 &gt;=     tree is empty   0.0% (0; 1)
+INTEGER OPTIMAL SOLUTION FOUND
+Time used:   0.0 secs
+Memory used: 0.1 Mb (62497 bytes)
+Writing MIP solution to '__tmp.sol'...
 {0,3,1,0}
 </pre>
 </div>
@@ -8073,16 +8072,62 @@ End
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Optimal - objective value 90.00000000
-      0 X0                    90                       1
-      1 X1                     0                       0
-      2 X2                     3                       0
-      3 X3                     1                       0
-      4 X4                     0                       0
-      5 X6                    10                       0
-      6 X7                     6                       0
-      7 X8                   750                       0
-      8 X5                    13                       0
+<pre>Problem:    
+Rows:       23
+Columns:    9 (9 integer, 0 binary)
+Non-zeros:  41
+Status:     INTEGER OPTIMAL
+Objective:  obj = 90 (MINimum)
+
+   No.   Row name        Activity     Lower bound   Upper bound
+------ ------------    ------------- ------------- -------------
+     1 r.4                       -90         -1800               
+     2 r.5                        90             0               
+     3 r.6                         0           -10               
+     4 r.7                         0             0               
+     5 r.8                         0             0             = 
+     6 r.9                        -3           -10               
+     7 r.10                        3             0               
+     8 r.11                        0             0             = 
+     9 r.12                        0             0             = 
+    10 r.13                       -1           -10               
+    11 r.14                        1             0               
+    12 r.15                        0             0             = 
+    13 r.16                        0             0             = 
+    14 r.17                        0           -10               
+    15 r.18                        0             0               
+    16 r.19                      -13          -120               
+    17 r.20                       13             8               
+    18 r.21                      -10          -120               
+    19 r.22                       10            10               
+    20 r.23                       -6           -50               
+    21 r.24                        6             6               
+    22 r.25                     -750        -12500               
+    23 r.26                      750           500               
+
+   No. Column name       Activity     Lower bound   Upper bound
+------ ------------    ------------- ------------- -------------
+     1 X0           *             90             0          1800 
+     2 X1           *              0             0            10 
+     3 X2           *              3             0            10 
+     4 X3           *              1             0            10 
+     5 X4           *              0             0            10 
+     6 X6           *             10            10           120 
+     7 X7           *              6             6            50 
+     8 X8           *            750           500         12500 
+     9 X5           *             13             8           120 
+
+Integer feasibility conditions:
+
+KKT.PE: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.PB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+End of output
 </pre>
 </div>
 </div>

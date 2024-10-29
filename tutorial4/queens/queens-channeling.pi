@@ -1,10 +1,10 @@
-% n-queens, primal and dual models with channeling
+% n-queens, both the "columns" and "board" models with channeling
 import cp.
 
 queens(N, Q, Board) =>    
-    % primal
-    queens_primal(N, Q),
-    queens_dual(N, Board),
+    % the two models
+    queens_columns(N, Q),
+    queens_board(N, Board),
     
     % channeling
     foreach(I in 1..N, J in 1..N)
@@ -19,14 +19,14 @@ main([N]) =>
         output(Q)
     end.
 
-queens_primal(N, Q) =>
+queens_columns(N, Q) =>
     Q = new_array(N),
     Q :: 1..N,
     all_different(Q),
     all_different([$Q[I] - I : I in 1..N]),
     all_different([$Q[I] + I : I in 1..N]).
 
-queens_dual(N, Board) =>
+queens_board(N, Board) =>
     Board = new_array(N, N),
     Board :: 0..1,
 

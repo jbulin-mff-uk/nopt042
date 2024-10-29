@@ -7521,7 +7521,7 @@ main {
 <ul>
 <li>How large is the search space?</li>
 <li>Can we use symmetry breaking?</li>
-<li>Consider the <em>dual</em> model.</li>
+<li>Consider different models.</li>
 </ul>
 </div>
 </div>
@@ -7534,7 +7534,7 @@ main {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>queens/queens-primal<span class="w"> </span><span class="m">8</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>queens/queens-columns<span class="w"> </span><span class="m">8</span>
 </pre></div>
 </div>
 </div>
@@ -7571,7 +7571,7 @@ Q.......
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>queens/queens-primal.pi
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>queens/queens-columns.pi
 </pre></div>
 </div>
 </div>
@@ -7584,10 +7584,10 @@ Q.......
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>% n-queens, primal model
+<pre>% n-queens, the "columns" model
 import cp.
 
-queens_primal(N, Q) =&gt;
+queens_columns(N, Q) =&gt;
     Q = new_array(N),
     Q :: 1..N,
     all_different(Q),
@@ -7596,7 +7596,7 @@ queens_primal(N, Q) =&gt;
 
 main([N]) =&gt;
     N := to_int(N),
-    queens_primal(N, Q),
+    queens_columns(N, Q),
     time2(solve(Q)),
     if N &lt;= 32 then
         output(Q)
@@ -7627,7 +7627,7 @@ output(Q) =&gt;
 <div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>queens/queens-dual<span class="w"> </span><span class="m">8</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>queens/queens-board<span class="w"> </span><span class="m">8</span>
 </pre></div>
 </div>
 </div>
@@ -7641,7 +7641,7 @@ output(Q) =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.036 seconds. Backtracks: 8540
+CPU time 0.03 seconds. Backtracks: 8540
 
 .......Q
 ...Q....
@@ -7664,7 +7664,7 @@ Q.......
 <div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>queens/queens-dual.pi
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>queens/queens-board.pi
 </pre></div>
 </div>
 </div>
@@ -7677,10 +7677,10 @@ Q.......
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>% n-queens, dual model
+<pre>% n-queens, the "board" model
 import cp.
 
-queens_dual(N, Board) =&gt;
+queens_board(N, Board) =&gt;
     Board = new_array(N, N),
     Board :: 0..1,
 
@@ -7704,7 +7704,7 @@ queens_dual(N, Board) =&gt;
 
 main([N]) =&gt;
     N := to_int(N),
-    queens_dual(N, Board),
+    queens_board(N, Board),
     time2(solve(Board)),
     if N &lt;= 32 then
         output(Board)
@@ -7760,7 +7760,7 @@ output(Board) =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.001 seconds. Backtracks: 24
+CPU time 0.0 seconds. Backtracks: 24
 
 Q.......
 ....Q...
@@ -7796,13 +7796,13 @@ Q.......
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>% n-queens, primal and dual models with channeling
+<pre>% n-queens, both the "columns" and "board" models with channeling
 import cp.
 
 queens(N, Q, Board) =&gt;    
-    % primal
-    queens_primal(N, Q),
-    queens_dual(N, Board),
+    % the two models
+    queens_columns(N, Q),
+    queens_board(N, Board),
     
     % channeling
     foreach(I in 1..N, J in 1..N)
@@ -7817,14 +7817,14 @@ main([N]) =&gt;
         output(Q)
     end.
 
-queens_primal(N, Q) =&gt;
+queens_columns(N, Q) =&gt;
     Q = new_array(N),
     Q :: 1..N,
     all_different(Q),
     all_different([$Q[I] - I : I in 1..N]),
     all_different([$Q[I] + I : I in 1..N]).
 
-queens_dual(N, Board) =&gt;
+queens_board(N, Board) =&gt;
     Board = new_array(N, N),
     Board :: 0..1,
 
@@ -7905,9 +7905,9 @@ output(Q) =&gt;
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="0e7e56a5-572e-4b43-88cd-443d21929202" tabindex="0">
+<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="e06043ed-e759-4312-986e-3c10195c6b2e" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('0e7e56a5-572e-4b43-88cd-443d21929202');
+var element = document.getElementById('e06043ed-e759-4312-986e-3c10195c6b2e');
 "use strict";
 
 CodeMirror.defineMode("text/picat", function(config) {
@@ -8318,7 +8318,7 @@ main =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.128 seconds. Backtracks: 63778
+CPU time 0.091 seconds. Backtracks: 63778
 
 
 </pre>
@@ -8398,8 +8398,8 @@ main =&gt;
 <pre>Successful strategies:
 N=100: [[ff,down],[ff,reverse_split],[ff,split],[ff,up],[ff,updown],[ffc,down],[ffc,reverse_split],[ffc,split],[ffc,up],[ffc,updown],[ffd,down],[ffd,reverse_split],[ffd,split],[ffd,up],[ffd,updown]]
 N=110: [[ff,updown],[ffc,updown]]
-N=120: [[ff,updown],[ffc,updown]]
-N=130: [[ff,updown],[ffc,updown]]
+N=120: [[ff,updown]]
+N=130: [[ff,updown]]
 N=140: []
 N=150: []
 N=160: []

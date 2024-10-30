@@ -18,8 +18,6 @@ main([N, K]) =>
     % channeling if it is a bijection (K=N and injective)
     assignment(F, FInv),
 
-
-
     % % dual model in general
     % FInv = new_array(K, N),
     % FInv :: 0..1,

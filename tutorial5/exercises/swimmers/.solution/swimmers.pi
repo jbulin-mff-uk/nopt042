@@ -1,54 +1,57 @@
 import cp.
 
-main =>
-    cl(sample_instance),
-    sample_instance(SwimmerNames, StyleNames, Times),
-    go(SwimmerNames, StyleNames, Times),
+main => main(["primal"]).
 
-    M = 1000,
-    time2(test(M)).
+main([Model]) => main([Model, "sample"]).
+
+main([Model, Instance]) => 
     
-test(M) =>
-    cl(random_instance),
-    MinTime = 45,
-    MaxTime = 65,
-    N = 12,
-    K = 12,
-    foreach(_ in 1..M)
-        random_instance(N, K, MinTime, MaxTime, SwimmerNames, StyleNames, Times),
+    if Instance = "sample" then
+        cl(sample_instance),
+        sample_instance(SwimmerNames, StyleNames, Times)        
+    elseif Instance = "random" then
+        cl(random_instance),
+        MinTime = 40,
+        MaxTime = 80,
+        N = 20,
+        K = 20,    
+        random_instance(N, K, MinTime, MaxTime, SwimmerNames, StyleNames, Times)
+    else
+        println("Unknown instance type")
+    end,
+    go(SwimmerNames, StyleNames, Times, Model).
+
+go(SwimmerNames, StyleNames, Times, Model) =>
+    
+    printf("# %w model:\n", Model),
+
+    if Model = "primal" then
         primal_model(StyleOfSwimmer, Times, TotalTime),
         solve([$min(TotalTime), StyleOfSwimmer]),
-        % dual_model(SwimmerOfStyle, Times, TotalTime),
-        % solve([$min(TotalTime), SwimmerOfStyle]),
-        % channeling_model(StyleOfSwimmer, SwimmerOfStyle, Times, TotalTime),
-        % solve([$min(TotalTime), StyleOfSwimmer ++ SwimmerOfStyle])
-    end.
-    
- 
-go(SwimmerNames, StyleNames, Times) =>
-    primal_model(StyleOfSwimmer, Times, TotalTime),
-    time2(solve([$min(TotalTime), StyleOfSwimmer])),
-    println("\nPrimal model:"),
-    foreach(I in 1..SwimmerNames.length)
-        printf("Swimmer %w is swims %w\n", SwimmerNames[I], StyleNames[StyleOfSwimmer[I]])
-    end,
-
-    dual_model(SwimmerOfStyle, Times, TotalTime),
-    time2(solve([$min(TotalTime), SwimmerOfStyle])),
-    println("\nDual model:"),
-    foreach(J in 1..StyleNames.length)
-        printf("Style %w is swum  by %w\n", StyleNames[J], SwimmerNames[SwimmerOfStyle[J]])
-    end,
-
-    channeling(StyleOfSwimmer, SwimmerOfStyle, Times, TotalTime),
-    time2(solve([$min(TotalTime), StyleOfSwimmer ++ SwimmerOfStyle])),
-    println("\nChanneling model:"),
-    foreach(I in 1..SwimmerNames.length)
-        printf("Swimmer %w is swims %w\n", SwimmerNames[I], StyleNames[StyleOfSwimmer[I]])
-    end,
-    println("or in the dual view"),
-    foreach(J in 1..StyleNames.length)
-        printf("Style %w is swum  by %w\n", StyleNames[J], SwimmerNames[SwimmerOfStyle[J]])
+        printf("Total time: %d\n", TotalTime),
+        foreach(I in 1..SwimmerNames.length)
+            printf("Swimmer %w is swims %w\n", SwimmerNames[I], StyleNames[StyleOfSwimmer[I]])
+        end
+    elseif Model = "dual" then
+        dual_model(SwimmerOfStyle, Times, TotalTime),
+        solve([$min(TotalTime), SwimmerOfStyle]),
+        printf("Total time: %d\n", TotalTime),
+        foreach(J in 1..StyleNames.length)
+            printf("Style %w is swum  by %w\n", StyleNames[J], SwimmerNames[SwimmerOfStyle[J]])
+        end
+    elseif Model = "channeling" then
+        channeling(StyleOfSwimmer, SwimmerOfStyle, Times, TotalTime),
+        solve([$min(TotalTime), StyleOfSwimmer ++ SwimmerOfStyle]),    
+        printf("Total time: %d\n", TotalTime),
+        foreach(I in 1..SwimmerNames.length)
+            printf("Swimmer %w is swims %w\n", SwimmerNames[I], StyleNames[StyleOfSwimmer[I]])
+        end,
+        println("or in the dual view"),
+        foreach(J in 1..StyleNames.length)
+            printf("Style %w is swum  by %w\n", StyleNames[J], SwimmerNames[SwimmerOfStyle[J]])
+        end
+    else
+        printf("Unknown model: %w\n", Model)
     end.
 
 

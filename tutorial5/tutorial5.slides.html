@@ -7492,9 +7492,9 @@ main {
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="ec714af1-9689-45e4-b563-bcc475763e89" tabindex="0">
+<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="6d538518-46e6-44d0-a9f4-ef852b064db2" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('ec714af1-9689-45e4-b563-bcc475763e89');
+var element = document.getElementById('6d538518-46e6-44d0-a9f4-ef852b064db2');
 "use strict";
 
 CodeMirror.defineMode("text/picat", function(config) {
@@ -7975,7 +7975,7 @@ langford-dual.pi	langford-primal.pi
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Default search strategy:
-CPU time 1.435 seconds. Backtracks: 250746
+CPU time 2.948 seconds. Backtracks: 250746
 
 {1,3,1,6,7,3,8,5,2,4,6,2,7,5,4,8}
 </pre>
@@ -8005,7 +8005,7 @@ CPU time 1.435 seconds. Backtracks: 250746
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Good search strategy:
-CPU time 0.081 seconds. Backtracks: 9160
+CPU time 0.102 seconds. Backtracks: 9160
 
 {2,4,7,2,8,6,4,1,5,1,7,3,6,8,5,3}
 </pre>
@@ -8035,7 +8035,7 @@ CPU time 0.081 seconds. Backtracks: 9160
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.0 seconds. Backtracks: 59
+CPU time 0.001 seconds. Backtracks: 59
 
 Positions: {1,4,8,11,9,6,2,5,3,7,12,16,15,13,10,14}
 </pre>
@@ -8065,7 +8065,7 @@ Positions: {1,4,8,11,9,6,2,5,3,7,12,16,15,13,10,14}
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 2.004 seconds. Backtracks: 250746
+CPU time 2.91 seconds. Backtracks: 250746
 
 {1,3,1,6,7,3,8,5,2,4,6,2,7,5,4,8}
 Positions: {1,9,2,10,8,4,5,7,3,12,6,15,14,11,13,16}
@@ -8096,7 +8096,7 @@ Positions: {1,9,2,10,8,4,5,7,3,12,6,15,14,11,13,16}
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 7.671 seconds. Backtracks: 4440408
+CPU time 11.865 seconds. Backtracks: 4440408
 
 Positions: {1,2,4,6,7,9,19,20,18,21,24,25,26,22,23,14,17,15,10,12,3,5,8,11,13,16,27,29,28,32,36,38,40,37,39,31,35,34,30,33}
 </pre>
@@ -8231,7 +8231,9 @@ Random instance:
 <div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>exercises/swimmers/.solution/swimmers
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>exercises/swimmers/.solution/swimmers<span class="w"> </span>primal
+<span class="o">!</span>picat<span class="w"> </span>exercises/swimmers/.solution/swimmers<span class="w"> </span>dual
+<span class="o">!</span>picat<span class="w"> </span>exercises/swimmers/.solution/swimmers<span class="w"> </span>channeling
 </pre></div>
 </div>
 </div>
@@ -8244,101 +8246,186 @@ Random instance:
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
-CPU time 0.0 seconds. Backtracks: 2
-
-
-Primal model:
+<pre># primal model:
+Total time: 207
 Swimmer A is swims Fly
 Swimmer B is swims Back
 Swimmer C is swims Free
 Swimmer D is swims Breast
-
-CPU time 0.0 seconds. Backtracks: 5
-
-
-Primal model:
-Swimmer A is swims Fly
-Swimmer B is swims Free
-Swimmer C is swims Breast
-Swimmer D is swims Back
-
-CPU time 0.001 seconds. Backtracks: 9
-
-
-Primal model:
-Swimmer A is swims Breast
-Swimmer B is swims Fly
-Swimmer C is swims Free
-Swimmer D is swims Back
-
-CPU time 0.0 seconds. Backtracks: 12
-
-
-Primal model:
-Swimmer A is swims Back
-Swimmer B is swims Fly
-Swimmer C is swims Free
-Swimmer D is swims Breast
-
-CPU time 0.0 seconds. Backtracks: 18
-
-
-Primal model:
-Swimmer A is swims Breast
-Swimmer B is swims Back
-Swimmer C is swims Free
-Swimmer D is swims Fly
-
-CPU time 0.0 seconds. Backtracks: 20
-
-
-Primal model:
-Swimmer A is swims Fly
-Swimmer B is swims Breast
-Swimmer C is swims Free
-Swimmer D is swims Back
-
-CPU time 0.001 seconds. Backtracks: 24
-
-
-Primal model:
-Swimmer A is swims Free
-Swimmer B is swims Fly
-Swimmer C is swims Breast
-Swimmer D is swims Back
-
-CPU time 0.0 seconds. Backtracks: 0
-
-
-Dual model:
-Style Free is swum  by A
-Style Breast is swum  by C
-Style Fly is swum  by B
-Style Back is swum  by D
-
-CPU time 0.001 seconds. Backtracks: 0
-
-
-Channeling model:
-Swimmer A is swims Free
-Swimmer B is swims Fly
-Swimmer C is swims Breast
-Swimmer D is swims Back
-or in the dual view
-Style Free is swum  by A
-Style Breast is swum  by C
-Style Fly is swum  by B
-Style Back is swum  by D
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
-CPU time 52.97 seconds. Backtracks: 417964
+<pre># dual model:
+Total time: 207
+Style Free is swum  by C
+Style Breast is swum  by D
+Style Fly is swum  by A
+Style Back is swum  by B
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre># channeling model:
+Total time: 207
+Swimmer A is swims Fly
+Swimmer B is swims Back
+Swimmer C is swims Free
+Swimmer D is swims Breast
+or in the dual view
+Style Free is swum  by C
+Style Breast is swum  by D
+Style Fly is swum  by A
+Style Back is swum  by B
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=91f0e399-566a-4b86-a5c6-a835e7c7de65">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>exercises/swimmers/.solution/swimmers<span class="w"> </span>primal<span class="w"> </span>random
+<span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>exercises/swimmers/.solution/swimmers<span class="w"> </span>dual<span class="w"> </span>random
+<span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>exercises/swimmers/.solution/swimmers<span class="w"> </span>channeling<span class="w"> </span>random
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre># primal model:
+Total time: 848
+Swimmer Swimmer1 is swims Style3
+Swimmer Swimmer2 is swims Style6
+Swimmer Swimmer3 is swims Style16
+Swimmer Swimmer4 is swims Style1
+Swimmer Swimmer5 is swims Style14
+Swimmer Swimmer6 is swims Style7
+Swimmer Swimmer7 is swims Style13
+Swimmer Swimmer8 is swims Style19
+Swimmer Swimmer9 is swims Style5
+Swimmer Swimmer10 is swims Style10
+Swimmer Swimmer11 is swims Style12
+Swimmer Swimmer12 is swims Style9
+Swimmer Swimmer13 is swims Style4
+Swimmer Swimmer14 is swims Style11
+Swimmer Swimmer15 is swims Style8
+Swimmer Swimmer16 is swims Style17
+Swimmer Swimmer17 is swims Style2
+Swimmer Swimmer18 is swims Style18
+Swimmer Swimmer19 is swims Style15
+Swimmer Swimmer20 is swims Style20
 
+real	0m0.041s
+user	0m0.030s
+sys	0m0.013s
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre># dual model:
+Total time: 848
+Style Style1 is swum  by Swimmer3
+Style Style2 is swum  by Swimmer6
+Style Style3 is swum  by Swimmer16
+Style Style4 is swum  by Swimmer1
+Style Style5 is swum  by Swimmer14
+Style Style6 is swum  by Swimmer7
+Style Style7 is swum  by Swimmer13
+Style Style8 is swum  by Swimmer19
+Style Style9 is swum  by Swimmer5
+Style Style10 is swum  by Swimmer10
+Style Style11 is swum  by Swimmer12
+Style Style12 is swum  by Swimmer9
+Style Style13 is swum  by Swimmer4
+Style Style14 is swum  by Swimmer11
+Style Style15 is swum  by Swimmer8
+Style Style16 is swum  by Swimmer17
+Style Style17 is swum  by Swimmer2
+Style Style18 is swum  by Swimmer18
+Style Style19 is swum  by Swimmer15
+Style Style20 is swum  by Swimmer20
+
+real	0m0.021s
+user	0m0.000s
+sys	0m0.022s
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre># channeling model:
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Total time: 903
+Swimmer Swimmer1 is swims Style3
+Swimmer Swimmer2 is swims Style6
+Swimmer Swimmer3 is swims Style1
+Swimmer Swimmer4 is swims Style8
+Swimmer Swimmer5 is swims Style17
+Swimmer Swimmer6 is swims Style2
+Swimmer Swimmer7 is swims Style13
+Swimmer Swimmer8 is swims Style4
+Swimmer Swimmer9 is swims Style12
+Swimmer Swimmer10 is swims Style10
+Swimmer Swimmer11 is swims Style11
+Swimmer Swimmer12 is swims Style9
+Swimmer Swimmer13 is swims Style7
+Swimmer Swimmer14 is swims Style16
+Swimmer Swimmer15 is swims Style19
+Swimmer Swimmer16 is swims Style14
+Swimmer Swimmer17 is swims Style5
+Swimmer Swimmer18 is swims Style18
+Swimmer Swimmer19 is swims Style15
+Swimmer Swimmer20 is swims Style20
+or in the dual view
+Style Style1 is swum  by Swimmer3
+Style Style2 is swum  by Swimmer6
+Style Style3 is swum  by Swimmer1
+Style Style4 is swum  by Swimmer8
+Style Style5 is swum  by Swimmer17
+Style Style6 is swum  by Swimmer2
+Style Style7 is swum  by Swimmer13
+Style Style8 is swum  by Swimmer4
+Style Style9 is swum  by Swimmer12
+Style Style10 is swum  by Swimmer10
+Style Style11 is swum  by Swimmer11
+Style Style12 is swum  by Swimmer9
+Style Style13 is swum  by Swimmer7
+Style Style14 is swum  by Swimmer16
+Style Style15 is swum  by Swimmer19
+Style Style16 is swum  by Swimmer14
+Style Style17 is swum  by Swimmer5
+Style Style18 is swum  by Swimmer18
+Style Style19 is swum  by Swimmer15
+Style Style20 is swum  by Swimmer20
+
+real	0m7.269s
+user	0m7.690s
+sys	0m0.023s
 </pre>
 </div>
 </div>
@@ -8349,7 +8436,7 @@ CPU time 52.97 seconds. Backtracks: 417964
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>exercises/swimmers/.solution/swimmers.pi
@@ -8367,55 +8454,58 @@ CPU time 52.97 seconds. Backtracks: 417964
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>import cp.
 
-main =&gt;
-    cl(sample_instance),
-    sample_instance(SwimmerNames, StyleNames, Times),
-    go(SwimmerNames, StyleNames, Times),
+main =&gt; main(["primal"]).
 
-    M = 1000,
-    time2(test(M)).
+main([Model]) =&gt; main([Model, "sample"]).
+
+main([Model, Instance]) =&gt; 
     
-test(M) =&gt;
-    cl(random_instance),
-    MinTime = 45,
-    MaxTime = 65,
-    N = 12,
-    K = 12,
-    foreach(_ in 1..M)
-        random_instance(N, K, MinTime, MaxTime, SwimmerNames, StyleNames, Times),
+    if Instance = "sample" then
+        cl(sample_instance),
+        sample_instance(SwimmerNames, StyleNames, Times)        
+    elseif Instance = "random" then
+        cl(random_instance),
+        MinTime = 40,
+        MaxTime = 80,
+        N = 20,
+        K = 20,    
+        random_instance(N, K, MinTime, MaxTime, SwimmerNames, StyleNames, Times)
+    else
+        println("Unknown instance type")
+    end,
+    go(SwimmerNames, StyleNames, Times, Model).
+
+go(SwimmerNames, StyleNames, Times, Model) =&gt;
+    
+    printf("# %w model:\n", Model),
+
+    if Model = "primal" then
         primal_model(StyleOfSwimmer, Times, TotalTime),
         solve([$min(TotalTime), StyleOfSwimmer]),
-        % dual_model(SwimmerOfStyle, Times, TotalTime),
-        % solve([$min(TotalTime), SwimmerOfStyle]),
-        % channeling_model(StyleOfSwimmer, SwimmerOfStyle, Times, TotalTime),
-        % solve([$min(TotalTime), StyleOfSwimmer ++ SwimmerOfStyle])
-    end.
-    
- 
-go(SwimmerNames, StyleNames, Times) =&gt;
-    primal_model(StyleOfSwimmer, Times, TotalTime),
-    time2(solve([$min(TotalTime), StyleOfSwimmer])),
-    println("\nPrimal model:"),
-    foreach(I in 1..SwimmerNames.length)
-        printf("Swimmer %w is swims %w\n", SwimmerNames[I], StyleNames[StyleOfSwimmer[I]])
-    end,
-
-    dual_model(SwimmerOfStyle, Times, TotalTime),
-    time2(solve([$min(TotalTime), SwimmerOfStyle])),
-    println("\nDual model:"),
-    foreach(J in 1..StyleNames.length)
-        printf("Style %w is swum  by %w\n", StyleNames[J], SwimmerNames[SwimmerOfStyle[J]])
-    end,
-
-    channeling(StyleOfSwimmer, SwimmerOfStyle, Times, TotalTime),
-    time2(solve([$min(TotalTime), StyleOfSwimmer ++ SwimmerOfStyle])),
-    println("\nChanneling model:"),
-    foreach(I in 1..SwimmerNames.length)
-        printf("Swimmer %w is swims %w\n", SwimmerNames[I], StyleNames[StyleOfSwimmer[I]])
-    end,
-    println("or in the dual view"),
-    foreach(J in 1..StyleNames.length)
-        printf("Style %w is swum  by %w\n", StyleNames[J], SwimmerNames[SwimmerOfStyle[J]])
+        printf("Total time: %d\n", TotalTime),
+        foreach(I in 1..SwimmerNames.length)
+            printf("Swimmer %w is swims %w\n", SwimmerNames[I], StyleNames[StyleOfSwimmer[I]])
+        end
+    elseif Model = "dual" then
+        dual_model(SwimmerOfStyle, Times, TotalTime),
+        solve([$min(TotalTime), SwimmerOfStyle]),
+        printf("Total time: %d\n", TotalTime),
+        foreach(J in 1..StyleNames.length)
+            printf("Style %w is swum  by %w\n", StyleNames[J], SwimmerNames[SwimmerOfStyle[J]])
+        end
+    elseif Model = "channeling" then
+        channeling(StyleOfSwimmer, SwimmerOfStyle, Times, TotalTime),
+        solve([$min(TotalTime), StyleOfSwimmer ++ SwimmerOfStyle]),    
+        printf("Total time: %d\n", TotalTime),
+        foreach(I in 1..SwimmerNames.length)
+            printf("Swimmer %w is swims %w\n", SwimmerNames[I], StyleNames[StyleOfSwimmer[I]])
+        end,
+        println("or in the dual view"),
+        foreach(J in 1..StyleNames.length)
+            printf("Style %w is swum  by %w\n", StyleNames[J], SwimmerNames[SwimmerOfStyle[J]])
+        end
+    else
+        printf("Unknown model: %w\n", Model)
     end.
 
 
@@ -8485,7 +8575,7 @@ F :: 1..K.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>functions.pi<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span>
@@ -8513,7 +8603,7 @@ F :: 1..K.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>functions.pi
@@ -8548,8 +8638,6 @@ main([N, K]) =&gt;
 
     % channeling if it is a bijection (K=N and injective)
     assignment(F, FInv),
-
-
 
     % % dual model in general
     % FInv = new_array(K, N),

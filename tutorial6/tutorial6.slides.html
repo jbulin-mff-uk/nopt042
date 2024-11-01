@@ -7451,7 +7451,36 @@ main {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="First,-leftovers-from-the-previous-tutorial...">First, leftovers from the previous tutorial...<a class="anchor-link" href="#First,-leftovers-from-the-previous-tutorial...">¶</a></h2>
+<h3 id="What-was-in-Lecture-4">What was in Lecture 4<a class="anchor-link" href="#What-was-in-Lecture-4">¶</a></h3><p>Consistency techniques</p>
+<ul>
+<li>use constraints <em>actively</em></li>
+<li>remove inconsistent values (or combinations thereof) from the domains</li>
+<li><strong>node consistency</strong>: intersect domain with all unary constraints</li>
+<li><strong>arc consistency</strong>: ensure that every value of $x$ is compatible with some value $y$ via every binary constraint</li>
+<li>naive implementation: AC-1 (revise all arcs, repeat until no change); improvement AC-2</li>
+<li><strong>AC-3</strong>: most widely used, keep a queue of arcs to revise (reduction of one domain triggers revision of neighboring domains)</li>
+<li>AC-4 (best worst-case time complexity), AC-5, AC-6, AC-7, AC-3.1, AC-2001</li>
+<li>directional arc consistency: DAC-1</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3b4cc2ca-91ad-4b23-88a2-0306a8a1f1f5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Exercise:">Exercise:<a class="anchor-link" href="#Exercise:">¶</a></h3><ul>
+<li>Explain why consistency techniques cannot destroy solutions</li>
+<li>Give an example of an instance where<ul>
+<li>not node consistent</li>
+<li>node consistent but not arc consistent</li>
+<li>arc consistent but not solvable</li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -7475,9 +7504,9 @@ main {
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="1ba99383-0d99-4ca9-85dc-f42816f7a6e6" tabindex="0">
+<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="21f6c4a7-e60a-47a0-a82d-cd61ef8a2622" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('1ba99383-0d99-4ca9-85dc-f42816f7a6e6');
+var element = document.getElementById('21f6c4a7-e60a-47a0-a82d-cd61ef8a2622');
 "use strict";
 
 CodeMirror.defineMode("text/picat", function(config) {
@@ -7841,6 +7870,98 @@ Jupyter.notebook.get_cells().map(function(cell){
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=85bf4f7a-7e6e-4c4f-80f7-35f3d06b697f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">picat</span>
+import cp.
+main =&gt; not_nc(X), solve([X]).
+
+not_nc(X) =&gt;
+    X :: 0..9,
+    X #&gt; 2,
+    X #&lt; 8.
+
+nc_not_ac(Y,Z) =&gt;
+    [Y,Z] :: 0..9,
+    Y + Z #= 5.
+
+ac_not_solvable(U,V,W) =&gt;
+    [U,V,W] :: 0..1,
+    U #!= V,
+    V #!= W,
+    W #!= U.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ea1304c4-9c3c-4dd6-b733-076bd418c5f8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Beware-of-time2/1!">Beware of time2/1!<a class="anchor-link" href="#Beware-of-time2/1!">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bad107ef-d5bd-4b8f-bbd4-07b641c979d5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">picat</span>
+import cp.
+main =&gt;
+    pigeonhole(L),    
+    time(solve(L)), print(L).
+    % time2(solve(L)), print(L).
+
+pigeonhole(L) =&gt; 
+    L = new_list(11),
+    L :: 1..10,
+    all_different(L).
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>*** error(failed,main/0)
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div></div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f1411b50">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -7910,7 +8031,7 @@ much time and how many people are necessary to move each item. Schedule the movi
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>moving/instance.pi
@@ -7943,10 +8064,10 @@ much time and how many people are necessary to move each item. Schedule the movi
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="ch">#!cat moving/moving.pi</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="ch">#!cat moving/.solution/moving.pi</span>
 </pre></div>
 </div>
 </div>

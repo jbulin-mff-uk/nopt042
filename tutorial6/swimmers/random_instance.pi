@@ -1,4 +1,0 @@
-random_instance(N, K, MinTime, MaxTime, SwimmerNames, StyleNames, Times) =>
-    SwimmerNames = {"Swimmer" ++ I.to_string: I in 1..N},
-    StyleNames = {"Style" ++ J.to_string: J in 1..K},
-    Times = {{random(MinTime, MaxTime): J in 1..K} : I in 1..N}.

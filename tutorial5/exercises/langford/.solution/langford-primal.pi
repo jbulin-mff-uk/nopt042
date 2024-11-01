@@ -4,7 +4,7 @@ main([N]) =>
     N := N.to_int, 
     langford_primal(N, Sequence),
     print("Default search strategy:"),
-    time2(solve(Sequence)),
+    solve(Sequence),
     println(Sequence).
 
 langford_primal(N, Sequence) =>

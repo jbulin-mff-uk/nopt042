@@ -7504,9 +7504,9 @@ main {
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="21f6c4a7-e60a-47a0-a82d-cd61ef8a2622" tabindex="0">
+<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="d761f2be-edef-4713-bed9-3581b9abf691" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('21f6c4a7-e60a-47a0-a82d-cd61ef8a2622');
+var element = document.getElementById('d761f2be-edef-4713-bed9-3581b9abf691');
 "use strict";
 
 CodeMirror.defineMode("text/picat", function(config) {
@@ -7980,7 +7980,7 @@ pigeonhole(L) =&gt;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Example:-moving">Example: moving<a class="anchor-link" href="#Example:-moving">¶</a></h2><p>A simple scheduling problem: Four friends are moving. The table shows how
+<h2 id="Exercise:-moving">Exercise: moving<a class="anchor-link" href="#Exercise:-moving">¶</a></h2><p>A simple scheduling problem: Four friends are moving. The table shows how
 much time and how many people are necessary to move each item. Schedule the moving to minimize total time. (Adapted from R. Barták's tutorial; check the SICStus Prolog model.)</p>
 <table>
 <thead>
@@ -8091,7 +8091,7 @@ much time and how many people are necessary to move each item. Schedule the movi
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="The-cumulative-global-constraint">The <code>cumulative</code> global constraint<a class="anchor-link" href="#The-cumulative-global-constraint">¶</a></h2><p>For the above problem we can use the following global constraint:</p>
+<h3 id="The-cumulative-global-constraint">The <code>cumulative</code> global constraint<a class="anchor-link" href="#The-cumulative-global-constraint">¶</a></h3><p>For the above problem we can use the following global constraint:</p>
 <pre><code>cumulative(StartTimes, Durations, Resources, Limit)
 </code></pre>
 <p>which means that we have <code>Limit</code> of resource available, each item starts at <code>StartTimes[i]</code>, takes <code>Durations[i]</code> time and consumes <code>Resources[i]</code> of the resource.</p>
@@ -8110,6 +8110,21 @@ much time and how many people are necessary to move each item. Schedule the movi
 <li><a href="https://github.com/mingodad/picat">Picat on GitHub (unofficial)</a></li>
 <li><a href="https://sofdem.github.io/gccat/gccat/index.html">Global Constraint Catalog</a>: the <a href="https://sofdem.github.io/gccat/gccat/Ccumulative.html">cumulative</a> constraint - see the references</li>
 </ul>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=13e58cd4-1e4b-46a8-aeb7-bfde3bf7441d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Exercise:-Meeting-scheduling">Exercise: Meeting scheduling<a class="anchor-link" href="#Exercise:-Meeting-scheduling">¶</a></h2><p>We have a group of agents. We are given a set of meetings, where each meeting has a location, a duration, and a subset of agents that must attend that meeting.
+Moreover, we are given a distance (in time units) between each pair of locations.</p>
+<p>Our goal is to schedule the meetings into time slots such that each agent can attend all the meetings. (The agents can start and finish at any location.)
+We want to minimize the end time (when all meetings have concluded).</p>
+<p>See <a href="https://www.csplib.org/Problems/prob046/">https://www.csplib.org/Problems/prob046/</a> for a description of the problem and more details, including a sample instance.</p>
 </div>
 </div>
 </div>

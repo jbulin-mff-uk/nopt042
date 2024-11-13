@@ -7445,6 +7445,43 @@ main {
 </div>
 </div>
 </div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=02b76992-1031-4d9b-b63b-43a822019405">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="What-was-in-Lecture-5">What was in Lecture 5<a class="anchor-link" href="#What-was-in-Lecture-5">¶</a></h3><p>Path consistency</p>
+<ul>
+<li><strong>arc consistency</strong>: never destroys solutions, sometimes can find a solution (without backtracking) -- iff all domains reduced to 1 element</li>
+<li><strong>path consistency</strong>: for any path in variables, if assignment of start point and end point satisfy all binary constraints between them, then there is a consistent path in the constraint network</li>
+<li>enough to enforce for paths of length two ("every edge [in the constraint network] extends to any triangle")</li>
+<li>PC is stronger, removes pairs of inconsistent values</li>
+<li>but it is more expensive</li>
+<li>algorithms: PC-1, PC-2 [, PC-3, PC-4, PC-5]</li>
+<li>directional path consistency</li>
+<li>drawbacks of PC: memory consumption, bad strength/efficiency ration, modifies the constraint network (adds redundant constraints, changes connectivity, ruins graph-structure-based heuristics), still not complete</li>
+<li>restricted path consistency (AC, only check PC for pairs which are the only support for one of the values)</li>
+</ul>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b6f2dfd4-340f-493c-85d1-5eca9940ba01">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Exercise:">Exercise:<a class="anchor-link" href="#Exercise:">¶</a></h3><ul>
+<li>Explain why PC is equivalent to path consistency for paths of length two</li>
+<li>Give an example of an instance which is AC but not PC</li>
+<li>Give an example of an instance which is PC (with all domains nonempty) but not solvable</li>
+</ul>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=29c94f8e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7467,7 +7504,7 @@ main {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Example:-Global-contiguity">Example: Global contiguity<a class="anchor-link" href="#Example:-Global-contiguity">¶</a></h2><p>Given a 0-1 sequence, express that if there are 1's, they must form a single, contiguous subsequence, e.g. accept <code>0000</code> and <code>0001111100</code> but not <code>00111010</code>. (Problem from <a href="http://picat-lang.org/picatbook2015/constraint_solving_and_planning_with_picat.pdf">the book</a>.)</p>
+<h2 id="Exercise:-Global-contiguity">Exercise: Global contiguity<a class="anchor-link" href="#Exercise:-Global-contiguity">¶</a></h2><p>Given a 0-1 sequence, express that if there are 1's, they must form a single, contiguous subsequence, e.g. accept <code>0000</code> and <code>0001111100</code> but not <code>00111010</code>. (Problem from <a href="http://picat-lang.org/picatbook2015/constraint_solving_and_planning_with_picat.pdf">the book</a>.)</p>
 </div>
 </div>
 </div>
@@ -7479,8 +7516,8 @@ main {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>global-contiguity/global_contiguity.pi<span class="w"> </span><span class="m">0011100</span>
-<span class="o">!</span>picat<span class="w"> </span>global-contiguity/global_contiguity.pi<span class="w"> </span><span class="m">0110111</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>global-contiguity/global_contiguity<span class="w"> </span><span class="m">0011100</span>
+<span class="o">!</span>picat<span class="w"> </span>global-contiguity/global_contiguity<span class="w"> </span><span class="m">0110111</span>
 </pre></div>
 </div>
 </div>
@@ -7528,12 +7565,8 @@ main {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/***********************************************************
-  Adapted from
-  global_contiguity.pi
-  from Constraint Solving and Planning with Picat, Springer 
-  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
-***********************************************************/
+<pre>% Adapted from Constraint Solving and Planning with Picat, Springer 
+% by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman
 import cp.
 
 main([Xstr]) =&gt; 
@@ -7541,35 +7574,29 @@ main([Xstr]) =&gt;
   global_contiguity(X),
   solve(X),
   println("ok").
-  
-
 
 global_contiguity(X) =&gt;
   N = X.length,
+  InputMax = 2,
+  
+  % Translate X's 0..1 to 1..2
+  RegInput = new_list(N),
+  RegInput :: 1..InputMax,  % 1..2
+  foreach (I in 1..N) 
+    RegInput[I] #= X[I]+1  
+  end,
 
-  % This uses the regular expression "0*1*0*" to 
-  % require that all 1's (if any) in an array 
-  % appear contiguously.
+  % DFA for the regex "0*1*0*"
   Transition = [
-               [1,2], % state 1: 0* 
-               [3,2], % state 2: 1*
-               [3,0]  % state 3: 0*
-               ],
-   NStates = 3,
-   InputMax = 2,
-   InitialState = 1,
-   FinalStates = [1,2,3],
-
-   RegInput = new_list(N),
-   RegInput :: 1..InputMax,  % 1..2
-
-   % Translate X's 0..1 to RegInput's 1..2
-   foreach (I in 1..N) 
-      RegInput[I] #= X[I]+1  
-   end,
-
-   regular(RegInput,NStates,InputMax,
-           Transition,InitialState,FinalStates).
+    [1,2], % state 1: 0* 
+    [3,2], % state 2: 1*
+    [3,0]  % state 3: 0*
+  ],
+  NStates = 3,  
+  InitialState = 1,
+  FinalStates = [1,2,3],
+  
+  regular(RegInput,NStates,InputMax,Transition,InitialState,FinalStates).
 </pre>
 </div>
 </div>
@@ -7582,7 +7609,7 @@ global_contiguity(X) =&gt;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Example:-Nurse-roster">Example: Nurse roster<a class="anchor-link" href="#Example:-Nurse-roster">¶</a></h2><p>Schedule the shifts of <code>NumNurses</code> nurses over <code>NumDays</code> days. Each nurse is scheduled for each day as either: (d) on day shift, (n) on night shift, or (o) off. In each four day period a nurse must have at least one day off, and no nurse can be scheduled for 3 night shifts in a row.</p>
+<h2 id="Exercise:-Nurse-roster">Exercise: Nurse roster<a class="anchor-link" href="#Exercise:-Nurse-roster">¶</a></h2><p>Schedule the shifts of <code>NumNurses</code> nurses over <code>NumDays</code> days. Each nurse is scheduled for each day as either: (d) on day shift, (n) on night shift, or (o) off. In each four day period a nurse must have at least one day off, and no nurse can be scheduled for 3 night shifts in a row.</p>
 <p>We require <code>ReqDay</code> nurses on day shift each day, and <code>ReqNight</code> nurses on night shift, and that each nurse takes at least <code>MinNight</code> night shifts. (Problem from <a href="https://www.minizinc.org/doc-2.4.3/en/predicates.html#regular">the MiniZinc tutorial</a>, a similar problem is in <a href="http://picat-lang.org/picatbook2015/constraint_solving_and_planning_with_picat.pdf">the book</a>.)</p>
 </div>
 </div>
@@ -7626,7 +7653,7 @@ global_contiguity(X) =&gt;
 <div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>nurse-roster/nurse_rostering_regular.pi<span class="w"> </span>instance.pi
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>nurse-roster/nurse_roster_regular<span class="w"> </span>instance
 </pre></div>
 </div>
 </div>
@@ -7640,22 +7667,22 @@ global_contiguity(X) =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.001 seconds. Backtracks: 12
+CPU time 0.0 seconds. Backtracks: 12
 
-dddodnn
-dddodnn
-dddodnn
-dddodnn
-dddodnn
-dddodnn
-dddodnn
-dddodnn
-dddodnn
-ddodnno
-ddodnno
-nnonodd
-nonnodd
-onndodd
+|  day  |  day  |  day  |  off  |  day  | night | night |
+|  day  |  day  |  day  |  off  |  day  | night | night |
+|  day  |  day  |  day  |  off  |  day  | night | night |
+|  day  |  day  |  day  |  off  |  day  | night | night |
+|  day  |  day  |  day  |  off  |  day  | night | night |
+|  day  |  day  |  day  |  off  |  day  | night | night |
+|  day  |  day  |  day  |  off  |  day  | night | night |
+|  day  |  day  |  day  |  off  |  day  | night | night |
+|  day  |  day  |  day  |  off  |  day  | night | night |
+|  day  |  day  |  off  |  day  | night | night |  off  |
+|  day  |  day  |  off  |  day  | night | night |  off  |
+| night | night |  off  | night |  off  |  day  |  day  |
+| night |  off  | night | night |  off  |  day  |  day  |
+|  off  | night | night |  day  |  off  |  day  |  day  |
 </pre>
 </div>
 </div>
@@ -7668,7 +7695,30 @@ onndodd
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><img alt="The DFA for nurse roster" src="https://www.minizinc.org/doc-2.4.3/en/images/dfa.svg"/></p>
+<p>State diagram of the DFA (in mermaid, will not render in the RISE slides), start state is 1, all states are final:</p>
+<div class="jp-Mermaid"><pre class="mermaid">
+stateDiagram-v2
+    1 --&gt; 2: day
+    1 --&gt; 3: night
+    1 --&gt; 1: off
+
+    2 --&gt; 4: day
+    2 --&gt; 4: night
+    2 --&gt; 1: off
+
+    3 --&gt; 4: day
+    3 --&gt; 5: night
+    3 --&gt; 1: off
+
+    4 --&gt; 6: day
+    4 --&gt; 6: night
+    4 --&gt; 1: off
+
+    5 --&gt; 6: day
+    5 --&gt; 1: off
+
+    6 --&gt; 1: off
+</pre></div>
 </div>
 </div>
 </div>
@@ -7680,7 +7730,7 @@ onndodd
 <div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>nurse-roster/nurse_rostering_regular.pi
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>nurse-roster/nurse_roster_regular.pi
 </pre></div>
 </div>
 </div>
@@ -7693,10 +7743,8 @@ onndodd
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/***********************************************************
-  Adapted from Constraint Solving and Planning with Picat, Springer 
-  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
-***********************************************************/
+<pre>% Adapted from Constraint Solving and Planning with Picat, Springer
+% by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman
 import cp.
 
 main([Filename]) =&gt;
@@ -7707,23 +7755,7 @@ main([Filename]) =&gt;
   time2(solve(Vars)),
   output(Roster).
 
-
 nurse_rostering(NumNurses, NumDays, ReqDay, ReqNight, MinNight, Roster, Stat) =&gt;
-  
-  % The DFA for the regular constraint. 
-  Transition = [ 
-  % d n o
-  [2,3,1], % state 1
-  [4,4,1], % state 2
-  [4,5,1], % state 3
-  [6,6,1], % state 4
-  [6,0,1], % state 5
-  [0,0,1]  % state 6
-  ],
-  NStates      = Transition.length, % number of states
-  InputMax     = 3,                 % 3 states
-  InitialState = 1,                 % start at state 1
-  FinalStates  = 1..6,              % all states are final
   DayShift   = 1,
   NightShift = 2,
   OffShift   = 3,
@@ -7732,11 +7764,28 @@ nurse_rostering(NumNurses, NumDays, ReqDay, ReqNight, MinNight, Roster, Stat) =&
   Roster = new_array(NumNurses, NumDays),
   Roster :: DayShift..OffShift,
 
-  % summary of the shifts: [day,night,off]
+  % summary of the shifts: day-night-off
   Stat = new_array(NumDays,3),
   Stat :: 0..NumNurses,
 
+  % The DFA for the regular constraint. 
+  Transition = [ 
+    % day-night-off
+    [2,3,1], % state 1
+    [4,4,1], % state 2
+    [4,5,1], % state 3
+    [6,6,1], % state 4
+    [6,0,1], % state 5
+    [0,0,1]  % state 6
+  ],
+  NStates      = Transition.length, % number of states
+  InputMax     = 3,                 % 3 states
+  InitialState = 1,                 % start at state 1
+  FinalStates  = 1..6,              % all states are final
+  
   % constraints
+    
+  % valid schedule
   foreach (I in 1..NumNurses) 
     regular([Roster[I,J] : J in 1..NumDays],
     NStates,
@@ -7745,6 +7794,7 @@ nurse_rostering(NumNurses, NumDays, ReqDay, ReqNight, MinNight, Roster, Stat) =&
     InitialState,
     FinalStates)
   end,
+
   % statistics for each day
   foreach (Day in 1..NumDays)
     foreach (Type in 1..3)
@@ -7762,14 +7812,13 @@ nurse_rostering(NumNurses, NumDays, ReqDay, ReqNight, MinNight, Roster, Stat) =&
     sum([Roster[Nurse, Day] #= NightShift : Day in 1..NumDays]) #&gt;= MinNight 
   end.
 
-
 output(Roster) =&gt;
-  Shifts = new_map(3,[1=d,2=n,3=o]),
-  foreach(Nurse in Roster) 
+  Shifts = new_map(3,[1="|  day  ",2="| night ",3="|  off  "]),
+  foreach(Nurse in Roster)     
     foreach(I in 1..Nurse.length)
       print(get(Shifts,Nurse[I]))
     end,
-    print("\n")
+    print("|\n")
   end.</pre>
 </div>
 </div>
@@ -7811,9 +7860,8 @@ constraint takes the form</p>
 <p>where <code>Vars</code> is either a tuple of variables or a list of tuples of variables, and <code>R</code> is a list of tuples in which each tuple takes the form $[a_1, ..., a_n]$, where $a_i$ is an integer or the don’t-care symbol ∗. A negative constraint takes the form:</p>
 </blockquote>
 <pre><code>table_notin(Vars, R)
-
----from [the guide](http://picat-lang.org/download/picat_guide.pdf)
 </code></pre>
+<p>--- from <a href="http://picat-lang.org/download/picat_guide.pdf">the guide</a></p>
 </div>
 </div>
 </div>
@@ -7824,7 +7872,7 @@ constraint takes the form</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Example:-Nurse-roster-using-table_in">Example: Nurse roster using <code>table_in</code><a class="anchor-link" href="#Example:-Nurse-roster-using-table_in">¶</a></h2><p>Model the above nurse roster problem using the constraint <code>table_in</code>. The model is slower, we will need a simpler instance. And for simplicity assume that <code>NumDays = 7</code>.</p>
+<h2 id="Exercise:-Nurse-roster-using-table_in">Exercise: Nurse roster using <code>table_in</code><a class="anchor-link" href="#Exercise:-Nurse-roster-using-table_in">¶</a></h2><p>Model the above nurse roster problem using the constraint <code>table_in</code>. The model is slower, we will need a simpler instance. And, for simplicity, assume that <code>NumDays = 7</code>.</p>
 </div>
 </div>
 </div>
@@ -7867,7 +7915,7 @@ constraint takes the form</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>nurse-roster/nurse_rostering_table.pi<span class="w"> </span>instance2.pi
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>nurse-roster/nurse_roster_table<span class="w"> </span>instance2
 </pre></div>
 </div>
 </div>
@@ -7881,16 +7929,16 @@ constraint takes the form</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.035 seconds. Backtracks: 7796
+CPU time 0.041 seconds. Backtracks: 7796
 
-ddonnoo
-ddonnoo
-donnood
-donnood
-nnooddo
-nnooddo
-ooddonn
-ooddonn
+|  day  |  day  |  off  | night | night |  off  |  off  |
+|  day  |  day  |  off  | night | night |  off  |  off  |
+|  day  |  off  | night | night |  off  |  off  |  day  |
+|  day  |  off  | night | night |  off  |  off  |  day  |
+| night | night |  off  |  off  |  day  |  day  |  off  |
+| night | night |  off  |  off  |  day  |  day  |  off  |
+|  off  |  off  |  day  |  day  |  off  | night | night |
+|  off  |  off  |  day  |  day  |  off  | night | night |
 </pre>
 </div>
 </div>
@@ -7904,7 +7952,7 @@ ooddonn
 <div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>nurse-roster/nurse_rostering_table.pi
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>nurse-roster/nurse_roster_table.pi
 </pre></div>
 </div>
 </div>
@@ -7917,10 +7965,8 @@ ooddonn
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/***********************************************************
-  Adapted from Constraint Solving and Planning with Picat, Springer 
-  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
-***********************************************************/
+<pre>% Adapted from Constraint Solving and Planning with Picat, Springer
+% by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman
 import cp.
 
 main([Filename]) =&gt;
@@ -7931,27 +7977,22 @@ main([Filename]) =&gt;
   time2(solve(Vars)),
   output(Roster).
 
-
 % rotate valid schedules
 rotate_left(L) = rotate_left(L,1).
 rotate_left(L,N) = slice(L,N+1,L.length) ++ slice(L,1,N).
-
 
 nurse_rostering(NumNurses, NumDays, ReqDay, ReqNight, MinNight, Roster, Stat) =&gt;
 
   % Only works for 7-day rosters!
   NumDays = 7,
   
-  DayShift   = 1,
-  NightShift = 2,
-  OffShift   = 3,
-  D = 1,
-  N = 2,
-  O = 3,
+  DayShift   = 1, D = 1,
+  NightShift = 2, N = 2,
+  OffShift   = 3, O = 3,
 
   % Valid 7 day schedules:
-      % - up to rotation:
-      Valid_up_to_rotation = [
+  % - up to rotation:
+  Valid_up_to_rotation = [
     [D,D,D,D,D,O,O],
     [N,O,N,O,D,D,O],
     [N,N,O,O,D,D,O]
@@ -7968,43 +8009,42 @@ nurse_rostering(NumNurses, NumDays, ReqDay, ReqNight, MinNight, Roster, Stat) =&
   Roster = new_array(NumNurses, NumDays),
   Roster :: DayShift..OffShift,
 
-  % - summary of the shifts: [day,night,off]
+  % - summary of the shifts: day-night-off]
   Stat = new_array(NumDays,3),
   Stat :: 0..NumNurses,
 
   % constraints
 
-  % valid schedule
+  % - valid schedule
   foreach (Nurse in 1..NumNurses)
     table_in([Roster[Nurse,Day] : Day in 1..NumDays].to_array(), Valid)
   end,
-
-  % statistics for each day
+  
+  % - statistics for each day
   foreach (Day in 1..NumDays)
-  foreach (Type in 1..3)
-    Stat[Day,Type] #= sum([Roster[Nurse,Day] #= Type : Nurse in 1..NumNurses])
-  end,
-  sum([Stat[Day,Type] : Type in 1..3]) #= NumNurses,
-  % For each day the must be at least 3 nurses with 
-  % day shift, and 2 nurses with night shift
-  Stat[Day,DayShift] #&gt;= ReqDay, 
-  Stat[Day,NightShift] #&gt;= ReqNight
+    foreach (Type in 1..3)
+      Stat[Day,Type] #= sum([Roster[Nurse,Day] #= Type : Nurse in 1..NumNurses])
+    end,
+    sum([Stat[Day,Type] : Type in 1..3]) #= NumNurses,
+    % For each day the must be at least 3 nurses with 
+    % day shift, and 2 nurses with night shift
+    Stat[Day,DayShift] #&gt;= ReqDay, 
+    Stat[Day,NightShift] #&gt;= ReqNight
   end,
 
-  % each nurse gets MinNight shifts
+  % - each nurse gets MinNight shifts
   foreach (Nurse in 1..NumNurses)
     sum([Roster[Nurse, Day] #= NightShift : Day in 1..NumDays]) #&gt;= MinNight 
   end.
 
-
-output(Roster) =&gt;
-  Shifts = new_map(3,[1=d,2=n,3=o]),
-  foreach(Nurse in Roster) 
-    foreach(I in 1..Nurse.length)
-      print(get(Shifts,Nurse[I]))
-    end,
-    print("\n")
-  end.</pre>
+  output(Roster) =&gt;
+    Shifts = new_map(3,[1="|  day  ",2="| night ",3="|  off  "]),
+    foreach(Nurse in Roster)     
+      foreach(I in 1..Nurse.length)
+        print(get(Shifts,Nurse[I]))
+      end,
+      print("|\n")
+    end.</pre>
 </div>
 </div>
 </div>
@@ -8016,7 +8056,7 @@ output(Roster) =&gt;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Example:-Graph-homomorphism">Example: Graph homomorphism<a class="anchor-link" href="#Example:-Graph-homomorphism">¶</a></h2><p>Given a pair of graphs $G,H$, find all homomorphisms from $G$ to $H$. A <em>graph homomorphism</em> is a function $f:V(G)\to V(H)$ such that $$\{u,v\}\in E(G)\Longrightarrow  \{f(u),f(v)\}\in E(H)$$.</p>
+<h2 id="Exercise:-Graph-homomorphism">Exercise: Graph homomorphism<a class="anchor-link" href="#Exercise:-Graph-homomorphism">¶</a></h2><p>Given a pair of graphs $G,H$, find all homomorphisms from $G$ to $H$. A <em>graph homomorphism</em> is a function $f:V(G)\to V(H)$ such that $$\{u,v\}\in E(G)\Longrightarrow  \{f(u),f(v)\}\in E(H)$$</p>
 <ul>
 <li>Generalizes graph $k$-coloring ($c:G\to K_k$)</li>
 <li>Easier version: oriented graphs</li>

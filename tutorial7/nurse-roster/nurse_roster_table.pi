@@ -1,7 +1,5 @@
-/***********************************************************
-  Adapted from Constraint Solving and Planning with Picat, Springer 
-  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
-***********************************************************/
+% Adapted from Constraint Solving and Planning with Picat, Springer
+% by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman
 import cp.
 
 main([Filename]) =>
@@ -12,27 +10,22 @@ main([Filename]) =>
   time2(solve(Vars)),
   output(Roster).
 
-
 % rotate valid schedules
 rotate_left(L) = rotate_left(L,1).
 rotate_left(L,N) = slice(L,N+1,L.length) ++ slice(L,1,N).
-
 
 nurse_rostering(NumNurses, NumDays, ReqDay, ReqNight, MinNight, Roster, Stat) =>
 
   % Only works for 7-day rosters!
   NumDays = 7,
   
-  DayShift   = 1,
-  NightShift = 2,
-  OffShift   = 3,
-  D = 1,
-  N = 2,
-  O = 3,
+  DayShift   = 1, D = 1,
+  NightShift = 2, N = 2,
+  OffShift   = 3, O = 3,
 
   % Valid 7 day schedules:
-      % - up to rotation:
-      Valid_up_to_rotation = [
+  % - up to rotation:
+  Valid_up_to_rotation = [
     [D,D,D,D,D,O,O],
     [N,O,N,O,D,D,O],
     [N,N,O,O,D,D,O]
@@ -49,40 +42,39 @@ nurse_rostering(NumNurses, NumDays, ReqDay, ReqNight, MinNight, Roster, Stat) =>
   Roster = new_array(NumNurses, NumDays),
   Roster :: DayShift..OffShift,
 
-  % - summary of the shifts: [day,night,off]
+  % - summary of the shifts: day-night-off]
   Stat = new_array(NumDays,3),
   Stat :: 0..NumNurses,
 
   % constraints
 
-  % valid schedule
+  % - valid schedule
   foreach (Nurse in 1..NumNurses)
     table_in([Roster[Nurse,Day] : Day in 1..NumDays].to_array(), Valid)
   end,
-
-  % statistics for each day
+  
+  % - statistics for each day
   foreach (Day in 1..NumDays)
-  foreach (Type in 1..3)
-    Stat[Day,Type] #= sum([Roster[Nurse,Day] #= Type : Nurse in 1..NumNurses])
-  end,
-  sum([Stat[Day,Type] : Type in 1..3]) #= NumNurses,
-  % For each day the must be at least 3 nurses with 
-  % day shift, and 2 nurses with night shift
-  Stat[Day,DayShift] #>= ReqDay, 
-  Stat[Day,NightShift] #>= ReqNight
+    foreach (Type in 1..3)
+      Stat[Day,Type] #= sum([Roster[Nurse,Day] #= Type : Nurse in 1..NumNurses])
+    end,
+    sum([Stat[Day,Type] : Type in 1..3]) #= NumNurses,
+    % For each day the must be at least 3 nurses with 
+    % day shift, and 2 nurses with night shift
+    Stat[Day,DayShift] #>= ReqDay, 
+    Stat[Day,NightShift] #>= ReqNight
   end,
 
-  % each nurse gets MinNight shifts
+  % - each nurse gets MinNight shifts
   foreach (Nurse in 1..NumNurses)
     sum([Roster[Nurse, Day] #= NightShift : Day in 1..NumDays]) #>= MinNight 
   end.
 
-
-output(Roster) =>
-  Shifts = new_map(3,[1=d,2=n,3=o]),
-  foreach(Nurse in Roster) 
-    foreach(I in 1..Nurse.length)
-      print(get(Shifts,Nurse[I]))
-    end,
-    print("\n")
-  end.
+  output(Roster) =>
+    Shifts = new_map(3,[1="|  day  ",2="| night ",3="|  off  "]),
+    foreach(Nurse in Roster)     
+      foreach(I in 1..Nurse.length)
+        print(get(Shifts,Nurse[I]))
+      end,
+      print("|\n")
+    end.

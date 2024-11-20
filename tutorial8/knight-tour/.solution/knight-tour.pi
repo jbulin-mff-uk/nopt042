@@ -31,7 +31,7 @@ knight(N, X) =>
      X[I,J] :: Dom
   end,
   circuit(XVars),
-  time2(solve([ff,split],XVars)). 
+  solve([ff,split],XVars). 
 
 extract_tour(X,Tour) =>
   N = X.length,

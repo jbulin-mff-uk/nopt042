@@ -7440,7 +7440,18 @@ main {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="NOPT042-Constraint-programming:-Tutorial-8---Global-constraints">NOPT042 Constraint programming: Tutorial 8 - Global constraints<a class="anchor-link" href="#NOPT042-Constraint-programming:-Tutorial-8---Global-constraints">¶</a></h1>
+<h1 id="NOPT042-Constraint-programming:-Tutorial-8---Global-constraints,-Routing">NOPT042 Constraint programming: Tutorial 8 - Global constraints, Routing<a class="anchor-link" href="#NOPT042-Constraint-programming:-Tutorial-8---Global-constraints,-Routing">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bef62de1-2d58-4c41-a4fd-0f52bb2378f6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="What-was-in-the-lecture?-Nothing,-the-lecture-was-canceled.">What was in the lecture? Nothing, the lecture was canceled.<a class="anchor-link" href="#What-was-in-the-lecture?-Nothing,-the-lecture-was-canceled.">¶</a></h3>
 </div>
 </div>
 </div>
@@ -7451,49 +7462,15 @@ main {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Example:-Magic-sequence">Example: Magic sequence<a class="anchor-link" href="#Example:-Magic-sequence">¶</a></h2><p>A magic sequence of length $n$ is a sequence of integers $x_0,\dots,x_{n−1}$ between $0$ and $n-1$, such
+<h2 id="Exercise:-Magic-sequence">Exercise: Magic sequence<a class="anchor-link" href="#Exercise:-Magic-sequence">¶</a></h2><p>A magic sequence of length $n$ is a sequence of integers $x_0,\dots,x_{n−1}$ between $0$ and $n-1$, such
 that for all $i\in\{0,\dots,n-1\}$, the number $i$ occurs exactly $x_i$-times in the sequence. For instance,
 6,2,1,0,0,0,1,0,0,0 is a magic sequence since 0 occurs 6 times in it, 1 occurs twice, etc.</p>
 <p>(Problem from <a href="http://picat-lang.org/picatbook2015/constraint_solving_and_planning_with_picat.pdf">the book</a>.)</p>
-<p>Let's maximize the sum of the numbers in the sequence.</p>
+<p>We want to maximize the sum of the numbers in the sequence. Write a constraint model that does that (for a given length $n$).</p>
 </div>
 </div>
 </div>
-</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=71439a72">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>magic-sequence/magic-sequence.pi<span class="w"> </span><span class="m">8</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
-CPU time 0.0 seconds. Backtracks: 20
-
-[4,2,1,0,1,0,0,0]
-
-real	0m0.012s
-user	0m0.006s
-sys	0m0.006s
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div></div></section><section>
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=29c94f8e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7513,6 +7490,40 @@ of <code>List</code> are equal to <code>Ki</code>. This constraint can be define
     end.
 </code></pre>
 <p>---from <a href="http://picat-lang.org/download/picat_guide.pdf">the guide</a></p>
+</div>
+</div>
+</div>
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=71439a72">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>magic-sequence/.solution/magic-sequence.pi<span class="w"> </span><span class="m">8</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+CPU time 0.001 seconds. Backtracks: 20
+
+[4,2,1,0,1,0,0,0]
+
+real	0m0.042s
+user	0m0.040s
+sys	0m0.001s
+</pre>
+</div>
 </div>
 </div>
 </div>
@@ -7537,28 +7548,7 @@ of <code>List</code> are equal to <code>Ki</code>. This constraint can be define
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/***********************************************************
-  Adapted from
-  magic_sequence.pi
-  from Constraint Solving and Planning with Picat, Springer 
-  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
-***********************************************************/
-import cp.
-
-main([N]) =&gt;
-  N := N.to_int,
-  magic_sequence(N,Sequence),
-  println(Sequence).
-
-magic_sequence(N, Sequence) =&gt;
-  Sequence = new_list(N),
-  Sequence :: 0..N-1,
-
-  % create list: [0-Sequence[1], 1-Sequence[2], ...]
-  Pairs = [$I-Sequence[I+1] : I in 0..N-1],
-  global_cardinality(Sequence,Pairs),
-
-  time2(solve(Sequence)).
+<pre>cat: magic-sequence/magic-sequence.pi: No such file or directory
 </pre>
 </div>
 </div>
@@ -7586,28 +7576,24 @@ magic_sequence(N, Sequence) =&gt;
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
-CPU time 0.005 seconds. Backtracks: 7
+<pre>*** error(existence_error([m,a,g,i,c,-,s,e,q,u,e,n,c,e,/,m,a,g,i,c,-,s,e,q,u,e,n,c,e,2,.,p,i]),picat)
 
-[60,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0]
 
-real	0m0.031s
-user	0m0.024s
-sys	0m0.006s
+real	0m0.017s
+user	0m0.016s
+sys	0m0.000s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
-CPU time 0.191 seconds. Backtracks: 7
+<pre>*** error(existence_error([m,a,g,i,c,-,s,e,q,u,e,n,c,e,/,m,a,g,i,c,-,s,e,q,u,e,n,c,e,2,.,p,i]),picat)
 
-[396,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0]
 
-real	0m5.488s
-user	0m5.362s
-sys	0m0.125s
+real	0m0.012s
+user	0m0.006s
+sys	0m0.005s
 </pre>
 </div>
 </div>
@@ -7634,33 +7620,7 @@ sys	0m0.125s
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/***********************************************************
-  Adapted from
-  magic_sequence.pi
-  from Constraint Solving and Planning with Picat, Springer 
-  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
-***********************************************************/
-import cp.
-
-main([N]) =&gt;
-  N := N.to_int,
-  magic_sequence(N,Sequence),
-  println(Sequence).
-
-magic_sequence(N, Sequence) =&gt;
-  Sequence = new_list(N),
-  Sequence :: 0..N-1,
-
-  % % create list: [0-Sequence[1], 1-Sequence[2], ...]
-  Pairs = [$I-Sequence[I+1] : I in 0..N-1],
-  global_cardinality(Sequence,Pairs),
-
-  % extra/redudant (implicit) constraints to speed up the model
-  N #= sum(Sequence),
-  Integers = [I : I in 0..N-1],
-  scalar_product(Integers, Sequence, N),
-
-  time2(solve([ff], Sequence)).
+<pre>cat: magic-sequence/magic-sequence2.pi: No such file or directory
 </pre>
 </div>
 </div>
@@ -7688,28 +7648,24 @@ magic_sequence(N, Sequence) =&gt;
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
-CPU time 0.075 seconds. Backtracks: 7
+<pre>*** error(existence_error([m,a,g,i,c,-,s,e,q,u,e,n,c,e,/,m,a,g,i,c,-,s,e,q,u,e,n,c,e,3,.,p,i]),picat)
 
-[396,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0]
 
-real	0m0.213s
-user	0m0.192s
-sys	0m0.020s
+real	0m0.020s
+user	0m0.008s
+sys	0m0.009s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
-CPU time 0.436 seconds. Backtracks: 7
+<pre>*** error(existence_error([m,a,g,i,c,-,s,e,q,u,e,n,c,e,/,m,a,g,i,c,-,s,e,q,u,e,n,c,e,3,.,p,i]),picat)
 
-[1020,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0]
 
-real	0m2.560s
-user	0m2.424s
-sys	0m0.135s
+real	0m0.028s
+user	0m0.017s
+sys	0m0.009s
 </pre>
 </div>
 </div>
@@ -7736,33 +7692,7 @@ sys	0m0.135s
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/***********************************************************
-  Adapted from
-  magic_sequence.pi
-  from Constraint Solving and Planning with Picat, Springer 
-  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
-***********************************************************/
-import cp.
-
-main([N]) =&gt;
-  N := N.to_int,
-  magic_sequence(N,Sequence),
-  println(Sequence).
-
-magic_sequence(N, Sequence) =&gt;
-  Sequence = new_list(N),
-  Sequence :: 0..N-1,
-
-  % extra/redudant (implicit) constraints to speed up the model
-  N #= sum(Sequence),
-  Integers = [I : I in 0..N-1],
-  scalar_product(Integers, Sequence, N),
-
-  % % create list: [0-Sequence[1], 1-Sequence[2], ...]
-  Pairs = [$I-Sequence[I+1] : I in 0..N-1],
-  global_cardinality(Sequence,Pairs),
-
-  time2(solve([ff], Sequence)).
+<pre>cat: magic-sequence/magic-sequence3.pi: No such file or directory
 </pre>
 </div>
 </div>
@@ -7775,8 +7705,19 @@ magic_sequence(N, Sequence) =&gt;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="The-order-of-constraints">The order of constraints<a class="anchor-link" href="#The-order-of-constraints">¶</a></h2><p>The order might matter to the solver, the above model is an example. When the <code>cp</code> solver parses a constraint, it tries to reduce their domains. The implicit (redundant) constranint using <code>scalar_product</code> can reduce the model a lot, which is much better to do before parsing <code>global_cardinality</code>. (Note: e.g. MiniZinc doesn't preserve the order of constraints during compilation, the behaviour is a bit unpredictable.)</p>
-<p>(Heuristic: easy constraints and constraints that are strong [in reducing the search space] should go first??)</p>
+<h2 id="The-order-of-constraints">The order of constraints<a class="anchor-link" href="#The-order-of-constraints">¶</a></h2><p>The order might matter to the solver, the above model is an example. When the <code>cp</code> solver parses a constraint, it tries to reduce the domains. The implicit (redundant) constranint using <code>scalar_product</code> can reduce the model a lot, which is much better to do before parsing <code>global_cardinality</code>. (Note: e.g. MiniZinc doesn't preserve the order of constraints during compilation, the behaviour is a bit unpredictable.)</p>
+<p><em>Heuristic:</em> easy constraints and constraints that are strong [in reducing the search space] should go first (?)</p>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a04b4923-44c4-41ad-9bdc-369cf72759f4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Routing">Routing<a class="anchor-link" href="#Routing">¶</a></h2><p>Routing, aka the <a href="https://en.wikipedia.org/wiki/Arc_routing">Arc Routing Problem</a>, refers to a variety of constraint satisfaction problems related to the well-known <a href="https://en.wikipedia.org/wiki/Vehicle_routing_problem">Vehicle Routing Problem</a>. Such problems appear in a variety of applications such as public transport (bus routing), garbage collection (not that one), snow ploughing, and many others.</p>
 </div>
 </div>
 </div>
@@ -7787,8 +7728,19 @@ magic_sequence(N, Sequence) =&gt;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Example:-Knight-tour">Example: Knight tour<a class="anchor-link" href="#Example:-Knight-tour">¶</a></h2><p>Given an integer $N$, plan a tour of the knight on an $N\times N$ chessboard such that the knight visits every field exactly once and then returns to the starting field. You can assume that $N$ is even.</p>
-<p>Hint: For a matrix <code>M</code> is a matrix, use <code>M.vars()</code> to extract its elements into a list.</p>
+<h2 id="Exercise:-Knight-tour">Exercise: Knight tour<a class="anchor-link" href="#Exercise:-Knight-tour">¶</a></h2><p>Given an integer $N$, plan a tour of the knight on an $N\times N$ chessboard such that the knight visits every field exactly once and then returns to the starting field. You can assume that $N$ is even.</p>
+<p>(Hint: For a matrix <code>M</code> is a matrix, you can use <code>M.vars()</code> to extract its elements into a list.)</p>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=02519751">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="The-circuit-constraint">The <code>circuit</code> constraint<a class="anchor-link" href="#The-circuit-constraint">¶</a></h2><p>The constraint <code>circuit(L)</code> requires that the list $L$ represents a permutation of $1,\dots,n$ consisting of a single cycle, i.e., the graph with edges $i\to L[i]$ is a cycle. A similar constraint is <code>subcircuit(L)</code> which requires that elements for which $L[i]\neq i$ form a cycle.</p>
 </div>
 </div>
 </div>
@@ -7800,7 +7752,7 @@ magic_sequence(N, Sequence) =&gt;
 <div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>knight-tour/knight-tour.pi<span class="w"> </span><span class="m">8</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>knight-tour/.solution/knight-tour.pi<span class="w"> </span><span class="m">8</span>
 </pre></div>
 </div>
 </div>
@@ -7813,10 +7765,7 @@ magic_sequence(N, Sequence) =&gt;
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
-CPU time 0.001 seconds. Backtracks: 0
-
-x = {{11,12,13,10,15,21,22,14},{3,20,26,18,23,4,30,6},{2,1,29,5,27,32,8,7},{19,9,37,34,35,40,16,38},{43,17,50,53,52,28,24,46},{51,25,49,61,60,36,62,31},{59,33,57,58,63,64,45,39},{42,41,44,54,55,56,48,47}}
+<pre>x = {{11,12,13,10,15,21,22,14},{3,20,26,18,23,4,30,6},{2,1,29,5,27,32,8,7},{19,9,37,34,35,40,16,38},{43,17,50,53,52,28,24,46},{51,25,49,61,60,36,62,31},{59,33,57,58,63,64,45,39},{42,41,44,54,55,56,48,47}}
 X:
  11 12 13 10 15 21 22 14
   3 20 26 18 23  4 30  6
@@ -7842,17 +7791,6 @@ Tour:
 </div>
 </div>
 </div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=02519751">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="The-circuit-constraint">The <code>circuit</code> constraint<a class="anchor-link" href="#The-circuit-constraint">¶</a></h2><p>The constraint <code>circuit(L)</code> requires that the list $L$ represents a permutation of $1,\dots,n$ consisting of a single cycle, i.e., the graph with edges $i\to L[i]$ is a cycle. A similar constraint is <code>subcircuit(L)</code> which requires that elements for which $L[i]\neq i$ form a cycle.</p>
-</div>
-</div>
-</div>
 </div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9bb6197f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7861,7 +7799,7 @@ Tour:
 <div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>knight-tour/knight-tour.pi
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>knight-tour/.solution/knight-tour.pi
 </pre></div>
 </div>
 </div>
@@ -7907,7 +7845,7 @@ knight(N, X) =&gt;
      X[I,J] :: Dom
   end,
   circuit(XVars),
-  time2(solve([ff,split],XVars)). 
+  solve([ff,split],XVars). 
 
 extract_tour(X,Tour) =&gt;
   N = X.length,
@@ -7939,7 +7877,53 @@ print_matrix(M) =&gt;
 </div>
 </div>
 </div>
-</div></section></section>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=27894353-4678-42f5-8bec-c347eabc8664">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Exercise:-Chinese-Postman">Exercise: Chinese Postman<a class="anchor-link" href="#Exercise:-Chinese-Postman">¶</a></h2><p>Given a weighted graph, find the shortest closed path that traverses every edge at least once. (Assume that the graph is undirected, loopless, and the distances are positive integers and satisfy the triangle inequality.) See <a href="https://en.wikipedia.org/wiki/Chinese_postman_problem">Wikipedia</a> for a sample solved instance. Unlike the <a href="https://en.wikipedia.org/wiki/Eulerian_path">Eulerian Circuit Problem</a> (where each edge has to be traversed exactly once), there is a polynomial-time algorithm for the Chinese Postman. But our goal is to write a constraint model.</p>
+</div>
+</div>
+</div>
+</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=933bc713-5113-4ea4-a2b3-749570b26968">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>chinese-postman/instance.pi
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>instance(NumVertices, AdjacencyMatrixWithWeights) =&gt;
+    NumVertices = 5,
+    AdjacencyMatrixWithWeights = [
+        [0, 7, 0, 5, 1],
+        [7, 0, 6, 0, 3],
+        [0, 6, 0, 8, 4],
+        [5, 0, 8, 0, 2],
+        [1, 3, 4, 2, 0]
+    ].
+% optimal length: 45, shortest closed path: [1,2,3,4,5,3,2,5,1,5,4,1]</pre>
+</div>
+</div>
+</div>
+</div>
+</div></div></section></section>
 </div>
 </div>
 </main>

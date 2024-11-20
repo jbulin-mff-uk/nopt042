@@ -7872,44 +7872,8 @@ export PATH=$PATH:~/coinbrew/dist/bin
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>'Done'
-GLPSOL--GLPK LP/MIP Solver 5.0
-Parameter(s) specified in the command line:
- --cpxlp -o __tmp.sol __tmp.lp
-Reading problem data from '__tmp.lp'...
-23 rows, 9 columns, 41 non-zeros
-9 integer variables, none of which are binary
-47 lines were read
-GLPK Integer Optimizer 5.0
-23 rows, 9 columns, 41 non-zeros
-9 integer variables, none of which are binary
-Preprocessing...
-5 rows, 9 columns, 23 non-zeros
-9 integer variables, none of which are binary
-Scaling...
- A: min|aij| =  1.000e+00  max|aij| =  5.000e+02  ratio =  5.000e+02
-GM: min|aij| =  5.946e-01  max|aij| =  1.682e+00  ratio =  2.828e+00
-EQ: min|aij| =  3.536e-01  max|aij| =  1.000e+00  ratio =  2.828e+00
-2N: min|aij| =  2.500e-01  max|aij| =  1.562e+00  ratio =  6.250e+00
-Constructing initial basis...
-Size of triangular part is 5
-Solving LP relaxation...
-GLPK Simplex Optimizer 5.0
-5 rows, 9 columns, 23 non-zeros
-      0: obj =   0.000000000e+00 inf =   1.512e+02 (4)
-      4: obj =   1.266666667e+02 inf =   0.000e+00 (0)
-*     5: obj =   9.000000000e+01 inf =   0.000e+00 (0)
-OPTIMAL LP SOLUTION FOUND
-Integer optimization begins...
-Long-step dual simplex will be used
-+     5: mip =     not found yet &gt;=              -inf        (1; 0)
-+     5: &gt;&gt;&gt;&gt;&gt;   9.000000000e+01 &gt;=   9.000000000e+01   0.0% (1; 0)
-+     5: mip =   9.000000000e+01 &gt;=     tree is empty   0.0% (0; 1)
-INTEGER OPTIMAL SOLUTION FOUND
-Time used:   0.0 secs
-Memory used: 0.1 Mb (62497 bytes)
-Writing MIP solution to '__tmp.sol'...
-{0,3,1,0}
+<pre>*** error(existence_error(mip_solver),solve)
+
 </pre>
 </div>
 </div>

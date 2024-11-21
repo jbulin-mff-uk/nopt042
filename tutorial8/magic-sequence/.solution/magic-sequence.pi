@@ -1,9 +1,5 @@
-/***********************************************************
-  Adapted from
-  magic_sequence.pi
-  from Constraint Solving and Planning with Picat, Springer 
-  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
-***********************************************************/
+% Adapted from Constraint Solving and Planning with Picat, Springer 
+% by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman
 import cp.
 
 main([N]) =>

@@ -13,13 +13,6 @@ projective_plane(N, Inc) =>
     Inc = new_array(M, M), 
     Inc :: 0..1,
 
-    % there are 4 points which do not lie on 1 line 
-    % WLOG it's the first 4 points (symmetry breaking)
-    foreach(L in 1..M)
-        at_most(3, [Inc[P, L] : P in 1..4], 1)
-    end,
-
-    
     % implicit (redundant), but very important constraints:    
     % - each point on exactly K lines
     % - each line has exactly K points
@@ -32,11 +25,17 @@ projective_plane(N, Inc) =>
         exactly(K, LineInc, 1)
     end,
 
-    % every two points on exactly one line
+    % there are 4 points which do not lie on 1 line 
+    % WLOG it's the first 4 points (symmetry breaking)
+    foreach(L in 1..M)
+    at_most(3, [Inc[P, L] : P in 1..4], 1)
+    end,
+
+    % % every two points on exactly one line
     foreach(P1 in 1..M, P2 in 1..M, P1 #< P2)
         P1Inc = Inc[P1],
         P2Inc = Inc[P2],
-        CommonLines = [P1Inc[L] #/\ P2Inc[L] : L in 1..M],      
+        CommonLines = [X : L in 1..M, X #= P1Inc[L] * P2Inc[L]],      
         exactly(1, CommonLines, 1)
     end,
 
@@ -44,11 +43,9 @@ projective_plane(N, Inc) =>
     foreach(L1 in 1..M, L2 in 1..M, L1 #< L2)
         L1Inc = [Inc[P, L1] : P in 1..M],
         L2Inc = [Inc[P, L2] : P in 1..M],
-        CommonPoints = [L1Inc[P] #/\ L2Inc[P] : P in 1..M],      
+        CommonPoints = [X : P in 1..M, X #= L1Inc[P] * L2Inc[P]],      
         exactly(1, CommonPoints, 1)
-    end.
-    
-    
+    end.        
 
 output(Inc) =>
     M = Inc.length,

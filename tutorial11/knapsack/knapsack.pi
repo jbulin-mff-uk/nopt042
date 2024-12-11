@@ -1,9 +1,5 @@
-/***********************************************************
-  Code adapted from
-  knapsack.pi
-  from Constraint Solving and Planning with Picat, Springer 
-  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
-***********************************************************/
+% Adapted from Constraint Solving and Planning with Picat, Springer 
+% by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman
 
 main([Filename]) =>
     cl(Filename),

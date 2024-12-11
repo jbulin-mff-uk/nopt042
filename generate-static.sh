@@ -1,7 +1,7 @@
 #! /bin/bash
 if [ "$*" == "" ];
 then
-    for i in {1..12}
+    for i in {1..13}
     do
         jupyter nbconvert --to notebook --inplace --execute tutorial$i/tutorial$i.ipynb
         jupyter nbconvert --to webpdf --allow-chromium-download tutorial$i/tutorial$i.ipynb

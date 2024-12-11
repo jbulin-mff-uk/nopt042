@@ -7445,6 +7445,43 @@ main {
 </div>
 </div>
 </div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=00f9fd4a-926e-47f5-9b64-17d90568d2b2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="What-was-in-Lecture-9?">What was in Lecture 9?<a class="anchor-link" href="#What-was-in-Lecture-9?">¶</a></h3><p>Incomplete search</p>
+<ul>
+<li>incomplete tree search (no guarantee but faster)</li>
+<li>DFS, cutoff (global or local), restart (with different params, more resources, learning)</li>
+<li>bounded backtrack search: "limited number of leaves" (increase after restart)</li>
+<li>iterative broadening: limited "width" (number of alternatives for each node)</li>
+<li>depth bounded search (all alternatives until given depth=num instantiated vars, then incomplete search)</li>
+<li>credit search (credit=number of backtracks, split uniformly among available alternatives)</li>
+</ul>
+<p>Discrepancy search</p>
+<ul>
+<li>heuristics can be wrong, but number of wrong decisions is low</li>
+<li>heuristics are less reliable at the beginning</li>
+<li>limited discrepancy search: first explore branches with less discrepancies, and with earlier discrepancies</li>
+<li>depth-bounded discrepancy search: discrepancies allowed only to some depth, there must be a disrepancy at that depth (to get something new), increase after restart</li>
+</ul>
+<p>Branch and bound</p>
+<ul>
+<li>constrained optimization: minimize/maximize objective value of valid solution</li>
+<li>heuristic that estimates value of obj (e.g. ignore remaining constraints, LP relaxation)</li>
+<li>stop exploring subtree if a) no solution, or b) no optimal solution (because Bound &lt;= h(solution))</li>
+<li>bound: for example value of best so far</li>
+<li>we need good heuristic, find good solution early</li>
+<li>finding optimum often fast, but proof of optimality slow</li>
+<li>we can stop once good enough solution is found</li>
+<li>we can use both upper and lower bounds</li>
+</ul>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=50977216">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7510,7 +7547,7 @@ path(S,Plan,Cost) =&gt;
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>http://picat-lang.org/download/planner.pi
+<div class="highlight hl-ipython3"><pre><span></span><span class="ch">#!wget http://picat-lang.org/download/planner.pi</span>
 <span class="o">!</span>cat<span class="w"> </span>planner.pi
 </pre></div>
 </div>
@@ -7521,41 +7558,6 @@ path(S,Plan,Cost) =&gt;
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>--2024-11-20 15:08:16--  http://picat-lang.org/download/planner.pi
-Resolving picat-lang.org (picat-lang.org)... </pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>64.71.35.59
-Connecting to picat-lang.org (picat-lang.org)|64.71.35.59|:80... </pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>connected.
-HTTP request sent, awaiting response... </pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>200 OK
-Length: 13806 (13K)
-Saving to: ‘planner.pi.2’
-
-planner.pi.2          0%[                    ]       0  --.-KB/s               planner.pi.2        100%[===================&gt;]  13.48K  --.-KB/s    in 0.002s  
-
-2024-11-20 15:08:16 (8.70 MB/s) - ‘planner.pi.2’ saved [13806/13806]
-
-</pre>
-</div>
-</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
@@ -8022,11 +8024,8 @@ up
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/***********************************************************
-  15_puzzle.pi
-  from Constraint Solving and Planning with Picat, Springer 
-  by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman 
-***********************************************************/
+<pre>% Adapted from Constraint Solving and Planning with Picat, Springer 
+% by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman
 import planner.
 
 main =&gt;

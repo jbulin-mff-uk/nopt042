@@ -7415,6 +7415,7 @@ main {
                     processEnvironments: true
                 },
                 displayAlign: 'center',
+                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -7592,8 +7593,8 @@ main {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>You can install <a href="http://picat-lang.org/">Picat</a> like this (check if there's a newer version of Picat):</p>
 <div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~
-wget<span class="w"> </span>http://picat-lang.org/download/picat37_linux64.tar.gz
-tar<span class="w"> </span>-xf<span class="w"> </span>picat37_linux64.tar.gz
+wget<span class="w"> </span>http://picat-lang.org/download/picat39_linux64.tar.gz
+tar<span class="w"> </span>-xf<span class="w"> </span>picat39_linux64.tar.gz
 </pre></div>
 <p>Then add the executable to <code>$PATH</code> (assuming we use bash):</p>
 <div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s1">'export PATH="$HOME/Picat:$PATH"'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
@@ -7651,9 +7652,9 @@ pip<span class="w"> </span>install<span class="w"> </span>ipicat
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="3873b884-6693-41db-a89d-a7c0d2b31d87" tabindex="0">
+<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="0c074f97-7e5c-4ea2-b216-4a48c5e9101c" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('3873b884-6693-41db-a89d-a7c0d2b31d87');
+var element = document.getElementById('0c074f97-7e5c-4ea2-b216-4a48c5e9101c');
 "use strict";
 
 CodeMirror.defineMode("text/picat", function(config) {
@@ -8011,7 +8012,7 @@ Jupyter.notebook.get_cells().map(function(cell){
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Picat version 3.7
+<pre>Picat version 3.9
 </pre>
 </div>
 </div>
@@ -8382,7 +8383,7 @@ main =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 29.708 seconds.
+CPU time 23.657 seconds.
 
 267914296
 
@@ -8891,7 +8892,7 @@ graph TD;
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="Variables">Variables<a class="anchor-link" href="#Variables">¶</a></h3><ul>
-<li>Start with capital letter or underscore: <code>var(X)</code> [yes], <code>var(_abc)</code> [no], <code>var(abc)</code>[no]</li>
+<li>Start with capital letter or underscore: <code>var(X)</code> [yes], <code>var(_abc)</code> [yes], <code>var(abc)</code>[no]</li>
 <li>A variable is <em>free</em> until <em>instantiated</em> (bound to a value).</li>
 <li>Single-assignment variables: after instantiation, the variable has the same identity as the value: <code>X=1, var(X)</code> [no]</li>
 <li>If execution backtracks over the binding point, the variable becomes free again.</li>

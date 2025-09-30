@@ -14,7 +14,7 @@ conda create -y -n nopt042 python=3.10 -c conda-forge --override-channels
 conda activate nopt042
 
 conda install -y -c conda-forge --override-channels jupyterlab=4.0.12 notebook=7.0.8 nodejs=18.15.0
-pip install mermaid-magic ipicat jupyterlab-rise
+pip install mermaid-magic ipicat jupyterlab-rise nbconvert[webpdf]
 
 wget -q http://picat-lang.org/download/picat39_linux64.tar.gz -O picat.tar.gz
 mkdir -p $HOME/.picat

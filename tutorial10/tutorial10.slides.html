@@ -7415,6 +7415,7 @@ main {
                     processEnvironments: true
                 },
                 displayAlign: 'center',
+                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -7444,7 +7445,7 @@ main {
 </div>
 </div>
 </div>
-</div></section></section><section><section>
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=151530c5-faf3-4c9b-ae4f-381190b9f635">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7499,14 +7500,10 @@ main {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Alternatively, we could use a list of elements and require that the list is strictly increasing. In that case, we need to declare a list of length $N$ and have a decision variable for the length of the list. We can use 0 as a dummy value denoting that there are no more elements</p>
-<pre><code>S = new_list(N),
-S :: 0..N,
-SizeOfS :: 0..N,
-increasing_strict(S[I] : I in 1..SizeOfS),
-foreach(I in SizeOfS+1..N)
-    S[I] #= 0
-end
+<p>Alternatively, we could use a strictly increasing list of elements:</p>
+<pre><code>S = new_list(Length),
+S :: 1..N,
+increasing_strict(S).
 </code></pre>
 </div>
 </div>
@@ -7574,15 +7571,9 @@ end.
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.001 seconds. Backtracks: 13
+*** error(existence_error([p,r,o,j,e,c,t,i,v,e,/,p,r,o,j,e,c,t,i,v,e]),picat)
 
-[0,0,0,0,1,1,1]
-[0,0,1,1,0,0,1]
-[0,1,0,1,0,1,0]
-[0,1,1,0,1,0,0]
-[1,0,0,1,1,0,0]
-[1,0,1,0,0,1,0]
-[1,1,0,0,0,0,1]
+
 </pre>
 </div>
 </div>
@@ -7595,7 +7586,7 @@ CPU time 0.001 seconds. Backtracks: 13
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Exercise:-Ramsay's-partition">Exercise: Ramsay's partition<a class="anchor-link" href="#Exercise:-Ramsay's-partition">¶</a></h2><p>Partition the integers 1 to $n$ into three parts, such that for no part are there three different numbers with two adding to the third. For which $n$ is it possible?</p>
+<h2 id="Exercise:-Ramsey's-partition">Exercise: Ramsey's partition<a class="anchor-link" href="#Exercise:-Ramsey's-partition">¶</a></h2><p>Partition the integers 1 to $n$ into three parts, such that for no part are there three different numbers with two adding to the third. For which $n$ is it possible?</p>
 </div>
 </div>
 </div>
@@ -7607,7 +7598,7 @@ CPU time 0.001 seconds. Backtracks: 13
 <div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>ramsay/ramsay<span class="w"> </span><span class="m">23</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>picat<span class="w"> </span>ramsey/ramsey<span class="w"> </span><span class="m">23</span>
 </pre></div>
 </div>
 </div>
@@ -7621,11 +7612,9 @@ CPU time 0.001 seconds. Backtracks: 13
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.0 seconds. Backtracks: 0
+*** error(existence_error([r,a,m,s,e,y,/,r,a,m,s,e,y]),picat)
 
-[1,2,4,8,11,16,22]
-[3,5,6,7,19,21,23]
-[9,10,12,13,14,15,17,18,20]
+
 </pre>
 </div>
 </div>

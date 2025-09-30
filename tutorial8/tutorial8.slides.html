@@ -7415,6 +7415,7 @@ main {
                     processEnvironments: true
                 },
                 displayAlign: 'center',
+                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -7501,7 +7502,7 @@ of <code>List</code> are equal to <code>Ki</code>. This constraint can be define
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>magic-sequence/.solution/magic-sequence.pi<span class="w"> </span><span class="m">8</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>magic-sequence/.solution/magic-sequence.pi<span class="w"> </span><span class="m">4</span>
 </pre></div>
 </div>
 </div>
@@ -7515,13 +7516,13 @@ of <code>List</code> are equal to <code>Ki</code>. This constraint can be define
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.0 seconds. Backtracks: 20
+CPU time 0.0 seconds. Backtracks: 2
 
-[4,2,1,0,1,0,0,0]
+[1,2,1,0]
 
-real	0m0.021s
-user	0m0.010s
-sys	0m0.009s
+real	0m0.024s
+user	0m0.008s
+sys	0m0.013s
 </pre>
 </div>
 </div>
@@ -7535,7 +7536,7 @@ sys	0m0.009s
 <div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>magic-sequence/magic-sequence.pi
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>magic-sequence/.solution/magic-sequence.pi
 </pre></div>
 </div>
 </div>
@@ -7548,7 +7549,24 @@ sys	0m0.009s
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>cat: magic-sequence/magic-sequence.pi: No such file or directory
+<pre>% Adapted from Constraint Solving and Planning with Picat, Springer 
+% by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman
+import cp.
+
+main([N]) =&gt;
+  N := N.to_int,
+  magic_sequence(N,Sequence),
+  println(Sequence).
+
+magic_sequence(N, Sequence) =&gt;
+  Sequence = new_list(N),
+  Sequence :: 0..N-1,
+
+  % create list: [0-Sequence[1], 1-Sequence[2], ...]
+  Pairs = [$I-Sequence[I+1] : I in 0..N-1],
+  global_cardinality(Sequence,Pairs),
+
+  time2(solve(Sequence)).
 </pre>
 </div>
 </div>
@@ -7562,8 +7580,9 @@ sys	0m0.009s
 <div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>magic-sequence/magic-sequence2.pi<span class="w"> </span><span class="m">64</span>
-<span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>magic-sequence/magic-sequence2.pi<span class="w"> </span><span class="m">400</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>magic-sequence/.solution/magic-sequence.pi<span class="w"> </span><span class="m">64</span>
+<span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>magic-sequence/.solution/magic-sequence2.pi<span class="w"> </span><span class="m">64</span>
+<span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>magic-sequence/.solution/magic-sequence2.pi<span class="w"> </span><span class="m">400</span>
 </pre></div>
 </div>
 </div>
@@ -7576,24 +7595,42 @@ sys	0m0.009s
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>*** error(existence_error([m,a,g,i,c,-,s,e,q,u,e,n,c,e,/,m,a,g,i,c,-,s,e,q,u,e,n,c,e,2,.,p,i]),picat)
+<pre>
+CPU time 12.676 seconds. Backtracks: 1980
 
+[60,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0]
 
-real	0m0.017s
-user	0m0.005s
-sys	0m0.013s
+real	0m11.281s
+user	0m12.698s
+sys	0m0.006s
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>*** error(existence_error([m,a,g,i,c,-,s,e,q,u,e,n,c,e,/,m,a,g,i,c,-,s,e,q,u,e,n,c,e,2,.,p,i]),picat)
+<pre>
+CPU time 0.006 seconds. Backtracks: 7
 
+[60,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0]
 
-real	0m0.046s
-user	0m0.025s
-sys	0m0.021s
+real	0m0.048s
+user	0m0.035s
+sys	0m0.008s
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+CPU time 0.235 seconds. Backtracks: 7
+
+[396,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0]
+
+real	0m7.006s
+user	0m5.943s
+sys	0m0.525s
 </pre>
 </div>
 </div>
@@ -7607,7 +7644,7 @@ sys	0m0.021s
 <div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>magic-sequence/magic-sequence2.pi
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>magic-sequence/.solution/magic-sequence2.pi
 </pre></div>
 </div>
 </div>
@@ -7620,7 +7657,29 @@ sys	0m0.021s
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>cat: magic-sequence/magic-sequence2.pi: No such file or directory
+<pre>% Adapted from Constraint Solving and Planning with Picat, Springer 
+% by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman
+import cp.
+
+main([N]) =&gt;
+  N := N.to_int,
+  magic_sequence(N,Sequence),
+  println(Sequence).
+
+magic_sequence(N, Sequence) =&gt;
+  Sequence = new_list(N),
+  Sequence :: 0..N-1,
+
+  % create list: [0-Sequence[1], 1-Sequence[2], ...]
+  Pairs = [$I-Sequence[I+1] : I in 0..N-1],
+  global_cardinality(Sequence,Pairs),
+
+  % extra/redudant (implicit) constraints to speed up the model
+  N #= sum(Sequence),
+  Integers = [I : I in 0..N-1],
+  scalar_product(Integers, Sequence, N),
+
+  time2(solve([ff], Sequence)). 
 </pre>
 </div>
 </div>
@@ -7634,8 +7693,8 @@ sys	0m0.021s
 <div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>magic-sequence/magic-sequence3.pi<span class="w"> </span><span class="m">400</span>
-<span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>magic-sequence/magic-sequence3.pi<span class="w"> </span><span class="m">1024</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>magic-sequence/.solution/magic-sequence2.pi<span class="w"> </span><span class="m">1024</span>
+<span class="o">!</span><span class="nb">time</span><span class="w"> </span>picat<span class="w"> </span>magic-sequence/.solution/magic-sequence3.pi<span class="w"> </span><span class="m">1024</span>
 </pre></div>
 </div>
 </div>
@@ -7648,24 +7707,40 @@ sys	0m0.021s
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>*** error(existence_error([m,a,g,i,c,-,s,e,q,u,e,n,c,e,/,m,a,g,i,c,-,s,e,q,u,e,n,c,e,3,.,p,i]),picat)
+<pre>
+CPU time 3.298 seconds. Backtracks: 7
 
-
-real	0m0.045s
-user	0m0.013s
-sys	0m0.032s
+[1020,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0]
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>*** error(existence_error([m,a,g,i,c,-,s,e,q,u,e,n,c,e,/,m,a,g,i,c,-,s,e,q,u,e,n,c,e,3,.,p,i]),picat)
+<pre>
+real	3m43.417s
+user	3m15.928s
+sys	0m26.249s
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+CPU time 0.73 seconds. Backtracks: 7
 
+[1020,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0]
 
-real	0m0.047s
-user	0m0.012s
-sys	0m0.035s
+real	0m2.241s
+user	0m3.858s
+sys	0m0.498s
 </pre>
 </div>
 </div>
@@ -7679,7 +7754,7 @@ sys	0m0.035s
 <div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>magic-sequence/magic-sequence3.pi
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat<span class="w"> </span>magic-sequence/.solution/magic-sequence3.pi
 </pre></div>
 </div>
 </div>
@@ -7692,7 +7767,29 @@ sys	0m0.035s
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>cat: magic-sequence/magic-sequence3.pi: No such file or directory
+<pre>% Adapted from Constraint Solving and Planning with Picat, Springer 
+% by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman
+import cp.
+
+main([N]) =&gt;
+  N := N.to_int,
+  magic_sequence(N,Sequence),
+  println(Sequence).
+
+magic_sequence(N, Sequence) =&gt;
+  Sequence = new_list(N),
+  Sequence :: 0..N-1,
+
+  % extra/redudant (implicit) constraints to speed up the model
+  N #= sum(Sequence),
+  Integers = [I : I in 0..N-1],
+  scalar_product(Integers, Sequence, N),
+
+  % % create list: [0-Sequence[1], 1-Sequence[2], ...]
+  Pairs = [$I-Sequence[I+1] : I in 0..N-1],
+  global_cardinality(Sequence,Pairs),
+
+  time2(solve([ff], Sequence)).
 </pre>
 </div>
 </div>

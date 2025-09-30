@@ -1,10 +1,17 @@
 #!/bin/bash
 cd ~
-wget http://picat-lang.org/download/picat37_linux64.tar.gz
-tar -xf picat37_linux64.tar.gz
-rm picat37_linux64.tar.gz
+wget http://picat-lang.org/download/picat39_linux64.tar.gz
+tar -xf picat39_linux64.tar.gz
+rm picat39_linux64.tar.gz
 mv Picat .picat
-conda install python=3.12
-conda install -c conda-forge jupyterlab jupyterlab_rise nbconvert playwright sqlite
-pip install ipicat
+conda config --set auto_activate false
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+
+conda create -y -n nopt042 python=3.10 -c conda-forge --override-channels
+conda activate nopt042
+
+conda install -y -c conda-forge --override-channels jupyterlab=4.0.12 notebook=7.0.8 nodejs=18.15.0
+pip install mermaid-magic ipicat jupyterlab-rise
+
 echo "c.ContentsManager.allow_hidden = True" >> ~/.jupyter/jupyter_notebook_config.py

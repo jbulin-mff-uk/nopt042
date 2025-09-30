@@ -1,36 +1,90 @@
 # NOPT042 Constraint Programming
 
-Notes and code for the tutorial
+Notes and code for the tutorial on constraint programming using Picat.
 
-## Installation
+### Install Picat
 
-You can install [Picat](http://picat-lang.org/) like this (check if there's a newer version of Picat):
+You can install [Picat](http://picat-lang.org/) manually:
 
 ```bash
 cd ~
-wget http://picat-lang.org/download/picat37_linux64.tar.gz
-tar -xf picat37_linux64.tar.gz
+mkdir -p .picat
+cd .picat
+wget http://picat-lang.org/download/picat39_linux64.tar.gz
+tar -xzf picat39_linux64.tar.gz
 ```
 
-Then add the executable to `$PATH` (assuming we use bash):
+Add the executable to `$PATH`:
 
 ```bash
-echo 'export PATH="$HOME/Picat:$PATH"' >> ~/.bashrc
+echo 'export PATH="$HOME/.picat:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-Then the command `picat` runs the Picat interpreter. (For Windows, see [Get Started With Picat](http://picat-lang.org/download/get_started.pdf)).
+Test the installation: `picat --version`
 
-If you want to execute the notebooks, install [Jupyter Notebook](https://jupyter.org/) with [ipicat extension](https://pypi.org/project/picat-kernel/) (if you want to install them locally, add `--user`):
+### Install Jupyter with Picat Support
+
+Create a conda environment and install Jupyter components:
 
 ```bash
-pip install jupyter
-pip install ipicat
+conda create -n nopt042 python=3.10
+conda activate nopt042
+pip install jupyterlab notebook ipicat
 ```
 
-Then run `jupyter notebook`. Load the extension: `%load_ext ipicat`. Once the extension is loaded you can use `%%picat` cell magic or execute picat files: `%picat -e hello-world.pi`.
+### Install Extensions
 
-To view the slideshow, install the RISE extension: 
-```
+For slideshow presentations:
+```bash
 pip install RISE
+jupyter-nbextension install rise --py --sys-prefix
+jupyter-nbextension enable rise --py --sys-prefix
+```
+
+For Mermaid diagram support:
+```bash
+pip install mermaid-magic
+```
+
+## Usage
+
+### Starting Jupyter
+
+```bash
+# Activate environment (if not already active)
+conda activate nopt042
+
+# Start JupyterLab
+jupyter lab
+
+# Or start Jupyter Notebook (better for RISE slideshows)
+jupyter notebook
+```
+
+### Using Picat in Notebooks
+
+**Option 1: Using ipicat extension (Recommended)**
+
+1. **Create a new Python notebook** (select Python kernel)
+2. **Load the ipicat extension** in the first cell:
+   ```python
+   %load_ext ipicat
+   ```
+3. **Use Picat magic commands** in subsequent cells:
+   ```python
+   %%picat
+   main =>
+       println("Hello from Picat!").
+   ```
+4. **Or execute Picat files**:
+   ```python
+   %picat hello-world.pi
+   ```
+
+**Option 2: Direct Picat execution**
+
+You can also run Picat files directly from the terminal:
+```bash
+picat your_file.pi
 ```

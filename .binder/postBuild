@@ -13,3 +13,9 @@ conda activate nopt042
 
 conda install -y -c conda-forge --override-channels jupyterlab=4.0.12 notebook=7.0.8 nodejs=18.15.0
 pip install mermaid-magic ipicat jupyterlab-rise
+
+mkdir -p /home/jovyan/.jupyter
+cat <<EOF > /home/jovyan/.jupyter/jupyter_server_config.py
+c = get_config()
+c.ContentsManager.allow_hidden = True
+EOF

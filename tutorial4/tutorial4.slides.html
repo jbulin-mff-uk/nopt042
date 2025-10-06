@@ -6,7 +6,7 @@
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 <title>tutorial4 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script type="module">
-  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs';
+  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.1/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: true });
 </script>
 <!-- General and theme style sheets -->
@@ -7445,14 +7445,24 @@ main {
 </div>
 </div>
 </div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=52af0aef-a82d-4bd0-ad52-8bfd7deacac0">
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1c47df53-e2d3-496d-a743-490f44446108">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="What-was-in-the-lecture?-Nothing,-the-lecture-was-canceled.">What was in the lecture? Nothing, the lecture was canceled.<a class="anchor-link" href="#What-was-in-the-lecture?-Nothing,-the-lecture-was-canceled.">¶</a></h3>
+<h3 id="What-was-in-Lecture-4">What was in Lecture 4<a class="anchor-link" href="#What-was-in-Lecture-4">¶</a></h3><p>Consistency techniques</p>
+<ul>
+<li>use constraints <em>actively</em></li>
+<li>remove inconsistent values (or combinations thereof) from the domains</li>
+<li><strong>node consistency</strong>: intersect domain with all unary constraints</li>
+<li><strong>arc consistency</strong>: ensure that every value of $x$ is compatible with some value $y$ via every binary constraint</li>
+<li>naive implementation: AC-1 (revise all arcs, repeat until no change); improvement AC-2</li>
+<li><strong>AC-3</strong>: most widely used, keep a queue of arcs to revise (reduction of one domain triggers revision of neighboring domains)</li>
+<li>AC-4 (best worst-case time complexity), AC-5, AC-6, AC-7, AC-3.1, AC-2001</li>
+<li>directional arc consistency: DAC-1</li>
+</ul>
 </div>
 </div>
 </div>
@@ -7642,7 +7652,7 @@ output(Q) =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.055 seconds. Backtracks: 8540
+CPU time 0.037 seconds. Backtracks: 8540
 
 .......Q
 ...Q....
@@ -7761,7 +7771,7 @@ output(Board) =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.0 seconds. Backtracks: 24
+CPU time 0.001 seconds. Backtracks: 24
 
 Q.......
 ....Q...
@@ -7906,9 +7916,9 @@ output(Q) =&gt;
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="df26994f-f29f-419d-9a51-28e4f281a905" tabindex="0">
+<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="fb2837d9-cd4b-4950-874c-552262531028" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('df26994f-f29f-419d-9a51-28e4f281a905');
+var element = document.getElementById('fb2837d9-cd4b-4950-874c-552262531028');
 "use strict";
 
 CodeMirror.defineMode("text/picat", function(config) {
@@ -8319,7 +8329,7 @@ main =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.134 seconds. Backtracks: 63778
+CPU time 0.123 seconds. Backtracks: 63778
 
 
 </pre>

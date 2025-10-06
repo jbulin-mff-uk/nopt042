@@ -6,7 +6,7 @@
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 <title>tutorial12 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script type="module">
-  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs';
+  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.1/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: true });
 </script>
 <!-- General and theme style sheets -->
@@ -7446,63 +7446,6 @@ main {
 </div>
 </div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=00f9fd4a-926e-47f5-9b64-17d90568d2b2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="What-was-in-Lecture-9?">What was in Lecture 9?<a class="anchor-link" href="#What-was-in-Lecture-9?">¶</a></h3><p>Incomplete search</p>
-<ul>
-<li>incomplete tree search (no guarantee but faster)</li>
-<li>DFS, cutoff (global or local), restart (with different params, more resources, learning)</li>
-<li>bounded backtrack search: "limited number of leaves" (increase after restart)</li>
-<li>iterative broadening: limited "width" (number of alternatives for each node)</li>
-<li>depth bounded search (all alternatives until given depth=num instantiated vars, then incomplete search)</li>
-<li>credit search (credit=number of backtracks, split uniformly among available alternatives)</li>
-</ul>
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=83f3125c-a87d-4c62-b25b-7d0fdf541fe4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Discrepancy search</p>
-<ul>
-<li>heuristics can be wrong, but number of wrong decisions is low</li>
-<li>heuristics are less reliable at the beginning</li>
-<li>limited discrepancy search: first explore branches with less discrepancies, and with earlier discrepancies</li>
-<li>depth-bounded discrepancy search: discrepancies allowed only to some depth, there must be a disrepancy at that depth (to get something new), increase after restart</li>
-</ul>
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a25f1345-b64a-44ef-9d13-2663578651c6">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Branch and bound</p>
-<ul>
-<li>constrained optimization: minimize/maximize objective value of valid solution</li>
-<li>heuristic that estimates value of obj (e.g. ignore remaining constraints, LP relaxation)</li>
-<li>stop exploring subtree if a) no solution, or b) no optimal solution (because Bound &lt;= h(solution))</li>
-<li>bound: for example value of best so far</li>
-<li>we need good heuristic, find good solution early</li>
-<li>finding optimum often fast, but proof of optimality slow</li>
-<li>we can stop once good enough solution is found</li>
-<li>we can use both upper and lower bounds</li>
-</ul>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=50977216">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7582,326 +7525,326 @@ path(S,Plan,Cost) =&gt;
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre> module planner.
-
-% best_plan(S,Limit,Plan) =&gt; best_plan(S,Limit,Plan).
-% best_plan(S,Limit,Plan,PlanCost) =&gt; best_plan(S,Limit,Plan,PlanCost).
-% best_plan(S,Plan,PlanCost) =&gt; best_plan(S,Plan,PlanCost).
-% best_plan(S,Plan) =&gt; best_plan(S,Plan).
-% best_plan_bin(S,Limit,Plan) =&gt; best_plan_bin(S,Limit,Plan).
-% best_plan_bin(S,Limit,Plan,PlanCost) =&gt; best_plan_bin(S,Limit,Plan,PlanCost).
-% best_plan_bin(S,Plan,PlanCost) =&gt; best_plan_bin(S,Plan,PlanCost).
-% best_plan_bin(S,Plan) =&gt; best_plan_bin(S,Plan).
-% best_plan_bb(S,Limit,Plan) =&gt; best_plan_bb(S,Limit,Plan).
-% best_plan_bb(S,Plan,PlanCost) =&gt; best_plan_bb(S,Plan,PlanCost).
-% best_plan_bb(S,Limit,Plan,PlanCost) =&gt; best_plan_bb(S,Limit,Plan,PlanCost).
-% best_plan_bb(S,Plan) =&gt; best_plan_bb(S,Plan).
-% best_plan_nondet(S,Limit,Plan) =&gt; best_plan_nondet(S,Limit,Plan).
-% best_plan_nondet(S,Plan,PlanCost) =&gt; best_plan_nondet(S,Plan,PlanCost).
-% best_plan_nondet(S,Limit,Plan,PlanCost) =&gt; best_plan_nondet(S,Limit,Plan,PlanCost).
-% best_plan_nondet(S,Plan) =&gt; best_plan_nondet(S,Plan).
-% best_plan_unbounded(S,Limit,Plan) =&gt; best_plan_unbounded(S,Limit,Plan).
-% best_plan_unbounded(S,Plan,PlanCost) =&gt; best_plan_unbounded(S,Plan,PlanCost).
-% best_plan_unbounded(S,Limit,Plan,PlanCost) =&gt; best_plan_unbounded(S,Limit,Plan,PlanCost).
-% best_plan_unbounded(S,Plan) =&gt; best_plan_unbounded(S,Plan).
-% current_plan() = current_plan().
-% current_resource() = current_resource().
-% current_resource_plan(Amount,Plan) =&gt; current_resource_plan(Amount,Plan).
-% current_resource_plan_cost(Amount,Plan,Cost) =&gt; current_resource_plan_cost(Amount,Plan,Cost).
-% insert_state_list(StateL,Elm) = insert_state_list(StateL,Elm).
-% is_tabled_state(S) =&gt; is_tabled_state(S).
-% new_state_list(List) = new_state_list(List).
-% plan(S,Limit,Plan) =&gt; plan(S,Limit,Plan).
-% plan(S,Plan,PlanCost) =&gt; plan(S,Plan,PlanCost).
-% plan(S,Limit,Plan,PlanCost) =&gt; plan(S,Limit,Plan,PlanCost).
-% plan(S,Plan) =&gt; plan(S,Plan).
-% plan_unbounded(S,Limit,Plan) =&gt; plan_unbounded(S,Limit,Plan).
-% plan_unbounded(S,Plan,PlanCost) =&gt; plan_unbounded(S,Plan,PlanCost).
-% plan_unbounded(S,Limit,Plan,PlanCost) =&gt; plan_unbounded(S,Limit,Plan,PlanCost).
-% plan_unbounded(S,Plan) =&gt; plan_unbounded(S,Plan).
-
-% A state-list is an ordered list, where the ordering of symbols is determined 
-% by the addresses of the symbols in the symbol table, not by the characters that
-% constitute the symbols. This ordering allows for efficient ordering of symbols. 
-% Note that this ordering is different from lexicographical ordering, which is used by sort(). 
-
-new_state_list(List) = SList =&gt; new_state_list_aux(List,[],SList).
-
-new_stte_list_aux([],SList0,SList) =&gt; SList = SList0.
-new_state_list_aux([E|List],SList0,SList) =&gt; 
-    bp.b_INSERT_STATE_LIST_ccf(SList0,E,SList1),
-    new_state_list_aux(List,SList1,SList).
-
-insert_state_list(SList0,Elm) = SList =&gt; bp.b_INSERT_STATE_LIST_ccf(SList0,Elm,SList).
-
-%%%
-current_resource() = Amount =&gt;
-    bp.b_PLANNER_CURR_RPC_fff(Amount,_Plan,_Cost).
-
-current_plan() = Plan =&gt;
-    bp.b_PLANNER_CURR_RPC_fff(_Amount,Plan,_Cost).
-
-current_resource_plan(Amount,Plan) =&gt;
-    bp.b_PLANNER_CURR_RPC_fff(Amount,Plan,_Cost).
-
-current_resource_plan_cost(Amount,Plan,Cost) =&gt;
-    bp.b_PLANNER_CURR_RPC_fff(Amount,Plan,Cost).
-
-%%%
-plan(S,Plan),var(Plan) =&gt;
-    bp.picat_plan(S,268435455,Plan,_).   % the limit is assumed to be 268435455
-plan(_S,Plan) =&gt;
-    throw_plan_arg_error(1,Plan,_,plan).
-
-plan(S,Limit,Plan),var(Plan),integer(Limit),Limit&gt;=0 =&gt;
-    bp.picat_plan(S,Limit,Plan,_). 
-plan(S,Plan,PlanCost),var(Plan),var(PlanCost) =&gt;
-    bp.picat_plan(S,268435455,Plan,PlanCost). 
-plan(_S,Limit,Plan) =&gt;
-    throw_plan_arg_error(Limit,Plan,_,plan).
-
-plan(S,Limit,Plan,PlanCost),var(Plan),var(PlanCost),integer(Limit),Limit&gt;=0 =&gt;
-    bp.picat_plan(S,Limit,Plan,PlanCost). 
-plan(_S,Limit,Plan,PlanCost) =&gt;
-    throw_plan_arg_error(Limit,Plan,PlanCost,plan).
-
-plan(S,Limit,Plan,PlanCost,FinS),var(Plan),var(PlanCost),integer(Limit),Limit&gt;=0 =&gt;
-    bp.picat_plan(S,Limit,Plan,PlanCost,FinS). 
-plan(_S,Limit,Plan,PlanCost,_FinS) =&gt;
-    throw_plan_arg_error(Limit,Plan,PlanCost,plan).
-
-%%%
-plan_unbounded(S,Plan),var(Plan) =&gt;
-    bp.picat_plan_unbounded(S,268435455,Plan,_).   % the limit is assumed to be 268435455
-plan_unbounded(_S,Plan) =&gt;
-    throw_plan_arg_error(1,Plan,_,plan_unbounded).
-
-plan_unbounded(S,Limit,Plan),var(Plan),integer(Limit),Limit&gt;=0 =&gt;
-    bp.picat_plan_unbounded(S,Limit,Plan,_). 
-plan_unbounded(S,Plan,PlanCost),var(Plan),var(PlanCost) =&gt;
-    bp.picat_plan_unbounded(S,268435455,Plan,PlanCost). 
-plan_unbounded(_S,Limit,Plan) =&gt;
-    throw_plan_arg_error(Limit,Plan,_,plan_unbounded).
-
-plan_unbounded(S,Limit,Plan,PlanCost),var(Plan),var(PlanCost),integer(Limit),Limit&gt;=0 =&gt;
-    bp.picat_plan_unbounded(S,Limit,Plan,PlanCost). 
-plan_unbounded(_S,Limit,Plan,PlanCost) =&gt;
-    throw_plan_arg_error(Limit,Plan,PlanCost,plan_unbounded).
-
-
-%%%
-%%% iterative deepening
-best_plan(S,Plan),var(Plan) =&gt;
-    best_plan_downward(S,0,268435455,Plan,_,_).
-best_plan(_S,Plan) =&gt;
-    throw_plan_arg_error(1,Plan,_,best_plan).
-
-best_plan(S,Limit,Plan),var(Plan),integer(Limit),Limit&gt;=0 =&gt;
-    best_plan_downward(S,0,Limit,Plan,_,_).
-best_plan(S,Plan,PlanCost),var(Plan),var(PlanCost) =&gt;
-    best_plan_downward(S,0,268435455,Plan,PlanCost,_).
-best_plan(_S,Limit,Plan) =&gt;
-    throw_plan_arg_error(Limit,Plan,_,best_plan).
-
-best_plan(S,Limit,Plan,PlanCost),var(Plan),var(PlanCost),integer(Limit),Limit&gt;=0 =&gt;
-    best_plan_downward(S,0,Limit,Plan,PlanCost,_).
-best_plan(_S,Limit,Plan,PlanCost) =&gt;
-    throw_plan_arg_error(Limit,Plan,PlanCost,best_plan).
-
-best_plan(S,Limit,Plan,PlanCost,FinS),var(Plan),var(PlanCost),integer(Limit),Limit&gt;=0 =&gt;
-    best_plan_downward(S,0,Limit,Plan,PlanCost,FinS).
-best_plan(_S,Limit,Plan,PlanCost,_FinS) =&gt;
-    throw_plan_arg_error(Limit,Plan,PlanCost,best_plan).
-
-%%%
-best_plan_downward(S,Level,_Limit,_Plan,_PlanCost,_FinS) ?=&gt;
-    (bp.global_get('_$picat_log',0,1) -&gt; printf("%% Searching with the bound %d\n",Level); true),
-    call_picat_plan(S,Level),
-    fail.
-best_plan_downward(S,_Level,_Limit,Plan,PlanCost,FinS),
-    Map = get_table_map('_$planner'),
-    Map.has_key($current_best_plan(S))
-=&gt;
-    Map.get($current_best_plan(S)) = Plan,
-    Map.get($current_best_plan_cost(S)) = PlanCost,
-    Map.get($current_best_plan_fin_state(S)) = FinS.
-best_plan_downward(S,Level,Limit,Plan,PlanCost,FinS) =&gt;
-    bp.global_get('_$planner_explored_depth',0,Depth),
-    (Depth == 268435455 -&gt; Level1 = Level+1; Level1 = Depth),
-	Level1 =&lt; Limit,
-    best_plan_downward(S,Level1,Limit,Plan,PlanCost,FinS).
-
-%%% iterative deeping and binary search
-best_plan_bin(S,Plan),var(Plan) =&gt;
-    best_plan_downward_bin(S,0,268435455,Plan,_,_).
-best_plan_bin(_S,Plan) =&gt;
-    throw_plan_arg_error(1,Plan,_,best_plan).
-
-best_plan_bin(S,Limit,Plan),var(Plan),integer(Limit),Limit&gt;=0 =&gt;
-    best_plan_downward_bin(S,0,Limit,Plan,_,_).
-best_plan_bin(S,Plan,PlanCost),var(Plan),var(PlanCost) =&gt;
-    best_plan_downward_bin(S,0,268435455,Plan,PlanCost,_).
-best_plan_bin(_S,Limit,Plan) =&gt;
-    throw_plan_arg_error(Limit,Plan,_,best_plan).
-
-best_plan_bin(S,Limit,Plan,PlanCost),var(Plan),var(PlanCost),integer(Limit),Limit&gt;=0 =&gt;
-    best_plan_downward_bin(S,0,Limit,Plan,PlanCost,_).
-best_plan_bin(_S,Limit,Plan,PlanCost) =&gt;
-    throw_plan_arg_error(Limit,Plan,PlanCost,best_plan).
-
-best_plan_bin(S,Limit,Plan,PlanCost,FinS),var(Plan),var(PlanCost),integer(Limit),Limit&gt;=0 =&gt;
-    best_plan_downward_bin(S,0,Limit,Plan,PlanCost,FinS).
-best_plan_bin(_S,Limit,Plan,PlanCost,_FinS) =&gt;
-    throw_plan_arg_error(Limit,Plan,PlanCost,best_plan).
-
-%%%
-best_plan_downward_bin(S,Level,Limit,Plan,PlanCost,FinS) =&gt;
-    Map = get_table_map('_$planner'),
-    loop_best_plan_downward_bin(S,Level,Limit,Plan,PlanCost,FinS,Map).
-
-loop_best_plan_downward_bin(S,Level,Limit,_Plan,_PlanCost,_FinS,_Map) ?=&gt;
-    Level =&lt; Limit,
-    (bp.global_get('_$picat_log',0,1) -&gt; printf("%% Searching with the bound %d\n",Level); true),
-    call_picat_plan(S,Level),
-    fail.
-loop_best_plan_downward_bin(S,_Level,_Limit,Plan,PlanCost,_FinS,Map),
-    Map.has_key($current_best_plan(S))
-=&gt;
-    Lower = Map.get($current_lower_bound(S),0),
-    Upper = Map.get($current_best_plan_cost(S))-1,
-    loop_best_plan_bin(S,Map,Lower,Upper,Plan,PlanCost).
-loop_best_plan_downward_bin(S,Level,Limit,Plan,PlanCost,FinS,Map) =&gt;
-    bp.global_get('_$planner_explored_depth',0,Depth),
-%    writeln(depth=Depth),
-    (Depth == 268435455 -&gt; Lower = Level+1; Lower = Depth),
-    Map.put($current_lower_bound(S),Lower),
-    Lower &lt; Limit,
-    Level1 = 2*Lower,
-    NewLevel = cond(Level1&gt;Limit, Limit, Level1),
-    loop_best_plan_downward_bin(S,NewLevel,Limit,Plan,PlanCost,FinS,Map).
-
-% binary search
-loop_best_plan_bin(S,Map,Lower,Upper,Plan,PlanCost),
-    Lower =&lt; Upper
-=&gt;
-    NewLimit = Lower + (Upper-Lower) div 2,
-    (bp.global_get('_$picat_log',0,1) -&gt; printf("%% Searching with the bound %d\n",NewLimit); true),
-    if call_picat_plan(S,NewLimit) then
-        NewUpper = Map.get($current_best_plan_cost(S))-1,
-        loop_best_plan_bin(S,Map,Lower,NewUpper,Plan,PlanCost)
-    else
-        NewLower = NewLimit+1,
-        loop_best_plan_bin(S,Map,NewLower,Upper,Plan,PlanCost)
-    end.
-loop_best_plan_bin(S,Map,_Lower,_Upper,Plan,PlanCost) =&gt;
-    Map.has_key($current_best_plan(S)),
-    Map.get($current_best_plan(S)) = Plan,
-    Map.get($current_best_plan_cost(S)) = PlanCost.
-
-%%%
-best_plan_nondet(S,Plan),var(Plan) =&gt;
-    best_plan_nondet_aux(S,268435455,Plan,_).
-best_plan_nondet(_S,Plan) =&gt;
-    throw_plan_arg_error(1,Plan,_,best_plan_nondet).
-
-best_plan_nondet(S,Limit,Plan),var(Plan),integer(Limit),Limit&gt;=0 =&gt;
-    best_plan_nondet_aux(S,Limit,Plan,_).
-best_plan_nondet(S,Plan,PlanCost),var(Plan),var(PlanCost) =&gt;
-    best_plan_nondet_aux(S,268435455,Plan,PlanCost).
-best_plan_nondet(_S,Limit,Plan) =&gt;
-    throw_plan_arg_error(Limit,Plan,_,best_plan_nondet).
-
-best_plan_nondet(S,Limit,Plan,PlanCost),var(Plan),var(PlanCost),integer(Limit),Limit&gt;=0 =&gt;
-    best_plan_nondet_aux(S,Limit,Plan,PlanCost).
-best_plan_nondet(_S,Limit,Plan,PlanCost) =&gt;
-    throw_plan_arg_error(Limit,Plan,PlanCost,best_plan_nondet).
-
-best_plan_nondet_aux(S,Limit,Plan,PlanCost) =&gt;
-    not not (M = get_global_map(),
-             M.put('_first_best_plan',[]),
-             best_plan_downward(S,0,Limit,Plan0,PlanCost0,_),    % use tabled search to find the first best plan
-             M.put('_first_best_plan',(Plan0,PlanCost0))),
-    get_global_map().get('_first_best_plan') = (Plan0,PlanCost),
-    (    Plan = Plan0
-    ;
-        bp.picat_best_plan_nondet_nontabled_search(S,Plan,PlanCost),
-        Plan0 != Plan
-    ).
-
-%%% Branch-and-Bound
-best_plan_bb(S,Plan),var(Plan) =&gt;
-    loop_best_plan_bb(S,268435455,Plan,_).
-best_plan_bb(_S,Plan) =&gt;
-    throw_plan_arg_error(1,Plan,_,best_plan_bb).
-
-best_plan_bb(S,Limit,Plan),var(Plan),integer(Limit),Limit&gt;=0 =&gt;
-    loop_best_plan_bb(S,Limit,Plan,_PlanCost).
-best_plan_bb(S,Plan,PlanCost),var(Plan),var(PlanCost) =&gt;
-    loop_best_plan_bb(S,268435455,Plan,PlanCost).
-best_plan_bb(_S,Limit,Plan) =&gt;
-    throw_plan_arg_error(Limit,Plan,_,best_plan_bb).
-
-best_plan_bb(S,Limit,Plan,PlanCost),var(Plan),var(PlanCost),integer(Limit),Limit&gt;=0 =&gt;
-    loop_best_plan_bb(S,Limit,Plan,PlanCost).
-best_plan_bb(_S,Limit,Plan,PlanCost) =&gt;
-    throw_plan_arg_error(Limit,Plan,PlanCost,best_plan_bb).
-
-loop_best_plan_bb(S,Limit,Plan,PlanCost),
-    (bp.global_get('_$picat_log',0,1) -&gt; printf("%% Searching with the bound %d\n",Limit); true),
-    call_picat_plan(S,Limit)        
-=&gt;
-    get_table_map('_$planner').get($current_best_plan_cost(S)) = PlanCost1,    
-    loop_best_plan_bb(S,PlanCost1-1,Plan,PlanCost).
-loop_best_plan_bb(S,_Limit,Plan,PlanCost) =&gt;
-    Map = get_table_map('_$planner'),
-    Map.has_key($current_best_plan(S)),
-    Map.get($current_best_plan(S)) = Plan,
-    Map.get($current_best_plan_cost(S)) = PlanCost.
-
-call_picat_plan(S,Limit) =&gt;
-    bp.global_set('_$planner_explored_depth',0,268435455),
-    not not call_picat_plan_aux(S,Limit).  % discard exception catchers created by picat_plan
-
-call_picat_plan_aux(S,Limit) =&gt;
-    bp.picat_plan(S,Limit,Plan,PlanCost,FinS),
-    Map = get_table_map('_$planner'),
-    Map.put($current_best_plan(S),Plan),
-    Map.put($current_best_plan_cost(S),PlanCost),
-    Map.put($current_best_plan_fin_state(S),FinS).
-
-%%%
-best_plan_unbounded(S,Plan),var(Plan) =&gt;
-    bp.picat_best_plan_unbounded(S,Plan,_).
-best_plan_unbounded(_S,Plan) =&gt;
-    throw_plan_arg_error(1,Plan,_,best_plan_unbounded).
-
-best_plan_unbounded(S,Limit,Plan),var(Plan),integer(Limit),Limit&gt;=0 =&gt;
-    bp.picat_best_plan_unbounded(S,Plan,PlanCost),
-    PlanCost=&lt;Limit.
-best_plan_unbounded(S,Plan,PlanCost),var(Plan),var(PlanCost) =&gt;
-    bp.picat_best_plan_unbounded(S,Plan,PlanCost).
-best_plan_unbounded(_S,Limit,Plan) =&gt;
-    throw_plan_arg_error(Limit,Plan,_,best_plan_unbounded).    
-
-best_plan_unbounded(S,Limit,Plan,PlanCost),var(Plan),var(PlanCost),integer(Limit),Limit&gt;=0 =&gt;
-    bp.picat_best_plan_unbounded(S,Plan,PlanCost),
-    PlanCost =&lt; Limit.
-best_plan_unbounded(_S,Limit,Plan,PlanCost) =&gt;
-    throw_plan_arg_error(Limit,Plan,PlanCost,best_plan_unbounded).    
-
-%%%
-is_tabled_state(S) =&gt;
-    bp.b_IS_PLANNER_STATE_c(S).
-
-throw_plan_arg_error(_Limit,Plan,_PlanCost,Source),nonvar(Plan) =&gt;
-    handle_exception($var_expected(Plan),Source).
-throw_plan_arg_error(_Limit,_Plan,PlanCost,Source),nonvar(PlanCost) =&gt;
-    handle_exception($var_expected(PlanCost),Source).
-throw_plan_arg_error(Limit,_Plan,_PlanCost,Source),integer(Limit) =&gt;
-    handle_exception($nonnegative_integer_expected(Limit),Source).
-throw_plan_arg_error(Limit,_Plan,_PlanCost,Source) =&gt;
-    handle_exception($integer_expected(Limit),Source).
-
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </pre>
 </div>
 </div>

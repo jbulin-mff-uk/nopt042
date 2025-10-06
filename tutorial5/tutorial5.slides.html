@@ -6,7 +6,7 @@
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 <title>tutorial5 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script type="module">
-  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs';
+  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.1/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: true });
 </script>
 <!-- General and theme style sheets -->
@@ -7493,9 +7493,9 @@ main {
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="fffe3588-0088-4ec3-8b98-a0aa46c1a441" tabindex="0">
+<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="4eea3cde-5490-40a4-add4-cd5ade85cc99" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('fffe3588-0088-4ec3-8b98-a0aa46c1a441');
+var element = document.getElementById('4eea3cde-5490-40a4-add4-cd5ade85cc99');
 "use strict";
 
 CodeMirror.defineMode("text/picat", function(config) {
@@ -7947,8 +7947,8 @@ two 2’s appear two numbers apart, the two 3’s appear three numbers apart, et
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>langford-channeling.pi	langford-primal-search-strategy.pi
-langford-dual.pi	langford-primal.pi
+<pre>langford-channeling.pi	langford-primal.pi
+langford-dual.pi	langford-primal-search-strategy.pi
 </pre>
 </div>
 </div>
@@ -8057,7 +8057,7 @@ langford-dual.pi	langford-primal.pi
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 2.872 seconds. Backtracks: 250746
+CPU time 2.972 seconds. Backtracks: 250746
 
 {1,3,1,6,7,3,8,5,2,4,6,2,7,5,4,8}
 Positions: {1,9,2,10,8,4,5,7,3,12,6,15,14,11,13,16}
@@ -8241,25 +8241,13 @@ Swimmer A is swims Fly
 Swimmer B is swims Back
 Swimmer C is swims Free
 Swimmer D is swims Breast
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre># dual model:
+# dual model:
 Total time: 207
 Style Free is swum  by C
 Style Breast is swum  by D
 Style Fly is swum  by A
 Style Back is swum  by B
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre># channeling model:
+# channeling model:
 Total time: 207
 Swimmer A is swims Fly
 Swimmer B is swims Back
@@ -8321,16 +8309,10 @@ Swimmer Swimmer18 is swims Style18
 Swimmer Swimmer19 is swims Style15
 Swimmer Swimmer20 is swims Style20
 
-real	0m0.032s
-user	0m0.020s
-sys	0m0.008s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre># dual model:
+real	0m0.024s
+user	0m0.014s
+sys	0m0.009s
+# dual model:
 Total time: 848
 Style Style1 is swum  by Swimmer3
 Style Style2 is swum  by Swimmer6
@@ -8353,23 +8335,11 @@ Style Style18 is swum  by Swimmer18
 Style Style19 is swum  by Swimmer15
 Style Style20 is swum  by Swimmer20
 
-real	0m0.039s
-user	0m0.014s
-sys	0m0.021s
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre># channeling model:
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Total time: 903
+real	0m0.026s
+user	0m0.019s
+sys	0m0.008s
+# channeling model:
+Total time: 903
 Swimmer Swimmer1 is swims Style3
 Swimmer Swimmer2 is swims Style6
 Swimmer Swimmer3 is swims Style1
@@ -8412,9 +8382,9 @@ Style Style18 is swum  by Swimmer18
 Style Style19 is swum  by Swimmer15
 Style Style20 is swum  by Swimmer20
 
-real	0m7.919s
-user	0m7.287s
-sys	0m0.022s
+real	0m6.211s
+user	0m6.199s
+sys	0m0.010s
 </pre>
 </div>
 </div>

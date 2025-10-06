@@ -6,7 +6,7 @@
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 <title>tutorial7 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script type="module">
-  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs';
+  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.1/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: true });
 </script>
 <!-- General and theme style sheets -->
@@ -7445,25 +7445,14 @@ main {
 </div>
 </div>
 </div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=02b76992-1031-4d9b-b63b-43a822019405">
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=33720ad8-6e99-4f97-9a54-f7474d71b722">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="What-was-in-Lecture-5">What was in Lecture 5<a class="anchor-link" href="#What-was-in-Lecture-5">¶</a></h3><p>Path consistency</p>
-<ul>
-<li><strong>arc consistency</strong>: never destroys solutions, sometimes can find a solution (without backtracking) -- iff all domains reduced to 1 element</li>
-<li><strong>path consistency</strong>: for any path in variables, if assignment of start point and end point satisfy all binary constraints between them, then there is a consistent path in the constraint network</li>
-<li>enough to enforce for paths of length two ("every edge [in the constraint network] extends to any triangle")</li>
-<li>PC is stronger, removes pairs of inconsistent values</li>
-<li>but it is more expensive</li>
-<li>algorithms: PC-1, PC-2 [, PC-3, PC-4, PC-5]</li>
-<li>directional path consistency</li>
-<li>drawbacks of PC: memory consumption, bad strength/efficiency ration, modifies the constraint network (adds redundant constraints, changes connectivity, ruins graph-structure-based heuristics), still not complete</li>
-<li>restricted path consistency (AC, only check PC for pairs which are the only support for one of the values)</li>
-</ul>
+<h3 id="What-was-in-the-lecture?-Nothing,-the-lecture-was-canceled.">What was in the lecture? Nothing, the lecture was canceled.<a class="anchor-link" href="#What-was-in-the-lecture?-Nothing,-the-lecture-was-canceled.">¶</a></h3>
 </div>
 </div>
 </div>
@@ -7532,13 +7521,7 @@ main {
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>ok
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
+
 *** error(failed,main/1)
 
 
@@ -7670,7 +7653,7 @@ global_contiguity(X) =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.002 seconds. Backtracks: 12
+CPU time 0.0 seconds. Backtracks: 12
 
 |  day  |  day  |  day  |  off  |  day  | night | night |
 |  day  |  day  |  day  |  off  |  day  | night | night |
@@ -7932,7 +7915,7 @@ constraint takes the form</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.041 seconds. Backtracks: 7796
+CPU time 0.04 seconds. Backtracks: 7796
 
 |  day  |  day  |  off  | night | night |  off  |  off  |
 |  day  |  day  |  off  | night | night |  off  |  off  |

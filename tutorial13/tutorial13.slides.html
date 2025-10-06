@@ -6,7 +6,7 @@
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 <title>tutorial13 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script type="module">
-  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs';
+  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.1/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: true });
 </script>
 <!-- General and theme style sheets -->
@@ -7442,57 +7442,6 @@ main {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="NOPT042-Constraint-programming:-Tutorial-13---More-problems">NOPT042 Constraint programming: Tutorial 13 - More problems<a class="anchor-link" href="#NOPT042-Constraint-programming:-Tutorial-13---More-problems">¶</a></h1>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=00f9fd4a-926e-47f5-9b64-17d90568d2b2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="What-was-in-Lecture-10?">What was in Lecture 10?<a class="anchor-link" href="#What-was-in-Lecture-10?">¶</a></h3><p>Over-constrained problems</p>
-<ul>
-<li>no feasible solution</li>
-<li>enlarge some domain ("buy more clothes")</li>
-<li>enlarge some constraint relation ("dress less elegantly")</li>
-<li>remove some constraint ("no need to match shoes and shirt") - same as enlarging the relation by making <em>all</em> tuples feasible</li>
-<li>remove some variable ("do not wear shoes")</li>
-</ul>
-<p>Partial CSP</p>
-<ul>
-<li>find solution of a problem "close" to the original problem</li>
-<li>metric - distance between CSPs (e.g. number of solutions that are feasible in one but not the other problem, or number of different tuples in constraint relations)</li>
-<li>sufficient distance &lt; maximal allowed distance</li>
-</ul>
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ae7c1169-b7c2-4bf3-87ee-8be75142f456">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Weighted/valued CSP</p>
-<ul>
-<li>each constraint has a value</li>
-<li>minimize sum of weights of violated constraints</li>
-<li>soft vs. hard constraints (weight=+infinity)</li>
-</ul>
-<p>Probabilistic/semiring-based CSP</p>
-<ul>
-<li>each tuple of values is annotated by a preference (how well it satisfies the constraints)</li>
-<li>find solution with largest aggregated preference</li>
-</ul>
-<p>Constraint hierarchies</p>
-<ul>
-<li>preferences of some constraints over others (e.g. required vs. strong vs. weak, hard vs. soft)</li>
-<li>satisfy all hard constrains, satisfy soft as well as possible</li>
-<li>formalization of this framework</li>
-</ul>
 </div>
 </div>
 </div>

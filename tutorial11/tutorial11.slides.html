@@ -6,7 +6,7 @@
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 <title>tutorial11 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script type="module">
-  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs';
+  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.1/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: true });
 </script>
 <!-- General and theme style sheets -->
@@ -7446,65 +7446,52 @@ main {
 </div>
 </div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=982f8b24-202b-4158-b6eb-825ce744234e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5116cef9-b8ea-4036-b29d-191668472041">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="What-was-in-Lecture-8?">What was in Lecture 8?<a class="anchor-link" href="#What-was-in-Lecture-8?">¶</a></h3><p>Combining search and inference</p>
+<h3 id="What-was-in-Lecture-10?">What was in Lecture 10?<a class="anchor-link" href="#What-was-in-Lecture-10?">¶</a></h3><p>Over-constrained problems</p>
 <ul>
-<li>search (complete, slow) + consistency (incomplete, fast)</li>
-<li>integrate other solving techniques (e.g. integer programming)</li>
-<li>look-back: maintain consistency among already instantiated vars</li>
-<li>forward-checking: (partial/full) look-ahead, preventing failure better than checking</li>
+<li>no feasible solution</li>
+<li>enlarge some domain ("buy more clothes")</li>
+<li>enlarge some constraint relation ("dress less elegantly")</li>
+<li>remove some constraint ("no need to match shoes and shirt") - same as enlarging the relation by making <em>all</em> tuples feasible</li>
+<li>remove some variable ("do not wear shoes")</li>
+</ul>
+<p>Partial CSP</p>
+<ul>
+<li>find solution of a problem "close" to the original problem</li>
+<li>metric - distance between CSPs (e.g. number of solutions that are feasible in one but not the other problem, or number of different tuples in constraint relations)</li>
+<li>sufficient distance &lt; maximal allowed distance</li>
 </ul>
 </div>
 </div>
 </div>
 </div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5572bef4-14c0-4b47-a21a-797ee19a6a6c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cb65ecd5-a5a7-4981-a4b3-dd6502023463">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Variable ordering</p>
+<p>Weighted/valued CSP</p>
 <ul>
-<li>important!</li>
-<li>FAIL FIRST (smaller domain first)</li>
-<li>harder first: most constrained variables, more constraints to past variables</li>
+<li>each constraint has a value</li>
+<li>minimize sum of weights of violated constraints</li>
+<li>soft vs. hard constraints (weight=+infinity)</li>
 </ul>
-<p>Value ordering</p>
+<p>Probabilistic/semiring-based CSP</p>
 <ul>
-<li>SUCEED FIRST (prefer values belonging to a solution)</li>
-<li>prefer value with more supports (from AC-4)</li>
-<li>prefer value leading to less domain reduction (compute singleton consistency)</li>
-<li>problem-driven heuristics are better</li>
+<li>each tuple of values is annotated by a preference (how well it satisfies the constraints)</li>
+<li>find solution with largest aggregated preference</li>
 </ul>
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=850fc995-ff7f-4980-8ea0-545880b31a1e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Branching strategies</p>
+<p>Constraint hierarchies</p>
 <ul>
-<li>enumeration (X#=0 or X#=1 or ... or X#=N-1)</li>
-<li>step labeling (X#=i or X#!=i)</li>
-<li>bisection/domain-splitting (X#&lt;=i or X#&gt;i)</li>
-</ul>
-<p>Cycle cutset</p>
-<ul>
-<li>acyclic constraint network can be solved by backtrack-free AC</li>
-<li>make it acyclic labeling variables on cycles</li>
-<li>cycle cutset = set of vertices whose removal splits all cycles</li>
-<li>heuristics to find: order vertices by degrees, while G cyclic remove first V</li>
-<li>MAC Extended (MACE): combine AC with cycle cutset</li>
+<li>preferences of some constraints over others (e.g. required vs. strong vs. weak, hard vs. soft)</li>
+<li>satisfy all hard constrains, satisfy soft as well as possible</li>
+<li>formalization of this framework</li>
 </ul>
 </div>
 </div>
@@ -7604,11 +7591,11 @@ main =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.0 seconds.
+CPU time 0.001 seconds.
 
 267914296
 
-CPU time 26.988 seconds.
+CPU time 25.785 seconds.
 
 267914296
 
@@ -7993,13 +7980,7 @@ edge(8, 7, 10).
 source(1).
 target(6).
 
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
+
 *** error(failed,main/1)
 
 

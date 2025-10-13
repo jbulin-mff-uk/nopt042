@@ -9,7 +9,7 @@ main([SizeStr, CountStr]) =>
     Count = CountStr.to_int,
 
     coins_grid(Size, Count, Board, Obj),
-    solve($[min(Obj),ffd,updown], Board),
+    solve($[min(Obj)], Board),
     output(Board, Obj).
 
 coins_grid(Size, Count, Board, Obj) =>    

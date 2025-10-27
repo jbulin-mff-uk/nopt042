@@ -16,5 +16,5 @@ langford_primal(N, Sequence) =>
         I2 #= I1 + D + 1
     end.
 
-
+    % we could add symmetry breaking constraints here
 

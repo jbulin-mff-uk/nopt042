@@ -3,7 +3,7 @@ import cp.
 main([N]) =>
     N := N.to_int, 
     langford_dual(N, Position),
-    time2(solve(Position)),
+    time2(solve([inout,up],Position)),
     print("Positions: "), println(Position).
 
 langford_dual(N, Position) =>    

@@ -10,8 +10,8 @@ You can install [Picat](http://picat-lang.org/) manually:
 cd ~
 mkdir -p .picat
 cd .picat
-wget http://picat-lang.org/download/picat39_linux64.tar.gz
-tar -xzf picat39_linux64.tar.gz
+wget https://picat-lang.org/download/picat39_12_linux64.tar.gz
+tar -xzf picat39_12_linux64.tar.gz
 ```
 
 Add the executable to `$PATH`:
@@ -36,6 +36,7 @@ pip install jupyterlab notebook ipicat
 ### Install Extensions
 
 For slideshow presentations:
+
 ```bash
 pip install RISE
 jupyter-nbextension install rise --py --sys-prefix
@@ -43,6 +44,7 @@ jupyter-nbextension enable rise --py --sys-prefix
 ```
 
 For Mermaid diagram support:
+
 ```bash
 pip install mermaid-magic
 ```
@@ -68,16 +70,21 @@ jupyter notebook
 
 1. **Create a new Python notebook** (select Python kernel)
 2. **Load the ipicat extension** in the first cell:
+
    ```python
    %load_ext ipicat
    ```
+
 3. **Use Picat magic commands** in subsequent cells:
+
    ```python
    %%picat
    main =>
        println("Hello from Picat!").
    ```
+
 4. **Or execute Picat files**:
+
    ```python
    %picat hello-world.pi
    ```
@@ -85,6 +92,7 @@ jupyter notebook
 **Option 2: Direct Picat execution**
 
 You can also run Picat files directly from the terminal:
+
 ```bash
 picat your_file.pi
 ```

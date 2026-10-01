@@ -21,7 +21,7 @@ conda install -y -c conda-forge --override-channels jupyterlab=4.0.12 notebook=7
 pip install mermaid-magic ipicat jupyterlab-rise nbconvert[webpdf]
 
 # Download and install Picat
-wget -q http://picat-lang.org/download/picat39_linux64.tar.gz -O picat.tar.gz
+wget -q http://picat-lang.org/download/picat39_12_linux64.tar.gz -O picat.tar.gz
 mkdir -p $HOME/.picat
 tar -xzf picat.tar.gz -C $HOME/.picat --strip-components=1
 rm picat.tar.gz

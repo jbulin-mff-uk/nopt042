@@ -6,7 +6,7 @@
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 <title>tutorial1 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script type="module">
-  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.1/mermaid.esm.min.mjs';
+  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: true });
 </script>
 <!-- General and theme style sheets -->
@@ -7498,26 +7498,6 @@ main {
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2a5c2a80-0d18-4051-bbfc-1f7a0c68b39b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="What-was-in-Lecture-1?">What was in Lecture 1?<a class="anchor-link" href="#What-was-in-Lecture-1?">¶</a></h3><ul>
-<li>course overview</li>
-<li>history</li>
-<li>examples (Sudoku, map coloring, N-queens, ...)</li>
-<li>applications</li>
-<li>how CP fits within optimization</li>
-<li>the definition of the CSP, basic terminology</li>
-<li>advantages and limitations</li>
-<li>binarization of constraints</li>
-</ul>
-</div>
-</div>
-</div>
 </div></div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c00820ef-0550-44c4-8240-704fac33e19d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -7593,8 +7573,8 @@ main {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>You can install <a href="http://picat-lang.org/">Picat</a> like this (check if there's a newer version of Picat):</p>
 <div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~
-wget<span class="w"> </span>http://picat-lang.org/download/picat39_linux64.tar.gz
-tar<span class="w"> </span>-xf<span class="w"> </span>picat39_linux64.tar.gz
+wget<span class="w"> </span>http://picat-lang.org/download/picat39_12_linux64.tar.gz
+tar<span class="w"> </span>-xf<span class="w"> </span>picat39_12_linux64.tar.gz
 </pre></div>
 <p>Then add the executable to <code>$PATH</code> (assuming we use bash):</p>
 <div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s1">'export PATH="$HOME/Picat:$PATH"'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
@@ -7652,9 +7632,9 @@ pip<span class="w"> </span>install<span class="w"> </span>ipicat
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="1e6c5c82-d9ec-40bd-abe0-b026ec0fe2dd" tabindex="0">
+<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="4817ada6-08de-4588-8bed-a5fd33f0bc44" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('1e6c5c82-d9ec-40bd-abe0-b026ec0fe2dd');
+var element = document.getElementById('4817ada6-08de-4588-8bed-a5fd33f0bc44');
 "use strict";
 
 CodeMirror.defineMode("text/picat", function(config) {
@@ -8012,7 +7992,7 @@ Jupyter.notebook.get_cells().map(function(cell){
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Picat version 3.9
+<pre>Picat version 3.9#12
 </pre>
 </div>
 </div>
@@ -8194,7 +8174,13 @@ main =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Hello, Alice! I love your solution to the homework problem.
-Hello, Alice and Bob and Carol and Dave! You are my favourite students.
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Hello, Alice and Bob and Carol and Dave! You are my favourite students.
 </pre>
 </div>
 </div>
@@ -8377,7 +8363,7 @@ main =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 25.899 seconds.
+CPU time 28.546 seconds.
 
 267914296
 
@@ -8799,8 +8785,20 @@ main =&gt;
 -2.345
 42.0001
 -0.002
-
-4 0.0447213
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>4 0.0447213
 3 TOO LARGE
 2 -62.9447
 1 0.100005

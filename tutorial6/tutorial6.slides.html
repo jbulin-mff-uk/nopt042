@@ -6,7 +6,7 @@
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 <title>tutorial6 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script type="module">
-  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.1/mermaid.esm.min.mjs';
+  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: true });
 </script>
 <!-- General and theme style sheets -->
@@ -7445,14 +7445,25 @@ main {
 </div>
 </div>
 </div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f7196128-0b4b-4d45-9bf9-b024a10050e7">
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ce9f4213-3810-4711-9cf9-b6b96f26cec7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="What-was-in-the-lecture?-Nothing,-the-lecture-was-canceled.">What was in the lecture? Nothing, the lecture was canceled.<a class="anchor-link" href="#What-was-in-the-lecture?-Nothing,-the-lecture-was-canceled.">¶</a></h3>
+<h3 id="What-was-in-Lecture-5">What was in Lecture 5<a class="anchor-link" href="#What-was-in-Lecture-5">¶</a></h3><p>Path consistency</p>
+<ul>
+<li><strong>arc consistency</strong>: never destroys solutions, sometimes can find a solution (without backtracking) -- iff all domains reduced to 1 element</li>
+<li><strong>path consistency</strong>: for any path in variables, if assignment of start point and end point satisfy all binary constraints between them, then there is a consistent path in the constraint network</li>
+<li>enough to enforce for paths of length two ("every edge [in the constraint network] extends to any triangle")</li>
+<li>PC is stronger, removes pairs of inconsistent values</li>
+<li>but it is more expensive</li>
+<li>algorithms: PC-1, PC-2 [, PC-3, PC-4, PC-5]</li>
+<li>directional path consistency</li>
+<li>drawbacks of PC: memory consumption, bad strength/efficiency ration, modifies the constraint network (adds redundant constraints, changes connectivity, ruins graph-structure-based heuristics), still not complete</li>
+<li>restricted path consistency (AC, only check PC for pairs which are the only support for one of the values)</li>
+</ul>
 </div>
 </div>
 </div>
@@ -7495,9 +7506,9 @@ main {
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="11adb645-3282-492c-995a-5f3de48d9815" tabindex="0">
+<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="8fc89df3-bb8d-4f88-94b8-f16dec8f0153" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('11adb645-3282-492c-995a-5f3de48d9815');
+var element = document.getElementById('8fc89df3-bb8d-4f88-94b8-f16dec8f0153');
 "use strict";
 
 CodeMirror.defineMode("text/picat", function(config) {
@@ -7855,7 +7866,7 @@ Jupyter.notebook.get_cells().map(function(cell){
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Picat version 3.9
+<pre>Picat version 3.9#12
 </pre>
 </div>
 </div>

@@ -6,7 +6,7 @@
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 <title>tutorial4 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script type="module">
-  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.1/mermaid.esm.min.mjs';
+  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: true });
 </script>
 <!-- General and theme style sheets -->
@@ -7446,22 +7446,21 @@ main {
 </div>
 </div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1c47df53-e2d3-496d-a743-490f44446108">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5cd43300-05ce-4433-813b-b56df95d9a44">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="What-was-in-Lecture-4">What was in Lecture 4<a class="anchor-link" href="#What-was-in-Lecture-4">¶</a></h3><p>Consistency techniques</p>
+<h3 id="What-was-in-Lecture-3">What was in Lecture 3<a class="anchor-link" href="#What-was-in-Lecture-3">¶</a></h3><p>Look-back search algorithms (tree search)</p>
 <ul>
-<li>use constraints <em>actively</em></li>
-<li>remove inconsistent values (or combinations thereof) from the domains</li>
-<li><strong>node consistency</strong>: intersect domain with all unary constraints</li>
-<li><strong>arc consistency</strong>: ensure that every value of $x$ is compatible with some value $y$ via every binary constraint</li>
-<li>naive implementation: AC-1 (revise all arcs, repeat until no change); improvement AC-2</li>
-<li><strong>AC-3</strong>: most widely used, keep a queue of arcs to revise (reduction of one domain triggers revision of neighboring domains)</li>
-<li>AC-4 (best worst-case time complexity), AC-5, AC-6, AC-7, AC-3.1, AC-2001</li>
-<li>directional arc consistency: DAC-1</li>
+<li>backtracking (what order of variables and values?)</li>
+<li>backjumping (to the source of conflict)</li>
+<li>graph-directed backjumping (driven by constraint network, several jumps in sequence)</li>
+<li>Gaschnig backjumping (considers violated constraints, only one jump, to highest-level)</li>
+<li>conflict-driven: combines both, carry the source of conflict through backjumps</li>
+<li>dynamic backtracking: change order of variables (don't rework easy parts outside of conflict)</li>
+<li>backmarking (avoid repeated constraint checks: remember results of tests)</li>
 </ul>
 </div>
 </div>
@@ -7559,7 +7558,7 @@ main {
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.0 seconds. Backtracks: 24
+CPU time 0.001 seconds. Backtracks: 24
 
 Q.......
 ....Q...
@@ -7652,7 +7651,7 @@ output(Q) =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.037 seconds. Backtracks: 8540
+CPU time 0.036 seconds. Backtracks: 8540
 
 .......Q
 ...Q....
@@ -7916,9 +7915,9 @@ output(Q) =&gt;
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="fb2837d9-cd4b-4950-874c-552262531028" tabindex="0">
+<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="6772ec89-792c-43be-8e0d-7293aa834def" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('fb2837d9-cd4b-4950-874c-552262531028');
+var element = document.getElementById('6772ec89-792c-43be-8e0d-7293aa834def');
 "use strict";
 
 CodeMirror.defineMode("text/picat", function(config) {
@@ -8276,7 +8275,7 @@ Jupyter.notebook.get_cells().map(function(cell){
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Picat version 3.9
+<pre>Picat version 3.9#12
 </pre>
 </div>
 </div>
@@ -8329,7 +8328,7 @@ main =&gt;
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-CPU time 0.123 seconds. Backtracks: 63778
+CPU time 0.139 seconds. Backtracks: 63778
 
 
 </pre>

@@ -6,7 +6,7 @@
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 <title>tutorial5 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script type="module">
-  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.1/mermaid.esm.min.mjs';
+  import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: true });
 </script>
 <!-- General and theme style sheets -->
@@ -7445,14 +7445,24 @@ main {
 </div>
 </div>
 </div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d20a7bd5-c710-4027-ac06-3c16a054d506">
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=61340c8f-99d6-44ef-8cdc-a84fe5d76ec9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="What-was-in-the-lecture?-Nothing,-the-lecture-was-canceled.">What was in the lecture? Nothing, the lecture was canceled.<a class="anchor-link" href="#What-was-in-the-lecture?-Nothing,-the-lecture-was-canceled.">¶</a></h3>
+<h3 id="What-was-in-Lecture-4">What was in Lecture 4<a class="anchor-link" href="#What-was-in-Lecture-4">¶</a></h3><p>Consistency techniques</p>
+<ul>
+<li>use constraints <em>actively</em></li>
+<li>remove inconsistent values (or combinations thereof) from the domains</li>
+<li><strong>node consistency</strong>: intersect domain with all unary constraints</li>
+<li><strong>arc consistency</strong>: ensure that every value of $x$ is compatible with some value $y$ via every binary constraint</li>
+<li>naive implementation: AC-1 (revise all arcs, repeat until no change); improvement AC-2</li>
+<li><strong>AC-3</strong>: most widely used, keep a queue of arcs to revise (reduction of one domain triggers revision of neighboring domains)</li>
+<li>AC-4 (best worst-case time complexity), AC-5, AC-6, AC-7, AC-3.1, AC-2001</li>
+<li>directional arc consistency: DAC-1</li>
+</ul>
 </div>
 </div>
 </div>
@@ -7493,9 +7503,9 @@ main {
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="4eea3cde-5490-40a4-add4-cd5ade85cc99" tabindex="0">
+<div class="jp-RenderedJavaScript jp-OutputArea-output" data-mime-type="application/javascript" id="5e8dbb2f-d7dc-47ef-b978-42a74a0c27ec" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('4eea3cde-5490-40a4-add4-cd5ade85cc99');
+var element = document.getElementById('5e8dbb2f-d7dc-47ef-b978-42a74a0c27ec');
 "use strict";
 
 CodeMirror.defineMode("text/picat", function(config) {
@@ -7853,7 +7863,7 @@ Jupyter.notebook.get_cells().map(function(cell){
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Picat version 3.9
+<pre>Picat version 3.9#12
 </pre>
 </div>
 </div>
@@ -7905,7 +7915,7 @@ main =&gt;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exercise:-Langford's-number-problem">Exercise: Langford's number problem<a class="anchor-link" href="#Exercise:-Langford's-number-problem">¶</a></h3>
+<h3 id="Exercise:-Langford's-pairing">Exercise: Langford's pairing<a class="anchor-link" href="#Exercise:-Langford's-pairing">¶</a></h3>
 </div>
 </div>
 </div>
@@ -7916,12 +7926,13 @@ main =&gt;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Consider the following problem (see <a href="http://picat-lang.org/picatbook2015/constraint_solving_and_planning_with_picat.pdf">the book</a>):</p>
+<p>Consider the following problem (see <a href="http://picat-lang.org/picatbook2015/constraint_solving_and_planning_with_picat.pdf">the book</a> and <a href="https://en.wikipedia.org/wiki/Langford_pairing">Wikipedia</a>):</p>
 <blockquote>
 <p>Consider two sets of the numbers from 1 to $N$. The problem is to arrange the $2N$ numbers
 in the two sets into a single sequence in which the two 1’s appear one number apart, the
 two 2’s appear two numbers apart, the two 3’s appear three numbers apart, etc.</p>
 </blockquote>
+<p>E.g. <code>23421314</code> for <code>n=4</code>.</p>
 <p>Try to formulate a model for this problem.</p>
 </div>
 </div>
@@ -7947,8 +7958,9 @@ two 2’s appear two numbers apart, the two 3’s appear three numbers apart, et
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>langford-channeling.pi	langford-primal.pi
-langford-dual.pi	langford-primal-search-strategy.pi
+<pre>langford-channeling.pi		  langford-primal.pi
+langford-dual.pi		  langford-primal-search-strategy.pi
+langford-dual-search-strategy.pi
 </pre>
 </div>
 </div>
@@ -7975,7 +7987,10 @@ langford-dual.pi	langford-primal-search-strategy.pi
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Default search strategy:{1,3,1,6,7,3,8,5,2,4,6,2,7,5,4,8}
+<pre>Default search strategy:
+CPU time 1.914 seconds. Backtracks: 250746
+
+{1,3,1,6,7,3,8,5,2,4,6,2,7,5,4,8}
 </pre>
 </div>
 </div>
@@ -8002,7 +8017,10 @@ langford-dual.pi	langford-primal-search-strategy.pi
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Good search strategy:{2,4,7,2,8,6,4,1,5,1,7,3,6,8,5,3}
+<pre>Good search strategy:
+CPU time 0.114 seconds. Backtracks: 9160
+
+{2,4,7,2,8,6,4,1,5,1,7,3,6,8,5,3}
 </pre>
 </div>
 </div>
@@ -8029,7 +8047,10 @@ langford-dual.pi	langford-primal-search-strategy.pi
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Positions: {1,4,8,11,9,6,2,5,3,7,12,16,15,13,10,14}
+<pre>
+CPU time 0.0 seconds. Backtracks: 59
+
+Positions: {1,4,8,11,9,6,2,5,3,7,12,16,15,13,10,14}
 </pre>
 </div>
 </div>
@@ -8087,7 +8108,10 @@ Positions: {1,9,2,10,8,4,5,7,3,12,6,15,14,11,13,16}
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Positions: {1,2,4,6,7,9,19,20,18,21,24,25,26,22,23,14,17,15,10,12,3,5,8,11,13,16,27,29,28,32,36,38,40,37,39,31,35,34,30,33}
+<pre>
+CPU time 10.42 seconds. Backtracks: 4440408
+
+Positions: {1,2,4,6,7,9,19,20,18,21,24,25,26,22,23,14,17,15,10,12,3,5,8,11,13,16,27,29,28,32,36,38,40,37,39,31,35,34,30,33}
 </pre>
 </div>
 </div>
@@ -8241,13 +8265,25 @@ Swimmer A is swims Fly
 Swimmer B is swims Back
 Swimmer C is swims Free
 Swimmer D is swims Breast
-# dual model:
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre># dual model:
 Total time: 207
 Style Free is swum  by C
 Style Breast is swum  by D
 Style Fly is swum  by A
 Style Back is swum  by B
-# channeling model:
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre># channeling model:
 Total time: 207
 Swimmer A is swims Fly
 Swimmer B is swims Back
@@ -8309,10 +8345,16 @@ Swimmer Swimmer18 is swims Style18
 Swimmer Swimmer19 is swims Style15
 Swimmer Swimmer20 is swims Style20
 
-real	0m0.024s
-user	0m0.014s
-sys	0m0.009s
-# dual model:
+real	0m0,025s
+user	0m0,012s
+sys	0m0,010s
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre># dual model:
 Total time: 848
 Style Style1 is swum  by Swimmer3
 Style Style2 is swum  by Swimmer6
@@ -8335,11 +8377,23 @@ Style Style18 is swum  by Swimmer18
 Style Style19 is swum  by Swimmer15
 Style Style20 is swum  by Swimmer20
 
-real	0m0.026s
-user	0m0.019s
-sys	0m0.008s
-# channeling model:
-Total time: 903
+real	0m0,025s
+user	0m0,016s
+sys	0m0,009s
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre># channeling model:
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Total time: 903
 Swimmer Swimmer1 is swims Style3
 Swimmer Swimmer2 is swims Style6
 Swimmer Swimmer3 is swims Style1
@@ -8382,9 +8436,9 @@ Style Style18 is swum  by Swimmer18
 Style Style19 is swum  by Swimmer15
 Style Style20 is swum  by Swimmer20
 
-real	0m6.211s
-user	0m6.199s
-sys	0m0.010s
+real	0m6,299s
+user	0m6,268s
+sys	0m0,031s
 </pre>
 </div>
 </div>
